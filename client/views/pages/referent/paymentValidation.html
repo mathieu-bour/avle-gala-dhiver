@@ -1,0 +1,28 @@
+<template name="paymentValidation">
+    <h1>Payment validation</h1>
+
+    <p>Nombre de ticket validés par vous: {{ ticketsCounter }}  ({{ amount }}€)</p>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>Ecole</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tickets}}
+                <tr>
+                    <td>{{ firstname }}</td>
+                    <td>{{ lastname }}</td>
+                    <td>{{ birthday }}</td>
+                    <td>{{ school }}</td>
+                    <td><button class="btn btn-primary" id="validatePayment">Valider</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</template>

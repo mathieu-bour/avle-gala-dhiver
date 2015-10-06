@@ -1,0 +1,308 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300);
+@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
+
+/**
+ * front.css
+ * =========
+ * Author: Mathieu Bour
+ * Version: 0.9b1
+ */
+body {
+    font-family: "Open Sans", Helvetica, sans-serif;
+}
+
+
+/*======================================================*/
+/*= GENERAL =*/
+/*======================================================*/
+#container {
+}
+
+.btn-ghost {
+    color: #ffffff;
+    font-weight: 600;
+    border: solid 4px #ffffff;
+    border-radius: 0;
+    transition: color .4s, background-color .4s;
+}
+
+.btn-ghost:hover, .btn-ghost:active {
+    color: #000;
+    background-color: #ffffff;
+}
+
+/*======================================================*/
+/*= I. COVER =*/
+/*======================================================*/
+#preloader-handler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #000000;
+}
+    .preloader {
+        width: 30px;
+        height: 30px;
+    }
+        .preloader:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: solid 2px transparent;
+            border-top: solid 2px #20D6C7;
+            border-bottom: solid 2px #20D6C7;
+            border-radius: 100%;
+            animation: spin 1s ease infinite;
+            -webkit-animation: spin 1s ease infinite;
+        }
+        .preloader:after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border: solid 2px transparent;
+            border-top: solid 2px #20D6C7;
+            border-bottom: solid 2px #20D6C7;
+            border-radius: 100%;
+            animation: spin .7s ease infinite;
+            -webkit-animation: spin .7s ease infinite;
+
+        }
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+}
+.wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    padding: 30px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+#bg-video {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+    #bg-video > video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+        #bg-video > video {
+            height: 300%;
+            top: -100%;
+        }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+        #bg-video > video {
+            width: 300%;
+            left: -100%;
+        }
+    }
+
+    @supports (object-fit: cover) {
+        #bg-video > video {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            object-fit: cover;
+        }
+    }
+
+.filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6) url(../img/filter.png);
+    filter: blur(5px);
+}
+
+.logo-handler {
+    margin-bottom: 40px;
+}
+    .logo {
+        width: 150px;
+    }
+
+.main-title {
+    margin: 0 0 40px 0;
+    padding: 0 40px 20px;
+    color: #ffffff;
+    font-family: "Great Vibes", sans-serif;
+    font-size: 150px;
+    white-space: nowrap;
+}
+
+.main-desc {
+    margin-bottom: 30px;
+    color: #20D6C7;
+    font-size: 18px;
+    font-weight: 200;
+    text-transform: uppercase;
+}
+
+/*======================================================*/
+/*= COUNTDOWN =*/
+/*======================================================*/
+.countdown {
+    margin-bottom: 40px;
+}
+    .countdown-square {
+        padding: 20px 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        text-align: center;
+        margin: 0 2px;
+    }
+    .countdown-value {
+        display: block;
+        color: #ffffff;
+        font-size: 70px;
+        line-height: 70px;
+    }
+    .countdown-label {
+        display: block;
+        padding-bottom: 8px;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 20px;
+        text-transform: uppercase;
+    }
+    .countdown-title{
+        margin-top: 15px;
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+
+.btn-handler {
+    margin-top: 30px;
+}
+
+#event-info{
+    margin: 0 auto;
+}
+
+    #event-info h2{
+        text-align:center;
+        display: table;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+    #event-info h2:before{
+        border-top: 1px solid #333333;
+        content: '';
+        display: table-cell;
+        position: relative;
+        top: 0.5em;
+        width: 35%;
+    }
+    #event-info h2:after{
+        border-top: 1px solid #333333;
+        content: '';
+        display: table-cell;
+        position: relative;
+        top: 0.5em;
+        width: 35%;
+    }
+
+    #event-info .row{
+        margin-top: 50px;
+    }
+    
+    .description{
+        text-align: center;
+    }
+
+    .description img{
+        width: 65px;
+    }
+
+    .description h4{
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+#notify{
+    background-image: url('img/divider-bg.png');
+-    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+}
+
+#tickets-info{
+    margin-top: 30px;
+    text-align: center;
+}
+    #tickets-info h3{
+        text-transform: uppercase;
+    }
+
+
+#notify{
+    margin-top: 50px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+    #notify h1{
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .wrapper-divider{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* compatibilité : ie9+ */
+    }
+
+#about{
+    padding-top: 30px;
+    text-align: center;
+}
+    #about .association-logo{
+
+    }
+
+    #about .association-logo img{
+        display: inline;
+        vertical-align: middle;
+    }

@@ -1,0 +1,131 @@
+<template name="home">
+    <div id="preloader-handler">
+        <div class="wrapper">
+            <div class="preloader"></div>
+        </div>
+    </div>
+
+    <div id="cover">
+        <div id="bg-video">
+            <video autoplay loop>
+                <source src="videos/bg.mp4" type="video/mp4">
+                <source src="videos/bg.webm" type="video/webm">
+            </video>
+        </div>
+
+        <div class="filter"></div>
+
+        <div class="wrapper">
+            <div class="logo-handler">
+                <img src="img/logo_2.png" alt="Logo A.V.L.E" class="logo">
+            </div>
+
+            <h1 class="main-title">Gala d 'hiver</h1>
+
+            <p class="main-desc">Un évènement exclusif réservé pour seulement <strong>600</strong> lycéens.</p>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-days"></span>
+                        <span class="countdown-label" id="countdown-days-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-hours"></span>
+                        <span class="countdown-label" id="countdown-hours-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-minutes"></span>
+                        <span class="countdown-label" id="countdown-minutes-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-seconds"></span>
+                        <span class="countdown-label" id="countdown-seconds-label"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="countdown-title">Avant l'ouverture de la vente des billets</p>
+
+            <div class="btn-handler">
+                <a href="#description" class="btn btn-lg btn-ghost">&or;</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="event-info" class="page">
+            <div class="container">
+                <h2>Venez fêter l'hiver avec nous !</h2>
+                <div class="row">
+                    <div class="col-sm-4 description">
+                        <img src="img/winter-icon-2.png" alt="winter-icon"/>
+                        <h4>Un énèvement exclusif, rien que pour vous</h4>
+                        <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente… le Gala d’hiver !
+                            Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h…</p>
+                    </div>
+                    <div class="col-sm-4 description">
+                        <img src="img/christmas-tree-icon.png" alt="christmas-tree-icon"/>
+                        <h4>Un univers sur les tons de Noël et de l'hiver</h4>
+                        <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente… le Gala d’hiver !
+                            Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h…</p>
+                    </div>
+                    <div class="col-sm-4 description">
+                        <img src="img/crown-icon.png" alt="winter-icon"/>
+                        <h4>Cette soirée, c'est votre soirée ! Faites de vous de vrais VIP</h4>
+                        <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente… le Gala d’hiver !
+                            Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h…</p>
+                    </div>
+                </div>
+                <div id="tickets-info">
+                    <h3>Un nombre de place limité pour un évènement unique !</h3>
+                    <p>Pour que vous soyez les acteurs <strong>privilégiés</strong> de cet évènement, le nombre de place sera limité. 600 places à réserver, en ligne avec possibilité de payer directement sur le site ou auprès de nos référents. Prix de la place: 10€, vestiaire et raclette compris.</p>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" disabled="disabled">Réservations des place disponible {{countdown}}</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="notify">
+            <div class="container">
+                <div class="wrapper-divider">
+                    <h1>Vous voulez être sur de ne pas rater la vente des places ?</h1>
+
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="" placeholder="example@avle.fr">
+                        </div>
+                        <button type="submit" class="btn btn-default">Prévenez moi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="about" class="page">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-6 association-logo">
+                        <img src="img/logo_2.png" alt=""/>
+                    </div>
+                    <div class="col-sm-6 association-info">
+                        <h1>L'A.V.L.E</h1>
+                        <p>L’A.V.L.E est en quelques sortes, née d'un coup de tête. Ce coup de tête, c’est Martin LEWANDOWSKI et Hugo BENSAI qui l’ont eu en décembre 2012. Créée afin d’organiser une fête de fin d’année pour les lycéens de Poincarré à Nancy, cette association a su pérenniser son empreinte, et s’est même développée outre la Meurthe-et-Moselle, pour aujourd’hui, être une association d’envergure régionale qui compte une 100aine d’adhérents !
+                            En effet, c’est au travers de plusieurs événements, que l’AVLE s’est imposée, notamment grâce au Festival de l’Humour de Lorraine, qui entame sa 3ème édition cette année, et qui a permis à de nombreux jeunes talents de découvrir la scène… et quelle scène ! Le 5 avril 2015, c’est devant près de 800 personnes que 17 de ces humoristes  se sont produits !
+                            Mis à part le FDHL, l’Association pour la Vie Lycéenne et Etudiante organise divers soirées étudiantes ou bals de promo dans plusieurs villes (Metz, Nancy, Thionville, Forbach…), à Metz, les Libertés Chéries, un concert visant à défendre la liberté d’expression… Tant de projets, menés par des lycéens et des étudiants, formant une et même équipe : l’A.V.L.E.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="map" class="page">
+
+        </div>
+    </div>
+</template>

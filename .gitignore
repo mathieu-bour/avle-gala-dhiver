@@ -1,0 +1,7 @@
+extern
+node_modules
+tmp
+vendor
+.DS_STORE
+Thumbs.db
+.idea/*

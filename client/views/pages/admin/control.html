@@ -1,0 +1,58 @@
+<template name="control">
+    <form id="controlForm">
+        <input type="text" id="ticketId"/>
+
+        <input type="submit" display="none"/>
+    </form>
+    <button class="btn btn-danger" id="cancel">Annuler le dernier ticket</button>
+
+    {{#if alreadyChecked}}
+        <table class="table table-bordered bg-danger">
+            <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Ecole</th>
+                <th>Date de naissance</th>
+                <th>Téléphone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ ticket.firstname }}</td>
+                <td>{{ ticket.lastname }}</td>
+                <td>{{ ticket.mail }}</td>
+                <td>{{ ticket.school }}</td>
+                <td>{{ ticket.birthday }}</td>
+                <td>{{ ticket.phone }}</td>
+            </tr>
+            </tbody>
+        </table>
+    {{else}}
+        <table class="table table-bordered bg-success">
+            <thead>
+            <tr>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Ecole</th>
+                <th>Date de naissance</th>
+                <th>Téléphone</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>{{ ticket.firstname }}</td>
+                <td>{{ ticket.lastname }}</td>
+                <td>{{ ticket.mail }}</td>
+                <td>{{ ticket.school }}</td>
+                <td>{{ ticket.birthday }}</td>
+                <td>{{ ticket.phone }}</td>
+            </tr>
+            </tbody>
+        </table>
+    {{/if}}
+
+
+</template>
