@@ -48,6 +48,8 @@
         if(lastScroll == 0) {
             wHeight = $(window).height();
 
+            $(window).scrollTop(0);
+
             $("#cover").animate({
                 top: -wHeight,
                 bottom: wHeight,

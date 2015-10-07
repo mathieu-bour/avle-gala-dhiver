@@ -1,20 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,300);
-@import url(https://fonts.googleapis.com/css?family=Great+Vibes);
-
 /**
  * front.css
  * =========
- * Author: Mathieu Bour
+ * Author: Mathieu Bour & Ladislas Dellinger
  * Version: 0.9b1
+ *
+ * SUMMARY
+ * =======
  */
-body {
-    font-family: "Open Sans", Helvetica, sans-serif;
-}
-
 
 /*======================================================*/
 /*= GENERAL =*/
 /*======================================================*/
+body {
+    font-family: "Open Sans", Helvetica, sans-serif;
+}
+
 #container {
 }
 
@@ -74,108 +74,105 @@ body {
             border-radius: 100%;
             animation: spin .7s ease infinite;
             -webkit-animation: spin .7s ease infinite;
-
         }
-@keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-#cover {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    z-index: 999;
-}
-.wrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: inline-block;
-    padding: 30px;
-    text-align: center;
-    transform: translate(-50%, -50%);
-}
-
-#bg-video {
-    overflow: hidden;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
-    #bg-video > video {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    @media (min-aspect-ratio: 16/9) {
-        #bg-video > video {
-            height: 300%;
-            top: -100%;
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
-    }
 
-    @media (max-aspect-ratio: 16/9) {
-        #bg-video > video {
-            width: 300%;
-            left: -100%;
-        }
-    }
-
-    @supports (object-fit: cover) {
-        #bg-video > video {
-            width: 100%;
-            height: 100%;
+        #cover {
+            position: absolute;
             top: 0;
             left: 0;
-            object-fit: cover;
+            bottom: 0;
+            right: 0;
+            z-index: 999;
         }
-    }
+            .wrapper {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                display: inline-block;
+                padding: 30px;
+                text-align: center;
+                transform: translate(-50%, -50%);
+            }
 
-.filter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: rgba(0, 0, 0, 0.6) url(../img/filter.png);
-    filter: blur(5px);
-}
+        #bg-video {
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
 
-.logo-handler {
-    margin-bottom: 40px;
-}
-    .logo {
-        width: 150px;
-    }
+            #bg-video > video {
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            @media (min-aspect-ratio: 16/9) {
+                #bg-video > video {
+                    height: 300%;
+                    top: -100%;
+                }
+            }
+            @media (max-aspect-ratio: 16/9) {
+                #bg-video > video {
+                    width: 300%;
+                    left: -100%;
+                }
+            }
+            @supports (object-fit: cover) {
+                #bg-video > video {
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                    object-fit: cover;
+                }
+            }
 
-.main-title {
-    margin: 0 0 40px 0;
-    padding: 0 40px 20px;
-    color: #ffffff;
-    font-family: "Great Vibes", sans-serif;
-    font-size: 150px;
-    white-space: nowrap;
-}
+        .filter {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6) url(../img/filter.png);
+            filter: blur(5px);
+        }
 
-.main-desc {
-    margin-bottom: 30px;
-    color: #20D6C7;
-    font-size: 18px;
-    font-weight: 200;
-    text-transform: uppercase;
-}
+        .logo-handler {
+            margin-bottom: 40px;
+        }
+            .logo {
+                width: 150px;
+            }
+
+        .main-title {
+            margin: 0 0 40px 0;
+            padding: 0 40px 20px;
+            color: #ffffff;
+            font-family: "Great Vibes", sans-serif;
+            font-size: 150px;
+            white-space: nowrap;
+        }
+
+        .main-desc {
+            margin-bottom: 30px;
+            color: #20D6C7;
+            font-size: 18px;
+            font-weight: 200;
+            text-transform: uppercase;
+        }
 
 /*======================================================*/
 /*= COUNTDOWN =*/
@@ -220,29 +217,6 @@ body {
     margin: 0 auto;
 }
 
-    #event-info h2{
-        text-align:center;
-        display: table;
-        text-transform: uppercase;
-        font-weight: 600;
-    }
-    #event-info h2:before{
-        border-top: 1px solid #333333;
-        content: '';
-        display: table-cell;
-        position: relative;
-        top: 0.5em;
-        width: 35%;
-    }
-    #event-info h2:after{
-        border-top: 1px solid #333333;
-        content: '';
-        display: table-cell;
-        position: relative;
-        top: 0.5em;
-        width: 35%;
-    }
-
     #event-info .row{
         margin-top: 50px;
     }
@@ -262,7 +236,7 @@ body {
 
 #notify{
     background-image: url('img/divider-bg.png');
--    background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
     height: 300px;
 }
@@ -291,7 +265,7 @@ body {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%); /* compatibilité : ie9+ */
+        transform: translate(-50%, -50%); /* compatibilitï¿½ : ie9+ */
     }
 
 #about{
@@ -305,4 +279,8 @@ body {
     #about .association-logo img{
         display: inline;
         vertical-align: middle;
+    }
+
+    #about .association-info p{
+        text-align: justify;
     }
