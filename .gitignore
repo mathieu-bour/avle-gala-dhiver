@@ -1,6 +1,4 @@
-extern
-node_modules
-tmp
+/.idea/*
+/public/videos/*
 .DS_STORE
 Thumbs.db
-.idea/*
