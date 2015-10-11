@@ -1,0 +1,20 @@
+/**
+ * front.css
+ * =========
+ * Author: Mathieu Bour & Ladislas Dellinger
+ * Version: 0.9b1
+ *
+ * SUMMARY
+ * =======
+ */
+
+/*======================================================*/
+/*= GENERAL =*/
+/*======================================================*/
+body {
+    font-family: "Open Sans", Helvetica, sans-serif;
+    font-size: 16px;
+}
+
+#container {
+}

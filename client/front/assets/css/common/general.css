@@ -1,0 +1,29 @@
+/**
+ * general.css
+ * ==============
+ * Authors: Mathieu & Ladislas Dellinger
+ */
+
+.lined {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.lined > span {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    padding: 0 15px;
+    background-color: #eeeeee;
+}
+.lined:before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 0.5em;
+    left: 0;
+    right: 0;
+    display: block;
+    height: 1px;
+    background-color: #888888;
+}

@@ -1,0 +1,28 @@
+<template name="referentTicketsList">
+    <h1>Liste des tickets</h1>
+
+    <p>Nombre de ticket validés par vous: {{ ticketCounter }}  ({{ amount }}€)</p>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Prénom</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Ecole</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each tickets}}
+            <tr>
+                <td>{{ firstname }}</td>
+                <td>{{ lastname }}</td>
+                <td>{{ birthday }}</td>
+                <td>{{ school }}</td>
+                <td><button class="btn btn-primary" id="sendTicket">Renvoyer le ticket</button></td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</template>

@@ -6,11 +6,12 @@
 
 meteor-platform
 insecure
-twbs:bootstrap
 underscore
 iron:router
-ian:accounts-ui-bootstrap-3
 accounts-password
 meteorhacks:fast-render
 email
 momentjs:moment
+ephemer:reactive-datatables
+
+fezvrasta:bootstrap-material-design

@@ -1,0 +1,57 @@
+<template name="cover">
+    <div class="cover" id="cover">
+        <div id="bg-video">
+            <video autoplay loop>
+                <source src="videos/bg.mp4" type="video/mp4">
+                <source src="videos/bg.webm" type="video/webm">
+            </video>
+        </div>
+
+        <div class="filter"></div>
+
+        <div class="cover__content">
+            <div class="logo-handler">
+                <img src="img/logo_2.png" alt="Logo A.V.L.E" class="logo">
+            </div>
+
+            <h1 class="main-title">Gala d 'hiver</h1>
+
+            <p class="main-desc">Un évènement exclusif réservé pour seulement <strong>600</strong> lycéens.</p>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-days"></span>
+                        <span class="countdown-label" id="countdown-days-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-hours"></span>
+                        <span class="countdown-label" id="countdown-hours-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-minutes"></span>
+                        <span class="countdown-label" id="countdown-minutes-label"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="countdown-square">
+                        <span class="countdown-value" id="countdown-seconds"></span>
+                        <span class="countdown-label" id="countdown-seconds-label"></span>
+                    </div>
+                </div>
+            </div>
+            <p class="countdown-title">Avant l'ouverture de la vente des billets</p>
+
+            <div class="btn-handler">
+                <a href="#description" class="btn btn-lg btn-ghost">&or;</a>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,14 +1,15 @@
 Router.configure({
-    layoutTemplate: 'mainLayout'
+    layoutTemplate: 'adminLayout'
 });
 
 // Front
 Router.route('/', {
     name: 'home',
-    layoutTemplate: 'noLayout',
+    layoutTemplate: 'noLayout'
 });
-Router.route('/buying', {name: 'buying'});
-Router.route('/buying/payment/:_id', function () {
+
+Router.route('/buy', {name: 'buying'});
+Router.route('/buy/payment/:_id', function () {
     this.render('payment', {
         data: function () {
             return Tickets.findOne({_id: this.params._id});

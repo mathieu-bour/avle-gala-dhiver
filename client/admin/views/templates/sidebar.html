@@ -1,0 +1,21 @@
+<template name="sidebar">
+    <aside class="sidebar">
+        <div class="sidebar-profile">
+            <img src="img/avatar-1.jpg" alt="Avatar 1" class="sidebar-profile-avatar">
+
+            <div class="sidebar-profile-data">
+                <div class="sidebar-profile-name">John Doe</div>
+                <div class="sidebar-profile-title">Lead Developer</div>
+            </div>
+        </div>
+
+        <div class="sidebar-nav">
+            <ul>
+                <li class="sidebar-nav-item"><a href="{{ pathFor 'dashboard' }}"><i class="zmdi zmdi-view-dashboard zmd-fw"></i> Tableau de bord</a></li>
+                <li class="sidebar-nav-item"><a href="{{ pathFor 'referentsList' }}"><i class="zmdi zmdi-accounts zmd-fw"></i> Gestion des référents</a></li>
+                <li class="sidebar-nav-item"><a href="{{ pathFor 'adminTicketsList' }}"><i class="zmdi zmdi-receipt zmd-fw"></i> Gestion des tickets</a></li>
+                <li class="sidebar-nav-item"><a href="{{ pathFor 'control' }}"><i class="zmdi zmdi-badge-check zmd-fw"></i> Poste de contrôle</a></li>
+            </ul>
+        </div>
+    </aside>
+</template>

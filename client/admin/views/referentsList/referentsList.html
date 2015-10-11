@@ -1,0 +1,15 @@
+<template name="referentsList">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)">Gestion des référents</a></li>
+                <li class="active">Data</li>
+            </ul>
+
+            <h2 class="page-title">Gestion des référents</h2>
+
+            {{> ReactiveDatatable tableData=referents }}
+        </div>
+    </div>
+</template>
