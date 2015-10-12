@@ -1,6 +1,11 @@
+dataTableData = function () {
+    return Tickets.find().fetch() // or .map()
+};
+
 Template.adminTicketsList.helpers({
     tickets: function(){
-        return Tickets.find();
+        console.log(dataTableData);
+        return dataTableData;
     },
     ticketsCounter: function(){
         return Tickets.find().count();
@@ -14,6 +19,29 @@ Template.adminTicketsList.helpers({
         var amount = onlineTickets * onlinePrice + offlineTickets * offlinePrice;
 
         return amount;
+    },
+    optionsObject: function(){
+        return optionsObject = {
+            columns: [{
+                title: 'Prénom',
+                data: 'firstname'
+            },{
+                title: 'Nom',
+                data: 'lastname'
+            },{
+                title: 'Date de naissance',
+                data: 'birthday'
+            },{
+                title: 'Téléphone',
+                data: 'phone'
+            },{
+                title: 'E-mail',
+                data: 'mail'
+            },{
+                title: 'Etablissement',
+                data: 'school'
+            }]
+        }
     }
 });
 

@@ -3,8 +3,8 @@ onlinePrice = 10;
 offlinePrice = 12;
 
 moment.locale('fr', {
-    months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
-    monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
+    months : "janvier_fï¿½vrier_mars_avril_mai_juin_juillet_aoï¿½t_septembre_octobre_novembre_dï¿½cembre".split("_"),
+    monthsShort : "janv._fï¿½vr._mars_avr._mai_juin_juil._aoï¿½t_sept._oct._nov._dï¿½c.".split("_"),
     weekdays : "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
     weekdaysShort : "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
     weekdaysMin : "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
@@ -17,11 +17,11 @@ moment.locale('fr', {
         LLLL : "dddd D MMMM YYYY LT"
     },
     calendar : {
-        sameDay: "[Aujourd'hui à] LT",
-        nextDay: '[Demain à] LT',
-        nextWeek: 'dddd [à] LT',
-        lastDay: '[Hier à] LT',
-        lastWeek: 'dddd [dernier à] LT',
+        sameDay: "[Aujourd'hui ï¿½] LT",
+        nextDay: '[Demain ï¿½] LT',
+        nextWeek: 'dddd [ï¿½] LT',
+        lastDay: '[Hier ï¿½] LT',
+        lastWeek: 'dddd [dernier ï¿½] LT',
         sameElse: 'L'
     },
     relativeTime : {
@@ -36,12 +36,12 @@ moment.locale('fr', {
         dd : "%d jours",
         M : "un mois",
         MM : "%d mois",
-        y : "une année",
-        yy : "%d années"
+        y : "une annï¿½e",
+        yy : "%d annï¿½es"
     },
-    ordinalParse : /\d{1,2}(er|ème)/,
+    ordinalParse : /\d{1,2}(er|ï¿½me)/,
     ordinal : function (number) {
-        return number + (number === 1 ? 'er' : 'ème');
+        return number + (number === 1 ? 'er' : 'ï¿½me');
     },
     meridiemParse: /PD|MD/,
     isPM: function (input) {
@@ -60,3 +60,10 @@ moment.locale('fr', {
         doy : 4  // The week that contains Jan 4th is the first week of the year.
     }
 });
+
+if (Meteor.isClient) {
+    Template.registerHelper("appropriateStylesheet", function() {
+        console.log(Router.current().route.getName());
+        return whichStylesheet;
+    });
+}

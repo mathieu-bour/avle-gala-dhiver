@@ -8,7 +8,7 @@ Router.route('/', {
     layoutTemplate: 'noLayout'
 });
 
-Router.route('/buy', {name: 'buying'});
+Router.route('/buy', {name: 'buy'});
 Router.route('/buy/payment/:_id', function () {
     this.render('payment', {
         data: function () {
