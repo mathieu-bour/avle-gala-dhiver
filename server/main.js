@@ -18,7 +18,7 @@ Accounts.emailTemplates.enrollAccount.text = function (user, url) {
 /*= Initial admin generation =*/
 /*======================================================*/
 /*var users = [
-    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['admin', 'referent']}
+    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['admin', 'referent']},
     {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['admin', 'referent']}
 ];
 
@@ -37,7 +37,7 @@ _.each(users, function (user) {
         }
     });
 
-})*/
+});*/
 
 
 /*= Meteor server methods =*/
