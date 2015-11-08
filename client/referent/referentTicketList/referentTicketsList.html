@@ -1,28 +1,20 @@
 <template name="referentTicketsList">
-    <h1>Liste des tickets</h1>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)" class="active">Gestion des tickets</a></li>
+            </ul>
 
-    <p>Nombre de ticket validés par vous: {{ ticketCounter }}  ({{ amount }}€)</p>
-
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>Prénom</th>
-            <th>Nom</th>
-            <th>Date de naissance</th>
-            <th>Ecole</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {{#each tickets}}
-            <tr>
-                <td>{{ firstname }}</td>
-                <td>{{ lastname }}</td>
-                <td>{{ birthday }}</td>
-                <td>{{ school }}</td>
-                <td><button class="btn btn-primary" id="sendTicket">Renvoyer le ticket</button></td>
-            </tr>
-        {{/each}}
-        </tbody>
-    </table>
+            <h2 class="page-title">Gestion des tickets</h2>
+            <div class="panel">
+                <div class="panel-title">
+                    <h4>Liste des tickets</h4>
+                </div>
+                <div class="panel-body">
+                    {{> tabular table=TabularTables.ReferentTickets selector=selector class="table table-striped table-bordered table-condensed"}}
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

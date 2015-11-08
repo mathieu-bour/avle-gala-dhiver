@@ -1,0 +1,41 @@
+/**
+ * checkpoint.css
+ * ==============
+ *
+ * @author Mathieu Bour
+ * @version 1.0
+ */
+.centered-wrapper {
+    background: url(//cdn.point-blank.fr/gala-dhiver/img/bg-checkpoint.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#btn-search {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+#btn-cancel {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.main-logo {
+    margin-bottom: 40px;
+}
+.main-input {
+    display: block;
+    width: 100%;
+    margin-bottom: 30px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 2px;
+    border: none;
+    outline: none;
+}
+

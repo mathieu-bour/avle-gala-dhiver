@@ -1,29 +1,104 @@
+/**
+ * buy.js
+ * ==
+ *
+ * Handle tickets purchase events
+ *
+ * @author Mathieu Bour
+ * @version 1.0
+ */
+
+/**
+ * Helpers
+ */
+Template.buy.helpers({
+    'schools': function(){
+        return schools;
+    }
+});
+
+/**
+ * Events
+ */
 Template.buy.events({
-    'submit form': function(e){
+    "submit form": function(e){
         e.preventDefault();
 
+        var str = "";
 
+        for(var i = 0; i < 12; i++) {
+            str = "x" + str;
+        }
+
+        // str = "xxxxx...xx" length time
+        var d = new Date().getTime();
+
+        var uuid = str.replace(/[xy]/g, function(c) {
+            var r = (d + Math.random()*16)%16 | 0;
+            d = Math.floor(d/16);
+            return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
+        });
 
         var ticket = {
+            sexe: $(e.target).find('[id=sexe]').val(),
             firstname: $(e.target).find('[id=firstname]').val(),
             lastname: $(e.target).find('[id=lastname]').val(),
             birthday: $(e.target).find('[id=birthday]').val(),
-            mail: $(e.target).find('[id=mail]').val(),
+            email: $(e.target).find('[id=email]').val(),
             phone: $(e.target).find('[id=phone]').val(),
             school: $(e.target).find('[id=school]').val(),
-            sexe: $(e.target).find('[name=sexe]:checked').val(),
-            isOnline: true,
             isPaid: false,
-            isChecked: false
+            isPaypal: false,
+            isChecked: false,
+            created: new Date(),
+            uuid: uuid
         };
-        //TODO Vérif des données
 
-        if(typeof Tickets.findOne({firstname: ticket.firstname, lastname:ticket.lastname, birthday: ticket.birthday}) != 'undefined'){
-            return false
-        }else {
-            ticket._id = Tickets.insert(ticket);
+        // Insert ticket
+        ticket._id = Tickets.insert(ticket);
 
-            Router.go('/buying/payment/' + ticket._id);
-        }
+        // Redirect to payment page
+        Router.go('/buy/payment?id=' + ticket._id);
     }
 });
+
+/**
+ * On rendered
+ */
+Template.buy.rendered = function() {
+    $.material.init(); // Init Bootstrap Material
+
+    $("#ticket-barcode").barcode("specimen", "code128"); // Render page
+
+    // Update ticket name
+    $("#firstname").bind("keyup change", function(e) {
+        updateName();
+    });
+    $("#lastname").bind("keyup change", function(e) {
+        updateName();
+    });
+
+    var updateName = function() {
+        $("#ticket-user-name").text($("#firstname").val() + " " + $("#lastname").val());
+    };
+
+    // Update picture (male/female)
+    $("input[type=radio][name=sexe]").change(function() {
+        if($(this).val() == "Homme") {
+            $("#ticket-gender").attr("src", "/img/king.png");
+        } else {
+            $("#ticket-gender").attr("src", "/img/queen.png");
+        }
+    });
+
+    // Animate tickets left counter
+    var $counter = $("#counter");
+
+    setInterval(function() {
+        var count = parseInt($counter.text());
+
+        if(count > 10) {
+            $counter.text(count - Math.floor((Math.random() * 10) + 1));
+        }
+    }, 10000);
+};

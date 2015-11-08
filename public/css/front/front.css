@@ -1,20 +1,504 @@
 /**
  * front.css
  * =========
+ * Stylize front (public) website
+ *
  * Author: Mathieu Bour & Ladislas Dellinger
  * Version: 0.9b1
  *
- * SUMMARY
+ * Summary
  * =======
  */
 
-/*======================================================*/
-/*= GENERAL =*/
+/*= General =*/
 /*======================================================*/
 body {
-    font-family: "Open Sans", Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 16px !important;
 }
 
 #container {
 }
+
+.page {
+    padding: 60px 0;
+}
+
+.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+/*> Lined titles */
+.lined {
+    position: relative;
+    text-align: center;
+    margin-bottom: 30px;
+}
+    .lined > span {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        padding: 0 15px;
+        background-color: #eeeeee;
+    }
+    .lined:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: 0.5em;
+        left: 0;
+        right: 0;
+        display: block;
+        height: 1px;
+        background-color: #888888;
+    }
+
+/*> Page title */
+.page-title-handler {}
+    .page-title {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 20px;
+        padding: 0 20px;
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 40px;
+        background-color: #333333;
+        border-radius: 5px;
+    }
+        .page-title > .sub {
+            font-size: 0.75em;
+        }
+
+/*> Alternative layout */
+.alt-layout {
+    position: relative;
+    padding: 20px;
+    background-color: #ffffff;
+}
+    .alt-layout:after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        bottom: 20px;
+        right: 20px;
+        display: block;
+        background-color: #eeeeee;
+        z-index: 1;
+    }
+        .alt-layout > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+
+/*= Bootstrap patches =*/
+/*======================================================*/
+
+/*> Medias */
+.media-left {
+    padding-right: 30px;
+}
+.media-right {
+    padding-left: 30px;
+}
+
+label {
+    font-weight: 400 !important;
+    color: #666666;
+}
+
+/*> Tables */
+.table td {
+    vertical-align: middle !important;
+}
+.table .btn {
+    margin: 0 !important;
+}
+/*= PRELOADER =*/
+/*======================================================*/
+.preloader-handler {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 9999;
+    background-color: #000000;
+}
+    .preloader {
+        width: 30px;
+        height: 30px;
+    }
+        .preloader:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            border: solid 2px transparent;
+            border-top: solid 2px #20D6C7;
+            border-bottom: solid 2px #20D6C7;
+            border-radius: 100%;
+            animation: spin 1s ease infinite;
+            -webkit-animation: spin 1s ease infinite;
+        }
+        .preloader:after {
+            content: "";
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            bottom: 10px;
+            left: 10px;
+            border: solid 2px transparent;
+            border-top: solid 2px #20D6C7;
+            border-bottom: solid 2px #20D6C7;
+            border-radius: 100%;
+            animation: spin .7s ease infinite;
+            -webkit-animation: spin .7s ease infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+/*= Preloader =*/
+/*======================================================*/
+.filter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.6) url(//cdn.point-blank.fr/gala-dhiver/img/filter.png);
+    filter: blur(5px);
+}
+
+
+.cover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 999;
+}
+.cover__content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: inline-block;
+    padding: 30px;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+#bg-video {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#bg-video > video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+@media (min-aspect-ratio: 16/9) {
+    #bg-video > video {
+        height: 300%;
+        top: -100%;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    #bg-video > video {
+        width: 300%;
+        left: -100%;
+    }
+}
+@supports (object-fit: cover) {
+    #bg-video > video {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+    }
+}
+    .logo-handler {
+        margin-bottom: 40px;
+    }
+        .logo {
+            width: 150px;
+        }
+
+    .main-title {
+        margin: 0 0 40px 0;
+        padding: 0 40px 20px;
+        color: #ffffff;
+        font-family: "Great Vibes", sans-serif !important;
+        font-size: 150px;
+        white-space: nowrap;
+    }
+
+    .main-desc {
+        margin-bottom: 30px;
+        color: #20D6C7;
+        font-size: 18px;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+
+/*= Countdown =*/
+/*======================================================*/
+.countdown {
+    margin-bottom: 40px;
+}
+    .countdown-square {
+        padding: 20px 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        text-align: center;
+        margin: 0 2px;
+    }
+        .countdown-value {
+            display: block;
+            color: #ffffff;
+            font-size: 70px;
+            line-height: 70px;
+        }
+        .countdown-label {
+            display: block;
+            padding-bottom: 8px;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 20px;
+            text-transform: uppercase;
+        }
+        .countdown-title{
+            margin-top: 15px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 200;
+            text-transform: uppercase;
+        }
+
+.btn-handler {
+    margin-top: 30px;
+}
+
+
+/*= Event =*/
+/*======================================================*/
+.event {
+    background: url(//cdn.point-blank.fr/gala-dhiver/img/bg-violin.png) 0 50px no-repeat;
+    -webkit-background-size: 50%;
+    background-size: 50%;
+}
+    .event .media-heading {
+        margin-bottom: 15px;
+        font-weight: 700;
+    }
+    .event .media-left {
+        padding-right: 20px;
+    }
+
+
+/*= Tickets info =*/
+/*======================================================*/
+.tickets {
+    color: #ffffff;
+    background: url(//cdn.point-blank.fr/gala-dhiver/img/divider-bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+    .tickets-booking {
+        margin-bottom: 40px;
+    }
+        .tickets-booking-title {
+            text-transform: uppercase;
+        }
+
+    .tickets-notify {}
+        .tickets-notify > .panel {
+            display: inline-block;
+            padding: 0 20px;
+        }
+            .tickets-notify > .panel label {
+                padding-right: 40px;
+            }
+
+
+/*= Map =*/
+/*======================================================*/
+.map {
+    padding: 0 !important;
+}
+    .map-container {
+        display: block;
+        width: 100%;
+        height: 450px;
+        pointer-events: none;
+    }
+
+
+/*= Contact =*/
+/*======================================================*/
+.contact {
+    background: url(../../img/bg-club-1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+    .contact-title {
+        position: relative;
+        margin-bottom: 50px;
+        padding-bottom: 30px;
+        color: #ffffff;
+        font-weight: 800;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    .contact-title:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        display: block;
+        width: 50px;
+        height: 8px;
+        background-color: #009688;
+        transform: translateX(-50%);
+    }
+
+/*= Footer =*/
+/*======================================================*/
+.footer {
+    padding: 30px 0 0;
+    color: #fafafa;
+    background-color: #212121;
+}
+
+.copyright {
+    margin-top: 30px;
+    color: #666666;
+    font-size: 12px;
+    line-height: 50px;
+    border-top: solid 1px #666666;
+}
+
+/*= Buy =*/
+/*======================================================*/
+.ticket-preview {
+    box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.12), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+}
+    .ticket-body {
+        padding: 40px;
+        background-color: #1a2944;
+        text-align: center;
+    }
+        .ticket-logo {
+            width: 200px;
+        }
+        .ticket-title {
+            color: #ffffff;
+            font-family: "Great Vibes", sans-serif !important;
+            font-size: 60px;
+        }
+        .ticket-announcement {
+            color: #ffffff;
+            font-size: 20px;
+        }
+        .ticket-hour {
+            color: #ffffff;
+            font-size: 35px;
+        }
+
+    .ticket-foot {
+        color: #ad3814;
+        padding: 30px;
+        background-color: #fff;
+    }
+        .ticket-foot .media-object {
+            width: 60px;
+            height: 60px;
+        }
+        .ticket-foot .media-body {
+            padding: 10px 0;
+            font-size: 12px;
+            line-height: 20px;
+        }
+
+        .ticket-info {
+            margin: 10px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .ticket-address-heading {
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            font-size: 14px;
+            border-bottom: solid 1px #ad3814;
+        }
+        .ticket-address {
+            font-size: 12px;
+        }
+        .ticket-barcode {
+            float: right;
+        }
+
+
+/*= Payment =*/
+/*======================================================*/
+.payment-btn {
+    position: relative;
+    overflow: hidden;
+}
+    .payment-btn-bg {
+        position: absolute;
+        z-index: 4;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        transition: transform .3s ease;
+    }
+    .payment-btn:hover .payment-btn-bg {
+        transform: scale(1.1);
+    }
+
+    .payment-btn-text {
+        position: relative;
+        z-index: 4;
+        opacity: 0;
+        color: #ffffff;
+        line-height: 185px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: opacity .3s ease;
+    }
+    .payment-btn:hover .payment-btn-text {
+        opacity: 1;
+    }

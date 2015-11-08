@@ -1,0 +1,44 @@
+<template name="contact">
+    <section class="contact page">
+        <div class="container">
+            <h3 class="contact-title">Nous contacter</h3>
+
+            <form action="#">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="text" name="contact-name" class="form-control" placeholder="Votre nom">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="email" name="contact-email" class="form-control" placeholder="Votre adresse e-mail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <input type="text" name="contact-subject" class="form-control" placeholder="Sujet de votre message">
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-body">
+                        <textarea name="contact-message" rows="10" class="form-control" placeholder="Votre message"></textarea>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+</template>

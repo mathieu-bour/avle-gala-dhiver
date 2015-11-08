@@ -2,9 +2,33 @@
 onlinePrice = 10;
 offlinePrice = 12;
 
+schools = [
+    // Lycées généraux
+    "Lycée Fabert",
+    "Lycée Georges de la Tour",
+    "Lycée Louis Vincent",
+    "Ensemble scolaire Jean XXIII",
+    "Lycée Cormontaigne",
+    "Lycée de la Miséricorde",
+    "Lycée Robert Schuman",
+    "Institution De La Salle",
+    "Lycée de la Communication",
+
+    // Lycées technologiques
+    "Lycée Anne de Méjanès",
+
+    // CPGE
+    "CPGE Fabert - PCSI",
+    "CPGE Fabert - MPSI",
+    "CPGE Fabert - ECS",
+    "CPGE Georges de la Tour - BCPST",
+
+    "Autre"
+];
+
 moment.locale('fr', {
-    months : "janvier_f�vrier_mars_avril_mai_juin_juillet_ao�t_septembre_octobre_novembre_d�cembre".split("_"),
-    monthsShort : "janv._f�vr._mars_avr._mai_juin_juil._ao�t_sept._oct._nov._d�c.".split("_"),
+    months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
+    monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
     weekdays : "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
     weekdaysShort : "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
     weekdaysMin : "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
@@ -61,9 +85,28 @@ moment.locale('fr', {
     }
 });
 
-if (Meteor.isClient) {
-    Template.registerHelper("appropriateStylesheet", function() {
-        console.log(Router.current().route.getName());
-        return whichStylesheet;
-    });
-}
+Template.registerHelper('isAdmin', function(){
+    if(Meteor.user() !== null) {
+        var roles = Meteor.user().profile.roles;
+        if (roles.indexOf('admin') >= 0) {
+            return true;
+        } else {
+            return false
+        }
+    }else{
+        return false
+    }
+});
+
+Template.registerHelper('isReferent', function(){
+    if(Meteor.user() !== null) {
+        var roles = Meteor.user().profile.roles;
+        if (roles.indexOf('referent') >= 0) {
+            return true;
+        } else {
+            return false
+        }
+    }else{
+        return false
+    }
+});

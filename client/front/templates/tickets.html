@@ -1,0 +1,28 @@
+<template name="tickets">
+    <section class="tickets page text-center">
+        <div class="container">
+            <div class="tickets-booking">
+                <h3 class="tickets-booking-title">Un nombre de place limité pour un évènement unique !</h3>
+
+                <p>Pour que vous soyez les acteurs <strong>privilégiés</strong> de cet évènement, le nombre de place sera limité. 750 places à réserver, en ligne avec possibilité de payer
+                    directement sur le site ou auprès de nos référents. Prix de la place: 10€, vestiaire et raclette compris.</p>
+
+                <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Réservation des places disponibles</button>
+            </div>
+
+            <div class="tickets-notify">
+                <div class="panel panel-inline">
+                    <div class="panel-body">
+                        <form class="form-inline" action="#">
+                            <div class="form-group">
+                                <label for="notify-email">Vous voulez être sûr de ne pas rater la vente des places ?</label>
+                                <input type="text" class="form-control" id="notify-email" name="notify-email" placeholder="example@avle.fr">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Prévenez moi !</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

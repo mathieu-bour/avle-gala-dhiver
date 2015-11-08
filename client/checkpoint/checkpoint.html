@@ -1,0 +1,57 @@
+<template name="checkpoint">
+    <div class="centered-wrapper">
+        <div class="centered-content">
+            <div class="container">
+                <a href="#" class="btn btn-info btn-fab btn-raised mdi-action-search" id="btn-search" data-toggle="modal" data-target="#tickets-list"></a>
+                <a href="#" class="btn btn-danger btn-fab btn-raised mdi-action-settings-backup-restore" id="btn-cancel"></a>
+
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="text-center">
+                            <img src="//cdn.point-blank.fr/gala-dhiver/img/logo_2.png" alt="Logo Le Privé" class="main-logo">
+                        </div>
+
+                        <form action="#" id="ticket-check">
+                            <input type="text" class="main-input" id="ticket-id" autofocus>
+                            <button style="display: none"></button>
+                        </form>
+
+                        <div class="alert alert-info" id="status">
+                            En attente de scan
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">Historique du contrôle</h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <div class="tickets-history-handler">
+                            {{> tabular table=TabularTables.TicketsCheckpoint class="table"}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="tickets-list" class="modal fade" style="z-index: 1050">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Liste des tickets</h4>
+                </div>
+                <div class="modal-body">
+                    {{> tabular table=TabularTables.TicketsSearch class="table"}}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

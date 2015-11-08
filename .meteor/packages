@@ -4,14 +4,33 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-meteor-platform
-insecure
 underscore
 iron:router
 accounts-password
-meteorhacks:fast-render
 email
 momentjs:moment
-ephemer:reactive-datatables
-
+aldeed:tabular
+ostrio:iron-router-meta
 fezvrasta:bootstrap-material-design
+ian:accounts-ui-bootstrap-3
+standard-minifiers
+meteor-base
+mobile-experience
+mongo
+blaze-html-templates
+session
+jquery
+tracker
+logging
+reload
+random
+ejson
+spacebars
+check
+
+steeve:jquery-barcode
+meteorhacks:npm
+
+npm-container
+simple:reactive-method
+http

@@ -1,13 +1,130 @@
 <template name="dashboard">
-    <p>Bonjour</p>
+    <div class="wrapper">
+        <div class="container-fluid">
+            <h2 class="page-title">Tableau de bord</h2>
+            <h3 class="page-subtitle">Le Gala d'hiver en un coup d'oeil</h3>
 
-    <form id="addReferentForm" class="form">
-        <div><label for="firstname">Prénom : </label><input type="text" id="firstname"/></div>
-        <div><label for="lastname">Nom : </label><input type="text" id="lastname"/></div>
-        <div><label for="mail">E-mail : </label><input type="text" id="mail"/></div>
-        <div><label for="phone">Téléphone : </label><input type="text" id="phone"/></div>
-        <div><label for="school">Ecole : </label><input type="text" id="school"/></div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Statistiques des ventes</h4>
+                        </div>
+                        <div class="panel-body">
+                            <canvas id="stats-chart" width="1142" height="373" class="chart"></canvas>
+                        </div>
+                    </div>
 
-        <div><button type="submit" class="btn btn-primary">Ajouter le référent</button></div>
-    </form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="panel panel-warning">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Répartition hommes/femmes</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <canvas class="chart" width="340" height="340" id="gender-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Répartition mineur/majeur</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <canvas class="chart" width="340" height="340" id="age-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="panel panel-primary">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">Répartition écoles</h4>
+                                </div>
+                                <div class="panel-body">
+                                    <canvas class="chart" width="340" height="340" id="school-chart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Ajout d'un référent</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <form action="#" id="create-referent">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control floating-label" id="referent-first-name" placeholder="Nom" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control floating-label" id="referent-first-name" placeholder="Prénom" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control floating-label" id="login-email" placeholder="Adresse e-mail" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" class="form-control floating-label" id="referent-phone" placeholder="Téléphone" required>
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" id="referent-school" required>
+                                        {{#each schools}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+
+                                <button class="btn btn-primary btn-block">Enregistrer le référent</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="widget bg-primary">
+                        <h5 class="widget-title">Places réservées</h5>
+                        <h4 class="widget-data" id="reserved-tickets-data" data-anumb="" data-anumb-type="number"></h4>
+
+                        <div class="widget-progress">
+                            <span id="reserved-tickets-progress" data-anumb="" data-anumb-type="width">85% de 1000</span>
+                        </div>
+                    </div>
+
+                    <div class="widget bg-warning">
+                        <h5 class="widget-title">Places payés</h5>
+                        <h4 class="widget-data" id="paid-tickets-data" data-anumb="" data-anumb-type="number"></h4>
+
+                        <div class="widget-progress">
+                            <span id="paid-tickets-progress" data-anumb="" data-anumb-type="width">62,3% de 1000</span>
+                        </div>
+                    </div>
+
+                    <div class="widget bg-info">
+                        <h5 class="widget-title">Chiffre d'affaire</h5>
+                        <h4 class="widget-data" id="turnover-data" data-anumb="" data-anumb-type="number" data-anumb-append=" €"></h4>
+
+                        <div class="widget-progress">
+                            <span id="turnover-progress" data-anumb="85" data-anumb-type="width">85% de 7.500€</span>
+                        </div>
+                    </div>
+
+                    <div class="widget bg-danger">
+                        <h5 class="widget-title">Recettes</h5>
+                        <h4 class="widget-data" id="earnings-data" data-anumb="" data-anumb-type="number" data-anumb-append=" €"></h4>
+
+                        <div class="widget-progress">
+                            <span id="earnings-data" data-anumb="85" data-anumb-type="width">85% de 3.750€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

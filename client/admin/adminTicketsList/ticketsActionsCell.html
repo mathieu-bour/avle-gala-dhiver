@@ -1,0 +1,7 @@
+<template name="ticketsActionsCell">
+    {{#if isPaid }}
+        <button class="btn btn-info mdi-content-send btn-sm" id="sendTicket"></button>
+    {{ else }}
+        <button class="btn btn-success mdi-action-done btn-sm" id="checkTicket"></button>
+    {{/ if }}
+</template>

@@ -1,32 +1,138 @@
+/*= Default options =*/
+/*======================================================*/
 Router.configure({
-    layoutTemplate: 'adminLayout'
+    layoutTemplate: "noLayout",
+    loadingTemplate: 'loading',
+    notFoundTemplate: "notFound",
+    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers'); }
 });
 
-// Front
-Router.route('/', {
-    name: 'home',
-    layoutTemplate: 'noLayout'
+/*= CSS configuration =*/
+/*======================================================*/
+var stylesheets = {
+    front: {
+        common: {
+            href: "/css/common.css",
+            rel: "stylesheet"
+        },
+        frontMobile:  {
+            href: "/css/front.mobile.css",
+            rel: "stylesheet"
+        },
+        front:  {
+            href: "/css/front.css",
+            rel: "stylesheet"
+        }
+    },
+    admin: {
+        common: {
+            href: "/css/common.css",
+            rel: "stylesheet"
+        },
+        admin:  {
+            href: "/css/admin.css",
+            rel: "stylesheet"
+        }
+    },
+    checkpoint: {
+        common: {
+            href: "/css/common.css",
+            rel: "stylesheet"
+        },
+        admin:  {
+            href: "/css/checkpoint.css",
+            rel: "stylesheet"
+        }
+    }
+};
+
+
+/*= Routes =*/
+/*======================================================*/
+
+/*= Front-end =*/
+/*======================================================*/
+// Homepage
+Router.route("/", {
+    name: "home",
+    link: stylesheets.front
 });
 
-Router.route('/buy', {name: 'buy'});
-Router.route('/buy/payment/:_id', function () {
-    this.render('payment', {
+
+// Countdown before opening
+var open = moment("29/11/2015 14:00", "DD/MM/YYYY HH:mm");
+var now = moment();
+var delta = open.diff(now);
+
+if(delta <= 0) {
+    Router.route("/buy", {
+        name: "buy",
+        link: stylesheets.front
+    });
+    Router.route("buy/payment", {
+        name: "payment",
+        link: stylesheets.front,
         data: function () {
-            return Tickets.findOne({_id: this.params._id});
+            var query = this.params.query;
+
+            if(query.id){
+                return Tickets.findOne(query.id);
+            }else{
+                Router.go('/');
+            }
+
         }
     });
+    Router.route("buy/payment/validate", {
+        name: "validate",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+
+            return query;
+        }
+    });
+
+    Router.route("/paymentConfirmation", {name: "paymentConfirmation"});
+    Router.route("/login", {
+        name: "login",
+        layoutTemplate: "centered",
+        link: stylesheets.front
+    });
+}
+
+/*= Referent =*/
+/*======================================================*/
+
+Router.route("/referent/ticketsList", {
+    name: "referentTicketsList",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
 });
-Router.route('/paymentConfirmation', {name: 'paymentConfirmation'});
 
 
-// Referent
-Router.route('/referent/paymentValidation', {name: 'paymentValidation'});
-Router.route('/referent/registration', {name: 'registration'});
-Router.route('/referent/ticketsList', {name: 'referentTicketsList'});
+/*= Admin =*/
+/*======================================================*/
+Router.route("/admin", {
+    name: "dashboard",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
+Router.route("/admin/referentsList", {
+    name: "referentsList",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
+Router.route("/admin/ticketsList", {
+    name: "adminTicketsList",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
 
-// Admin
-Router.route('/admin', {name: 'dashboard'});
-Router.route('/admin/referentsList', {name: 'referentsList'});
-Router.route('/admin/ticketsList', {name: 'adminTicketsList'});
-Router.route('/admin/control', {name: 'control'});
-// Waiting for Meteor.user()
+/*= Checkpoint =*/
+/*======================================================*/
+Router.route("/admin/checkpoint", {
+    name: "checkpoint",
+    layoutTemplate: "noLayout",
+    link: stylesheets.checkpoint
+});

@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "paypal-ec": {
-      "version": "0.2.7"
+    "paypal-express-checkout": {
+      "version": "1.2.0"
     }
   }
 }

@@ -1,18 +1,84 @@
 <template name="buy">
+    <section class="alt-layout">
+        <div class="container">
+            <h1 class="page-title">Réservation : <span class="sub">Plus que <span id="counter">500</span> places !</span></h1>
 
-    <div class="wrapper">
-        <h1>Achat</h1>
+            <form id="buyingForm" class="form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>Entrez ici vous informations personelles, qui seront nécessaires à l'enregistrement de votre réservation.</p>
 
-        <form id="buyingForm" class="form">
-            <div><label for="firstname">Prénom : </label><input type="text" id="firstname"/></div>
-            <div><label for="lastname">Nom : </label><input type="text" id="lastname"/></div>
-            <div><label for="birthday">Date de naissance : </label><input type="date" id="birthday"/></div>
-            <div><label for="mail">E-mail : </label><input type="text" id="mail"/></div>
-            <div><label for="phone">Téléphone : </label><input type="text" id="phone"/></div>
-            <div><label for="school">Ecole : </label><input type="text" id="school"/></div>
-            <div><label for="sexe">Sexe : </label><input type="radio" name="sexe" value="Homme" id="homme"/><label for="homme">Homme</label><input type="radio" name="sexe" value="Femme" id="femme"/><label for="femme">Femme</label></div>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="text" id="lastname" class="form-control" placeholder="Nom" required>
+                            </div>
+                        </div>
 
-            <div><button type="submit" class="btn btn-primary">Acheter la place</button></div>
-        </form>
-    </div>
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="text" id="firstname" class="form-control" placeholder="Prénom" required>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="date" id="birthday" class="form-control" placeholder="Date de naissance" required>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="email" id="email" class="form-control" placeholder="Adresse e-mail" required>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="tel" id="phone" class="form-control" placeholder="Téléphone" required>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <select class="form-control" id="school" required>
+                                    {{#each schools}}
+                                        <option value="{{ this }}">{{ this }}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <div class="radio radio-primary">
+                                    <label>
+                                        <input type="radio" name="sexe" value="Homme" id="homme" checked required> Homme
+                                    </label>
+                                </div>
+
+                                <div class="radio radio-primary">
+                                    <label>
+                                        <input type="radio" name="sexe" value="Femme" id="femme" required> Femme
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>
+                            En cliquant sur "Réserver ma place", je certifie que les informations ci-dessus sont
+                            correctes et comprends que la falsification de ces données peut me refuser l'entrée à
+                            l'évènement.
+                        </p>
+
+                        <button type="submit" class="btn btn-primary">Réserver ma place</button>
+                    </div>
+
+                    <div class="col-md-6">
+                        {{> ticket}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
 </template>

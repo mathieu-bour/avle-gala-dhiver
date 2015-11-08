@@ -1,20 +1,29 @@
 <template name="sidebar">
     <aside class="sidebar">
         <div class="sidebar-profile">
-            <img src="img/avatar-1.jpg" alt="Avatar 1" class="sidebar-profile-avatar">
 
             <div class="sidebar-profile-data">
-                <div class="sidebar-profile-name">John Doe</div>
-                <div class="sidebar-profile-title">Lead Developer</div>
+                <div class="sidebar-profile-name">{{ currentUser.profile.firstname }} {{ currentUser.profile.lastname }}</div>
+                <div class="sidebar-profile-title">
+                    {{#if isAdmin}}
+                        Administrateur
+                    {{ else }}
+                        Référent
+                    {{/if}}
+                </div>
             </div>
         </div>
 
         <div class="sidebar-nav">
             <ul>
-                <li class="sidebar-nav-item"><a href="{{ pathFor 'dashboard' }}"><i class="zmdi zmdi-view-dashboard zmd-fw"></i> Tableau de bord</a></li>
-                <li class="sidebar-nav-item"><a href="{{ pathFor 'referentsList' }}"><i class="zmdi zmdi-accounts zmd-fw"></i> Gestion des référents</a></li>
-                <li class="sidebar-nav-item"><a href="{{ pathFor 'adminTicketsList' }}"><i class="zmdi zmdi-receipt zmd-fw"></i> Gestion des tickets</a></li>
-                <li class="sidebar-nav-item"><a href="{{ pathFor 'control' }}"><i class="zmdi zmdi-badge-check zmd-fw"></i> Poste de contrôle</a></li>
+                {{#if isAdmin }}
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'dashboard' }}"><i class="mdi-action-settings-overscan"></i> Tableau de bord</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentsList' }}"><i class="mdi-social-group"></i> Gestion des référents</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'adminTicketsList' }}"><i class="mdi-action-assignment"></i> Gestion des tickets</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'checkpoint' }}"><i class="mdi-action-assignment-turned-in"></i> Poste de contrôle</a></li>
+                {{ else }}
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentTicketsList' }}"><i class="mdi-action-assignment"></i> Gestion des tickets</a></li>
+                {{/if}}
             </ul>
         </div>
     </aside>

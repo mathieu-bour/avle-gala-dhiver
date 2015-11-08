@@ -1,38 +1,37 @@
 <template name="event">
-    <section class="event">
+    <section class="event page">
         <div class="container">
-            <h2 class="lined">
-                <span>Venez fêter l'hiver avec nous !</span>
-            </h2>
-
             <div class="row">
-                <div class="col-md-4">
-                    <img src="//placehold.it/360" alt=""/>
+                <div class="col-md-5 hidden-xs">
+                    <div class="main-photo-handler">
+                        <img src="/img/bg_logo_prive.png" alt="" class="main-photo"/>
+                    </div>
                 </div>
+                <div class="col-md-7 col-xs-12">
+                    <h2 class="lined">
+                        <span>Venez fêter l'hiver avec nous !</span>
+                    </h2>
 
-                <div class="col-md-8">
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" src="img/winter-icon-2.png" alt="...">
+                                <img class="media-object" src="/img/king.png" alt="...">
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">Cette soirée, c'est votre soirée ! Faites de vous de vrais VIP</h4>
-                            <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente... le Gala d’hiver !
-                                Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h</p>
+                            <h4 class="media-heading">Cette soirée, c'est votre soirée !</h4>
+                            <p>Une soirée d'exception dans un cadre d'exception ; c'est ce que l'AVLE vous réserve avec le Gala d'Hiver 2015. Venez profiter de ce moment magique qui vous est exclusivement adressé le 21 décembre prochain ! Vous voulez être des vrais VIP et bénéficier d'un coupe-file et de belles surprises au cours de la soirée ? Alors n'hésitez pas à nous contacter au plus vite !</p>
                         </div>
                     </div>
 
                     <div class="media">
                         <div class="media-body">
-                            <h4 class="media-heading">Cette soirée, c'est votre soirée ! Faites de vous de vrais VIP</h4>
-                            <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente... le Gala d’hiver !
-                                Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h</p>
+                            <h4 class="media-heading">Une soirée chic et élégante, digne des plus beaux galas !</h4>
+                            <p>L'AVLE vous invite donc cordialement à venir à cette soirée, qui se veut sélecte, sur votre <strong>trente-et-un</strong>. Pas de panique, le vestiaire vous est offert.</p>
                         </div>
-                        <div class="media-right">
+                        <div class="media-left">
                             <a href="#">
-                                <img class="media-object" src="img/christmas-tree-icon.png" alt="...">
+                                <img class="media-object" src="/img/suit.png" alt="...">
                             </a>
                         </div>
                     </div>
@@ -40,24 +39,16 @@
                     <div class="media">
                         <div class="media-left">
                             <a href="#">
-                                <img class="media-object" src="img/crown-icon.png" alt="...">
+                                <img class="media-object" src="/img/plate.png" alt="...">
                             </a>
                         </div>
                         <div class="media-body">
-                            <h4 class="media-heading">Cette soirée, c'est votre soirée ! Faites de vous de vrais VIP</h4>
-                            <p>L’hiver, à Metz, c’est rude… C’est pourquoi on donne l’occasion aux messins de mettre le feu dans leur ville, le 22/12 au Privé ! L’AVLE présente... le Gala d’hiver !
-                                Au programme : Arrivée des invités, sculpteur de glace à l’entrée ?, groupes sur scène ?, début de la fondue jusque 23h30, grosses folies jusque 5h</p>
+                            <h4 class="media-heading">On vous à réservé plein de surprises pour une soirée mémorable !</h4>
+                            <p>Une délicieuse raclette, des fondues au chocolat pour les plus VIP d'entre vous et même Monsieur le Père-Noël vous attendent pour passer cette soirée exceptionnelle dans une ambiance festive, distinguée et conviviale ; le tout en musique, avec la présence de groupes locaux qui vont vous ravir ! </p>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <section class="text-center">
-                <h3>Un nombre de place limité pour un évènement unique !</h3>
-                <p>Pour que vous soyez les acteurs <strong>privilégiés</strong> de cet évènement, le nombre de place sera limité. 600 places à réserver, en ligne avec possibilité de payer directement sur le site ou auprès de nos référents. Prix de la place: 10€, vestiaire et raclette compris.</p>
-
-                <button type="button" class="btn btn-primary btn-lg" disabled="disabled">Réservation des place disponible {{countdown}}</button>
-            </section>
         </div>
     </section>
 </template>

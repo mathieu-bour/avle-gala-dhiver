@@ -1,14 +1,142 @@
 <template name="payment">
-    <h1>Payement</h1>
+    <section class="alt-layout">
+        <div class="container">
+            <h1 class="page-title">Payement de votre billet</h1>
 
-    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-        <input type="hidden" name="cmd" value="_s-xclick">
-        <input type="hidden" name="hosted_button_id" value="73CMP2RANKJC4">
-        <input type="image" src="https://www.sandbox.paypal.com/fr_FR/FR/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
-        <img alt="" border="0" src="https://www.sandbox.paypal.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
-    </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="alert alert-info">
+                        <p>
+                            Super !<br/>
+                            Il ne reste plus qu'à choisir comment payer votre place. Pour cela, deux choix s'offrent à vous !
+                        </p>
 
-    <div>
-        <p><button class="btn btn-primary" id="permanenceBuying">Acheter la place lors d'une permanance</button></p>
+                        <p>Vous pouvez soit :</p>
+
+                        <ul>
+                            <li>Payez en utilisant Paypal, un système de payment sécurisé sur Internet, et recevez votre place <strong>immédiatement</strong>.</li>
+                            <li>Réservez votre place en ligne et payez la lors d'une permanence. Vous receverez votre place <strong>plus tard</strong>, lorsque vous l'aurez payé auprès de nos référents.</li>
+                        </ul>
+                    </div>
+
+                    <div class="alert alert-danger" id="conditions" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <input type="checkbox" id="accept-conditions" class="form-control" placeholder="Nom" required>
+                            </div>
+                            <p class="col-lg-10">Afin de continuer, vous devez certfiez être étudiant en classe de terminale ou en étude supérieure. Nous rappelons qu'en cas contraire, l'accès à la soirée vous serez formellement interdit.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <a class="btn btn-primary btn-block" href="{{ paypalUrl }}" id="paypal-btn">Payer par paypal</a>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-primary btn-block" id="permanence-btn">Payer durant une permanence</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    {{> ticket}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opened after page loading -->
+    <div id="age-warning-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Attention</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Le gala d'hiver est reservé aux étudiants en classe de terminale ou en études supérieures. L'accès sera strictement refusé à toute personne de classe inférieure à la terminale. Aucun remboursement ne sera possible.</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="{{pathFor route="/"}}" class="btn btn-danger" data-dismiss="modal">Retour</a>
+                    <button class="btn btn-primary" data-dismiss="modal">J'ai compris</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Permanence selection -->
+    <div id="permanence-selection-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Choix de la permanence</h4>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Lieu</th>
+                                <th>Contact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                            <tr>
+                                <td>20/11/2015</td>
+                                <td>Place de la République</td>
+                                <td>John Doe</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>Date</th>
+                                <th>Lieu</th>
+                                <th>Contact</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal"  id="validate-btn">Valider</button>
+                </div>
+            </div>
+        </div>
     </div>
 </template>

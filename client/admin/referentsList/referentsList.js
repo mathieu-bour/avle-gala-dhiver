@@ -1,19 +1,12 @@
-Template.referentsList.helpers({
-    referents: function () {
-        console.log(dataTableData());
-        return dataTableData;
-    }
-});
-
-/*Template.referentsList.onRendered(function () {
+Template.referentsList.onCreated(function () {
     if(Meteor.user() !== null) {
         var roles = Meteor.user().profile.roles;
-        if (roles.indexOf('referent') >= 0) {
+        if (roles.indexOf('admin') >= 0) {
             return true;
         } else {
-            Router.go('/');
+            Router.go('/login');
         }
     }else{
-        Router.go('/');
+        Router.go('/login');
     }
-});*/
+});

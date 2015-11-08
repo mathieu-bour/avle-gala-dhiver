@@ -1,15 +1,17 @@
 <template name="referentsList">
     <div class="wrapper">
         <div class="container-fluid">
-            <ul class="breadcrumb">
-                <li><a href="javascript:void(0)">Admin</a></li>
-                <li><a href="javascript:void(0)">Gestion des référents</a></li>
-                <li class="active">Data</li>
-            </ul>
-
             <h2 class="page-title">Gestion des référents</h2>
+            <h3 class="page-subtitle">Liste des réfrents enregistrés</h3>
 
-            {{> ReactiveDatatable tableData=referents }}
+            <div class="panel">
+                <div class="panel-title">
+                    <h4 class="">Liste des référents</h4>
+                </div>
+                <div class="panel-body">
+                    {{> tabular table=TabularTables.Referents class="table"}}
+                </div>
+            </div>
         </div>
     </div>
 </template>
