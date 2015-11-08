@@ -92,14 +92,16 @@ if(delta <= 0) {
             return query;
         }
     });
-
-    Router.route("/paymentConfirmation", {name: "paymentConfirmation"});
-    Router.route("/login", {
-        name: "login",
-        layoutTemplate: "centered",
-        link: stylesheets.front
-    });
 }
+
+/*= Login page =*/
+/*======================================================*/
+Router.route("/paymentConfirmation", {name: "paymentConfirmation"});
+Router.route("/login", {
+    name: "login",
+    layoutTemplate: "centered",
+    link: stylesheets.front
+});
 
 /*= Referent =*/
 /*======================================================*/

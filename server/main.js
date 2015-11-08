@@ -1,9 +1,9 @@
 /*= Mail configuration =*/
 /*======================================================*/
-process.env.MAIL_URL="smtp://noreply%40point-blank.fr:a2EmmOuPQ3lv7vOliaSw@server.point-blank.fr:587";
+process.env.MAIL_URL="smtp://noreply%40avle-alca.fr:a2EmmOuPQ3lv7vOliaSw@server.point-blank.fr:587";
 
 Accounts.emailTemplates.siteName = "Gala d'hiver | A.V.L.E";
-Accounts.emailTemplates.from = "A.V.L.E <noreply@point-blank.fr>";
+Accounts.emailTemplates.from = "A.V.L.E <noreply@avle-alca.fr>";
 Accounts.emailTemplates.enrollAccount.subject = function (user) {
     return "Bien le bonjour " + user.profile.firstname + "!";
 };
@@ -18,6 +18,7 @@ Accounts.emailTemplates.enrollAccount.text = function (user, url) {
 /*= Initial admin generation =*/
 /*======================================================*/
 /*var users = [
+    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['admin', 'referent']}
     {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['admin', 'referent']}
 ];
 
@@ -26,7 +27,7 @@ _.each(users, function (user) {
 
     id = Accounts.createUser({
         email: user.email,
-        password: "salome3004",
+        password: "Fabert57",
         profile: {
             lastname: user.lastname,
             firstname: user.firstname,
@@ -93,7 +94,7 @@ Meteor.methods({
     'setExpressCheckout': function(id){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://localhost:8888/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
+            var result = HTTP.get('//cdn.avle-alca.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
             content = result.content;
             var token = content.split("&")[0];
             token = token.split("=")[1];

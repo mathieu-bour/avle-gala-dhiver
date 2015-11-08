@@ -30,7 +30,7 @@ Template.validate.onRendered(function () {
                 }else{
                     Meteor.call('sendInvoice',{
                         to:       ticket.email,
-                        from:     'noreply@point-blank.fr',
+                        from:     'noreply@avle-alca.fr',
                         subject:  'Confirmation de payement n°' + id,
                         html:     Blaze.toHTMLWithData(Template.invoiceEmail, ticket)
                     },id);
@@ -43,7 +43,7 @@ Template.validate.onRendered(function () {
                 }else{
                     Meteor.call('sendTicket',{
                         to:       ticket.email,
-                        from:     'noreply@point-blank.fr',
+                        from:     'noreply@avle-alca.fr',
                         subject:  'Votre invitation pour le Gala d\'hiver',
                         html:     Blaze.toHTMLWithData(Template.ticketEmail, ticket)
                     },id);
