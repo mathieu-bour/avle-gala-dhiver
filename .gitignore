@@ -1,4 +1,5 @@
 /.idea/*
-/public/videos/*
+/public/*
 .DS_STORE
 Thumbs.db
+/node_modules
