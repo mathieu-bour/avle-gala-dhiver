@@ -1,5 +1,5 @@
 /.idea/*
-/public/*
+/public
 .DS_STORE
 Thumbs.db
 /node_modules
