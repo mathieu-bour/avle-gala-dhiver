@@ -114,7 +114,7 @@ Meteor.methods({
     'getExpressCheckoutDetails': function(token){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://localhost:8888/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
+            var result = HTTP.get('//cdn.avle-alca.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -137,7 +137,7 @@ Meteor.methods({
     'doExpressCheckoutPayment': function(token, payerID){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://localhost:8888/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
+            var result = HTTP.get('//cdn.avle-alca.fr/scripts/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -181,7 +181,7 @@ Meteor.methods({
         var fs = Npm.require('fs');
         var path = process.env["PWD"];
 
-        var result = HTTP.get('http://local.dev/invoice/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone}});
+        var result = HTTP.get('//cdn.avle-alca.fr/scripts/invoice_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone}});
 
         try {
             // Query the entry
@@ -220,7 +220,7 @@ Meteor.methods({
         var fs = Npm.require('fs');
         var path = process.env["PWD"];
 
-        var result = HTTP.get('http://local.dev/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe}});
+        var result = HTTP.get('//cdn.avle-alca.fr/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe}});
 
         try {
             // Query the entry

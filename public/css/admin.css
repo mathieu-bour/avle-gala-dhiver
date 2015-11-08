@@ -166,7 +166,7 @@ a:hover, a:focus {
     .sidebar-profile {
         height: 120px;
         padding: 30px;;
-        background: #ffffff url(/img/profile-bg.png);
+        background: #ffffff url(//cdn.avle-alca.fr/img/profile-bg.png);
     }
         .sidebar-profile-avatar {
             float: left;

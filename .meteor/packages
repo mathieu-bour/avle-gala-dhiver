@@ -31,6 +31,8 @@ check
 steeve:jquery-barcode
 meteorhacks:npm
 
-npm-container
+
 simple:reactive-method
 http
+
+npm-container
