@@ -12,35 +12,35 @@ Router.configure({
 var stylesheets = {
     front: {
         common: {
-            href: "//cdn.avle-alca.fr/css/common.css",
+            href: "//cdn.avle.fr/css/common.css",
             rel: "stylesheet"
         },
         frontMobile:  {
-            href: "//cdn.avle-alca.fr/css/front.mobile.css",
+            href: "//cdn.avle.fr/css/front.mobile.css",
             rel: "stylesheet"
         },
         front:  {
-            href: "//cdn.avle-alca.fr/css/front.css",
+            href: "//cdn.avle.fr/css/front.css",
             rel: "stylesheet"
         }
     },
     admin: {
         common: {
-            href: "//cdn.avle-alca.fr/css/common.css",
+            href: "//cdn.avle.fr/css/common.css",
             rel: "stylesheet"
         },
         admin:  {
-            href: "//cdn.avle-alca.fr/css/admin.css",
+            href: "//cdn.avle.fr/css/admin.css",
             rel: "stylesheet"
         }
     },
     checkpoint: {
         common: {
-            href: "//cdn.avle-alca.fr/css/common.css",
+            href: "//cdn.avle.fr/css/common.css",
             rel: "stylesheet"
         },
         admin:  {
-            href: "//cdn.avle-alca.fr/css/checkpoint.css",
+            href: "//cdn.avle.fr/css/checkpoint.css",
             rel: "stylesheet"
         }
     }
