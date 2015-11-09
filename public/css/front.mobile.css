@@ -6,7 +6,10 @@
     /*= Cover =*/
     /*======================================================*/
     .cover {
-        position: static;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
     }
         .main-title {
             margin-bottom: 10px;
@@ -16,10 +19,11 @@
         /*= Countdown =*/
         /*======================================================*/
         .countdown {
+            padding: 0 20px;
             margin-bottom: 40px;
         }
             .countdown-square {
-                padding: 20px 0;
+                padding: 0;
                 background-color: rgba(255, 255, 255, 0.1);
                 text-align: center;
                 margin: 0 2px;
@@ -27,14 +31,14 @@
             .countdown-value {
                 display: block;
                 color: #ffffff;
-                font-size: 30px;
+                font-size: 16px;
                 line-height: 30px;
             }
             .countdown-label {
                 display: block;
                 padding-bottom: 8px;
                 color: #ffffff;
-                font-size: 20px;
+                font-size: 10px;
                 font-weight: 300;
                 line-height: 20px;
                 text-transform: uppercase;
