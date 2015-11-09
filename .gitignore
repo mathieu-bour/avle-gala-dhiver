@@ -2,3 +2,4 @@
 .DS_STORE
 Thumbs.db
 /node_modules
+settings.json
