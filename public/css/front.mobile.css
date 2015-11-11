@@ -3,6 +3,14 @@
         font-size: 12px;
     }
 
+    .page {
+        padding: 20px 0;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
     /*= Cover =*/
     /*======================================================*/
     .cover {
@@ -13,15 +21,19 @@
     }
         .main-title {
             margin-bottom: 10px;
+            padding: 0 0 20px 0;
             font-size: 60px;
         }
 
         /*= Countdown =*/
         /*======================================================*/
         .countdown {
-            padding: 0 20px;
+            padding: 0 10px;
             margin-bottom: 40px;
         }
+            .countdown > .row > div {
+                padding: 0 2px;
+            }
             .countdown-square {
                 padding: 0;
                 background-color: rgba(255, 255, 255, 0.1);
@@ -31,7 +43,7 @@
             .countdown-value {
                 display: block;
                 color: #ffffff;
-                font-size: 16px;
+                font-size: 20px;
                 line-height: 30px;
             }
             .countdown-label {
@@ -54,4 +66,8 @@
 
     /*= Event =*/
     /*======================================================*/
+    .event {
+        margin-top: 20px;
+    }
+
 }
