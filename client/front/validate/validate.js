@@ -20,24 +20,42 @@ Template.validate.onRendered(function () {
             Session.set('checkoutResult', result);
             var expressCheckoutDetails = Session.get('expressCheckoutDetails');
             var id = expressCheckoutDetails.INVNUM;
-            Tickets.update(id, {$set : {isPaypal: true, isPaid: new Date()}});
+            Tickets.update(id, {$set : {isPaypal: new Date(), isPaid: new Date()}});
             var ticket = Tickets.findOne(id);
 
-
-            Meteor.call('saveInvoice',id, function(error, result){
-                if(error){
-                    console.log(error);
-                }else{
-                    Meteor.call('sendInvoice',{
-                        to:       ticket.email,
-                        from:     'noreply@avle-alca.fr',
-                        subject:  'Confirmation de payement n°' + id,
-                        html:     Blaze.toHTMLWithData(Template.invoiceEmail, ticket)
-                    },id);
+            /*= Save and save invoice =*/
+            /*======================================================*/
+            HTTP.get('http://php.dev/invoice_pdf/',{
+                params: {
+                    'lastname': ticket.lastname,
+                    'firstname': ticket.firstname,
+                    'phone': ticket.phone,
+                    'school': ticket.school,
+                    'getPdf': false,
+                    'isPaypal': ticket.isPaypal,
+                    'email': ticket.email,
+                    'id': ticket._id
                 }
+            }, function(error, result){
+                console.log(result);
             });
 
-            Meteor.call('saveTicket',id, function(error, result){
+            HTTP.get('http://php.dev/ticket_pdf/',{
+                params: {
+                    'lastname': ticket.lastname,
+                    'firstname': ticket.firstname,
+                    'phone': ticket.phone,
+                    'school': ticket.school,
+                    'sexe': ticket.sexe,
+                    'getPdf': false,
+                    'email': ticket.email,
+                    'id': ticket._id
+                }
+            }, function(error, result){
+                console.log(result);
+            });
+
+            /*Meteor.call('saveTicket',id, function(error, result){
                 if(error){
                     console.log(error);
                 }else{
@@ -48,7 +66,7 @@ Template.validate.onRendered(function () {
                         html:     Blaze.toHTMLWithData(Template.ticketEmail, ticket)
                     },id);
                 }
-            });
+            });*/
         }
     });
 

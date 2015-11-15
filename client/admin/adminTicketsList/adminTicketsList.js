@@ -1,4 +1,4 @@
-Template.dashboard.onRendered(function () {
+Template.adminTicketsList.onRendered(function () {
     /*= Widgets =*/
     /*======================================================*/
     // Reserved tickets widget
@@ -10,7 +10,7 @@ Template.dashboard.onRendered(function () {
         .text(reservedTicketsPercentage + "% de 750");
 
     // Paid tickets widget
-    var paidTicketsCount = Tickets.find({isPaid: true}).fetch().length;
+    var paidTicketsCount = Tickets.find({isPaid: {$ne : false}}).fetch().length;
     var paidTicketsPercentage = Math.round((paidTicketsCount / 750) * 100 * 10) / 10;
     $("#paid-tickets-data").data("anumb", paidTicketsCount);
     $("#paid-tickets-progress")
@@ -18,8 +18,8 @@ Template.dashboard.onRendered(function () {
         .text(paidTicketsPercentage + "% de 750");
 
     // Turnovers
-    var paypalPaidTicketsCount = Tickets.find({isPaypal: true, isPaid: true}).fetch().length;
-    var nonPaypalPaidTicketsCount = Tickets.find({isPaypal: false, isPaid: true}).fetch().length;
+    var paypalPaidTicketsCount = Tickets.find({isPaypal: {$ne: false}, isPaid: {$ne: false}}).fetch().length;
+    var nonPaypalPaidTicketsCount = Tickets.find({isPaypal: false, isPaid: {$ne: false}}).fetch().length;
     var turnovers = paypalPaidTicketsCount * 10.50 + nonPaypalPaidTicketsCount * 10;
     var turnoverPercentage = Math.round(turnovers / 7500 * 100 * 10) / 10;
 

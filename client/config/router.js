@@ -62,7 +62,7 @@ Router.route("/", {
 
 
 // Countdown before opening
-var open = moment("08/11/2015 14:00", "DD/MM/YYYY HH:mm");
+var open = moment("29/11/2015 14:00", "DD/MM/YYYY HH:mm");
 var now = moment();
 var delta = open.diff(now);
 

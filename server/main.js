@@ -1,18 +1,26 @@
 /*= Mail configuration =*/
 /*======================================================*/
-process.env.MAIL_URL="smtp://noreply%40avle-alca.fr:a2EmmOuPQ3lv7vOliaSw@server.point-blank.fr:587";
-
+process.env.MAIL_URL="smtp://contact@avle.fr:Fabert57@server.point-blank.fr:587";
 Accounts.emailTemplates.siteName = "Gala d'hiver | A.V.L.E";
 Accounts.emailTemplates.from = "A.V.L.E <noreply@avle-alca.fr>";
 Accounts.emailTemplates.enrollAccount.subject = function (user) {
     return "Bien le bonjour " + user.profile.firstname + "!";
 };
-Accounts.emailTemplates.enrollAccount.text = function (user, url) {
-    return "Tu as maintenant accès à l'espace référent du site de l'A.V.L.E !"
-        + " Pour choisir ton mot de passe et activer ton compte, cliques sur le lien ci-dessous:\n\n"
-        + url;
-        + "A bientôt pour de supers projets avec le plus beau des pôles de l'A.V.L.E !"
+
+PrettyEmail.defaults.enrollAccount = {
+    heading: 'Tu as maintenant accès à l\'espace référent du site de l\'A.V.L.E !',
+    buttonText: 'Changer mon mot de passe'
 };
+
+PrettyEmail.options = {
+    from: 'A.V.L.E <noreply@avle.fr>',
+    logoUrl: 'http://cdn.avle.fr/img/logo_2.png',
+    companyName: 'A.V.L.E',
+    companyUrl: 'http://avle.fr',
+    companyEmail: 'contact@avle.fr',
+    siteName: 'A.V.L.E',
+}
+
 
 
 /*= Initial admin generation =*/
@@ -94,8 +102,9 @@ Meteor.methods({
     'setExpressCheckout': function(id){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('//cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
             content = result.content;
+            console.log(content);
             var token = content.split("&")[0];
             token = token.split("=")[1];
 
@@ -115,7 +124,7 @@ Meteor.methods({
     'getExpressCheckoutDetails': function(token){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('//cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -138,7 +147,7 @@ Meteor.methods({
     'doExpressCheckoutPayment': function(token, payerID){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('//cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -169,7 +178,30 @@ Meteor.methods({
         };
         return query_json;
     },
-    
+
+    /**
+    * Generate a unique ID for a new ticket
+    * @param {int} length of UUID
+    * @return {string} uuid
+    */
+    generateUUID: function(length){
+        var str = "";
+        for(i=0;i<length;i++){
+            str = "x" + str;
+        }
+        var d = new Date().getTime();
+        var uuid = str.replace(/[xy]/g, function(c) {
+            var r = (d + Math.random()*16)%16 | 0;
+            d = Math.floor(d/16);
+            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+        });
+        return uuid;
+
+    },
+
+    /*= The following function are obsolete. All is made in php script =*/
+    /*======================================================*/
+
     /**
      * Save invoice as pdf in ./uploads/invoices folder
      * @param {string} id from ticket
@@ -308,26 +340,6 @@ Meteor.methods({
                 console.log(json);
             });
         }, 5000)
-
-    },
-
-    /**
-     * Generate a unique ID for a new ticket
-     * @param {int} length of UUID
-     * @return {string} uuid
-     */
-    generateUUID: function(length){
-        var str = "";
-        for(i=0;i<length;i++){
-            str = "x" + str;
-        }
-        var d = new Date().getTime();
-        var uuid = str.replace(/[xy]/g, function(c) {
-            var r = (d + Math.random()*16)%16 | 0;
-            d = Math.floor(d/16);
-            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-        });
-        return uuid;
 
     }
 });

@@ -17,30 +17,36 @@ Template.ticketsActionsCell.events({
             var ticket = this;
             var id = this._id;
 
-            Meteor.call('saveInvoice',id, function(error, result){
-                if(error){
-                    console.log(error);
-                }else{
-                    Meteor.call('sendInvoice',{
-                        to:       ticket.email,
-                        from:     'noreply@point-blank.fr',
-                        subject:  'Confirmation de payement n°' + id,
-                        html:     Blaze.toHTMLWithData(Template.invoiceEmail, ticket)
-                    },id);
+            /*= Save and save invoice =*/
+            /*======================================================*/
+            HTTP.get('http://php.dev/invoice_pdf/',{
+                params: {
+                    'lastname': ticket.lastname,
+                    'firstname': ticket.firstname,
+                    'phone': ticket.phone,
+                    'school': ticket.school,
+                    'getPdf': false,
+                    'isPaypal': ticket.isPaypal,
+                    'email': ticket.email,
+                    'id': ticket._id
                 }
+            }, function(error, result){
+                console.log(result);
             });
 
-            Meteor.call('saveTicket',id, function(error, result){
-                if(error){
-                    console.log(error);
-                }else{
-                    Meteor.call('sendTicket',{
-                        to:       ticket.email,
-                        from:     'noreply@point-blank.fr',
-                        subject:  'Votre invitation pour le Gala d\'hiver',
-                        html:     Blaze.toHTMLWithData(Template.ticketEmail, ticket)
-                    },id);
+            HTTP.get('http://php.dev/ticket_pdf/',{
+                params: {
+                    'lastname': ticket.lastname,
+                    'firstname': ticket.firstname,
+                    'phone': ticket.phone,
+                    'school': ticket.school,
+                    'sexe': ticket.sexe,
+                    'getPdf': false,
+                    'email': ticket.email,
+                    'id': ticket._id
                 }
+            }, function(error, result){
+                console.log(result);
             });
         }
     }

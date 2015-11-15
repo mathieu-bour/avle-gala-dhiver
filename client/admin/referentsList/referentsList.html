@@ -1,8 +1,36 @@
 <template name="referentsList">
     <div class="wrapper">
         <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)" class="active">Gestion des référents</a></li>
+            </ul>
+
             <h2 class="page-title">Gestion des référents</h2>
             <h3 class="page-subtitle">Liste des réfrents enregistrés</h3>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="widget bg-primary">
+                        <h5 class="widget-title">Somme totale due</h5>
+                        <h4 class="widget-data" id="due-amount-data" data-anumb="" data-anumb-type="number" data-anumb-append=" €"></h4>
+
+                        <div class="widget-progress">
+                            <span id="due-amount-progress" data-anumb="" data-anumb-type="width">85% de 1000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="widget bg-warning">
+                        <h5 class="widget-title">Somme totale payée</h5>
+                        <h4 class="widget-data" id="given-amount-data" data-anumb="" data-anumb-type="number" data-anumb-append=" €"></h4>
+
+                        <div class="widget-progress">
+                            <span id="given-amount-progress" data-anumb="" data-anumb-type="width">62,3% de 1000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="panel">
                 <div class="panel-title">
@@ -10,6 +38,28 @@
                 </div>
                 <div class="panel-body">
                     {{> tabular table=TabularTables.Referents class="table"}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="update-given-dialog" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title">Modifier la somme donnée</h4>
+                </div>
+                <div class="modal-body">
+                    Modifiez ci-dessous la somme donnée par le référent.
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="update-given-input">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal" id="update-given-button">Modifier</button>
                 </div>
             </div>
         </div>

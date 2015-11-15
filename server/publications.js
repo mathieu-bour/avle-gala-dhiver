@@ -13,3 +13,6 @@ Meteor.publish('tickets', function() {
 Meteor.publish('newsletter', function() {
     return Newsletter.find();
 });
+Meteor.publish('given', function() {
+    return Given.find();
+});

@@ -22,7 +22,23 @@ var schools = [
     "CPGE Georges de la Tour - BCPST"
 ];
 
+ var str = "";
+
+ for(var i = 0; i < 12; i++) {
+ str = "x" + str;
+ }
+
 for(var i = 0; i < 642; i++) {
+
+     // str = "xxxxx...xx" length time
+     var d = new Date().getTime();
+
+     var uuid = str.replace(/[xy]/g, function(c) {
+     var r = (d + Math.random()*16)%16 | 0;
+     d = Math.floor(d/16);
+     return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
+     });
+
     var ticket = {};
 
     ticket.sexe = randBool(0.6) ? "Homme" : "Femme";
@@ -38,6 +54,7 @@ for(var i = 0; i < 642; i++) {
     ticket.isChecked = false;
     ticket.created = randDate(new Date(2015, 10, 28), new Date(2015, 11, 20));
     ticket.validatorId = ticket.isPaypal ? -1 : randInt(1, 30);
+    ticket.uuid = uuid;
 
     console.log(ticket);
 

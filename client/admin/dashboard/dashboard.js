@@ -25,12 +25,12 @@ Template.dashboard.events({
         Meteor.call('createReferent',
             $(e.target).find('[id=referent-first-name]').val(),
             $(e.target).find('[id=referent-last-name]').val(),
-            $(e.target).find('[id=referent-mail]').val(),
+            $(e.target).find('[id=referent-email]').val(),
             $(e.target).find('[id=referent-phone]').val(),
             $(e.target).find('[id=referent-school]').val()
         );
 
-        $('#addReferentForm')[0].reset();
+        $('#create-referent')[0].reset();
     }
 });
 
@@ -195,7 +195,7 @@ Template.dashboard.onRendered(function () {
         .text(reservedTicketsPercentage + "% de 750");
 
     // Paid tickets widget
-    var paidTicketsCount = Tickets.find({isPaid: true}).fetch().length;
+    var paidTicketsCount = Tickets.find({isPaid: {$ne : false}}).fetch().length;
     var paidTicketsPercentage = Math.round((paidTicketsCount / 750) * 100 * 10) / 10;
     $("#paid-tickets-data").data("anumb", paidTicketsCount);
     $("#paid-tickets-progress")
@@ -203,8 +203,8 @@ Template.dashboard.onRendered(function () {
         .text(paidTicketsPercentage + "% de 750");
 
     // Turnovers
-    var paypalPaidTicketsCount = Tickets.find({isPaypal: true, isPaid: true}).fetch().length;
-    var nonPaypalPaidTicketsCount = Tickets.find({isPaypal: false, isPaid: true}).fetch().length;
+    var paypalPaidTicketsCount = Tickets.find({isPaypal: {$ne: false}, isPaid: {$ne: false}}).fetch().length;
+    var nonPaypalPaidTicketsCount = Tickets.find({isPaypal: false, isPaid: {$ne: false}}).fetch().length;
     var turnovers = paypalPaidTicketsCount * 10.50 + nonPaypalPaidTicketsCount * 10;
     var turnoverPercentage = Math.round(turnovers / 7500 * 100 * 10) / 10;
 
@@ -217,6 +217,7 @@ Template.dashboard.onRendered(function () {
     // Earnings
     var earnings = turnovers - ((paypalPaidTicketsCount + nonPaypalPaidTicketsCount) * 5);
     var earningsPercentage = Math.round(earnings / 3750 * 100 * 10) / 10;
+    console.log(earningsPercentage);
     $("#earnings-data").data("anumb", earnings);
     $("#earnings-progress")
         .data("anumb", earningsPercentage)

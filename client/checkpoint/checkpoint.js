@@ -27,13 +27,13 @@ Template.checkpoint.events({
         if (ticket == null || !ticket) { // Ticket doe not exist
             displayStatus("Ticket inexistant", "danger");
         } else if (!ticket.isPaid) { // Non paid tickets
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - impayé", "danger");
+            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Impayé", "danger");
         } else if (ticket.isChecked) { // Already checked
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - déjà validé à " + moment(ticket.isChecked).format("hh:mm:ss"), "danger");
+            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Déjà validé à " + moment(ticket.isChecked).format("hh:mm:ss"), "danger");
         } else { // Everything is ok :)
-            Tickets.update(ticketId, {$set: {isChecked: new Date()}}); // Update isChecked status
+            Tickets.update(ticket._id, {$set: {isChecked: new Date()}}); // Update isChecked status
 
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - validé !", "success");
+            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Validé !", "success");
             Session.set("lastTicketId", ticketId);
         }
 
@@ -45,7 +45,8 @@ Template.checkpoint.events({
     "click #btn-cancel": function (e) {
         e.preventDefault();
         var lastTicketId = Session.get("lastTicketId");
-        Tickets.update({uuid: lastTicketId}, {$set: {isChecked: false}});
+        ticket = Tickets.findOne({uuid : lastTicketId})
+        Tickets.update(ticket._id, {$set: {isChecked: false}});
     }
 });
 
