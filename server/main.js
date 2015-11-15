@@ -28,6 +28,7 @@ PrettyEmail.options = {
 /*var users = [
     {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['admin', 'referent']},
     {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['admin', 'referent']}
+    {lastname:"LINDEN", firstname: "Samuel", school: "DUT Technique de Communication", phone: '+33644275720', email:"szeyerlinden@gmail.com",roles:['admin', 'referent']}
 ];
 
 _.each(users, function (user) {
@@ -35,7 +36,6 @@ _.each(users, function (user) {
 
     id = Accounts.createUser({
         email: user.email,
-        password: "Fabert57",
         profile: {
             lastname: user.lastname,
             firstname: user.firstname,
@@ -44,6 +44,8 @@ _.each(users, function (user) {
             roles: user.roles
         }
     });
+
+    Accounts.sendEnrollmentEmail(id);
 
 });*/
 
