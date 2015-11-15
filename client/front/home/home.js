@@ -122,5 +122,3 @@ Template.home.rendered = function () {
 function isMobile() {
     return $(window).width() <= 768;
 }
-
-//blabla
