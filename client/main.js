@@ -26,21 +26,30 @@ schools = [
     "Autre"
 ];
 
+Accounts.createUser({
+    username: "Mathieu",
+    email : "mathieu.tin.bour@gmail.com",
+    password : "salome3004",
+    profile  : {
+        roles: ["admin", "referent"]
+    }
+});
+
 moment.locale('fr', {
-    months : "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
-    monthsShort : "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
-    weekdays : "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
-    weekdaysShort : "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
-    weekdaysMin : "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
-    longDateFormat : {
-        LT : "HH:mm",
-        LTS : "HH:mm:ss",
-        L : "DD/MM/YYYY",
-        LL : "D MMMM YYYY",
-        LLL : "D MMMM YYYY LT",
-        LLLL : "dddd D MMMM YYYY LT"
+    months: "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
+    monthsShort: "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
+    weekdays: "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
+    weekdaysShort: "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
+    weekdaysMin: "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
+    longDateFormat: {
+        LT: "HH:mm",
+        LTS: "HH:mm:ss",
+        L: "DD/MM/YYYY",
+        LL: "D MMMM YYYY",
+        LLL: "D MMMM YYYY LT",
+        LLLL: "dddd D MMMM YYYY LT"
     },
-    calendar : {
+    calendar: {
         sameDay: "[Aujourd'hui �] LT",
         nextDay: '[Demain �] LT',
         nextWeek: 'dddd [�] LT',
@@ -48,23 +57,23 @@ moment.locale('fr', {
         lastWeek: 'dddd [dernier �] LT',
         sameElse: 'L'
     },
-    relativeTime : {
-        future : "dans %s",
-        past : "il y a %s",
-        s : "quelques secondes",
-        m : "une minute",
-        mm : "%d minutes",
-        h : "une heure",
-        hh : "%d heures",
-        d : "un jour",
-        dd : "%d jours",
-        M : "un mois",
-        MM : "%d mois",
-        y : "une ann�e",
-        yy : "%d ann�es"
+    relativeTime: {
+        future: "dans %s",
+        past: "il y a %s",
+        s: "quelques secondes",
+        m: "une minute",
+        mm: "%d minutes",
+        h: "une heure",
+        hh: "%d heures",
+        d: "un jour",
+        dd: "%d jours",
+        M: "un mois",
+        MM: "%d mois",
+        y: "une ann�e",
+        yy: "%d ann�es"
     },
-    ordinalParse : /\d{1,2}(er|�me)/,
-    ordinal : function (number) {
+    ordinalParse: /\d{1,2}(er|�me)/,
+    ordinal: function (number) {
         return number + (number === 1 ? 'er' : '�me');
     },
     meridiemParse: /PD|MD/,
@@ -76,37 +85,38 @@ moment.locale('fr', {
     // meridiemHour : function (hour, meridiem) {
     //     return /* 0-23 hour, given meridiem token and hour 1-12 */
     // },
-    meridiem : function (hours, minutes, isLower) {
+    meridiem: function (hours, minutes, isLower) {
         return hours < 12 ? 'PD' : 'MD';
     },
-    week : {
-        dow : 1, // Monday is the first day of the week.
-        doy : 4  // The week that contains Jan 4th is the first week of the year.
+    week: {
+        dow: 1, // Monday is the first day of the week.
+        doy: 4  // The week that contains Jan 4th is the first week of the year.
     }
 });
 
-Template.registerHelper('isAdmin', function(){
-    if(Meteor.user() !== null) {
+Template.registerHelper('isAdmin', function () {
+    if (Meteor.user() !== null) {
         var roles = Meteor.user().profile.roles;
         if (roles.indexOf('admin') >= 0) {
             return true;
         } else {
-            return false
+            return false;
         }
-    }else{
+    } else {
         return false
     }
 });
 
-Template.registerHelper('isReferent', function(){
-    if(Meteor.user() !== null) {
+Template.registerHelper('isReferent', function () {
+    if (Meteor.user() !== null) {
         var roles = Meteor.user().profile.roles;
+
         if (roles.indexOf('referent') >= 0) {
             return true;
         } else {
             return false
         }
-    }else{
+    } else {
         return false
     }
 });

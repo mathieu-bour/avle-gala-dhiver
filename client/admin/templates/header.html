@@ -1,13 +1,23 @@
 <template name="header">
     <header class="header">
         <section class="logo-container">
-            <h1 class="logo-text">Gala d'hiver | A.V.L.E</h1>
+            <h1 class="logo-text">
+                <span class="toggle-sidebar visible-xs pull-left">
+                    <i class="mdi-action-list"></i>
+                </span>
+
+                Gala d'hiver | A.V.L.E
+
+                <span class="logout visible-xs pull-right">
+                    <i class="mdi-action-exit-to-app"></i>
+                </span>
+            </h1>
         </section>
 
         <div class="nav-container">
             <ul class="nav pull-right">
                 <li class="nav-item">
-                    <a href="#" class="btn btn-danger" id="logout">Déconnexion</a>
+                    <a href="#" class="btn btn-danger logout">Déconnexion</a>
                 </li>
             </ul>
         </div>

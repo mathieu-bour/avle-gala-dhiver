@@ -1,0 +1,30 @@
+/**
+ */
+@media (max-width: 768px) {
+    body {
+        padding: 60px 0 0 0;
+    }
+
+    .logo-container {
+        float: none;
+        display: block;
+        background-color: #2196f3;
+    }
+        .logo-text {
+            width: 100%;
+            text-align: center;
+        }
+    .nav-container {
+        display: none;
+    }
+
+    .sidebar {
+        z-index: 9999;
+        max-width: 100%;
+        transform: translateX(-100%);
+        transition: transform .3s ease;
+    }
+    .sidebar.sidebar-mobile-shown {
+        transform: translateX(0);
+    }
+}
