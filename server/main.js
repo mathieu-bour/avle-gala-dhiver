@@ -1,8 +1,25 @@
+(function () {
+    "use strict";
+
+    Accounts.urls.resetPassword = function (token) {
+        return Meteor.absoluteUrl('/#/reset-password/' + token);
+    };
+
+    Accounts.urls.verifyEmail = function (token) {
+        return Meteor.absoluteUrl('/#/verify-email/' + token);
+    };
+
+    Accounts.urls.enrollAccount = function (token) {
+        return Meteor.absoluteUrl('/#/enroll-account/' + token);
+    };
+
+})();
+
 /*= Mail configuration =*/
 /*======================================================*/
 process.env.MAIL_URL="smtp://contact@avle.fr:Fabert57@server.point-blank.fr:587";
 Accounts.emailTemplates.siteName = "Gala d'hiver | A.V.L.E";
-Accounts.emailTemplates.from = "A.V.L.E <noreply@avle-alca.fr>";
+Accounts.emailTemplates.from = "A.V.L.E <noreply@avle.fr>";
 Accounts.emailTemplates.enrollAccount.subject = function (user) {
     return "Bien le bonjour " + user.profile.firstname + "!";
 };
@@ -26,9 +43,8 @@ PrettyEmail.options = {
 /*= Initial admin generation =*/
 /*======================================================*/
 /*var users = [
-    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['admin', 'referent']},
-    {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['admin', 'referent']}
-    {lastname:"LINDEN", firstname: "Samuel", school: "DUT Technique de Communication", phone: '+33644275720', email:"szeyerlinden@gmail.com",roles:['admin', 'referent']}
+    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['superAdmin', 'admin', 'referent']},
+    {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['superAdmin', 'admin', 'referent']}
 ];
 
 _.each(users, function (user) {

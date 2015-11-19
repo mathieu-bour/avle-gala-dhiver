@@ -14,8 +14,8 @@ Template.contact.events({
         };
 
         Meteor.call('sendEmail',{
-            to:       'ladislas14@gmail.com',
-            from:     'noreply@point-blank.fr',
+            to:       'contact@avle.fr',
+            from:     'contact@avle.fr',
             subject:  data.name + ' - ' + data.email + ' - ' + data.subject,
             html:     Blaze.toHTMLWithData(Template.contactEmail, data)
         });

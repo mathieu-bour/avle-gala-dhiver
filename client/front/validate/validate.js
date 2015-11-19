@@ -25,7 +25,7 @@ Template.validate.onRendered(function () {
 
             /*= Save and save invoice =*/
             /*======================================================*/
-            HTTP.get('http://php.dev/invoice_pdf/',{
+            HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
@@ -40,7 +40,7 @@ Template.validate.onRendered(function () {
                 console.log(result);
             });
 
-            HTTP.get('http://php.dev/ticket_pdf/',{
+            HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
@@ -54,19 +54,6 @@ Template.validate.onRendered(function () {
             }, function(error, result){
                 console.log(result);
             });
-
-            /*Meteor.call('saveTicket',id, function(error, result){
-                if(error){
-                    console.log(error);
-                }else{
-                    Meteor.call('sendTicket',{
-                        to:       ticket.email,
-                        from:     'noreply@avle-alca.fr',
-                        subject:  'Votre invitation pour le Gala d\'hiver',
-                        html:     Blaze.toHTMLWithData(Template.ticketEmail, ticket)
-                    },id);
-                }
-            });*/
         }
     });
 
