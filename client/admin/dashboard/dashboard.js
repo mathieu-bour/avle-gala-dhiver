@@ -114,8 +114,13 @@ Template.dashboard.onRendered(function () {
         ]
     };
 
+    var $statsChart = $("#stats-chart");
+    var statsChartWidth = $statsChart.parent().width();
+    $statsChart.attr("width", statsChartWidth);
+    $statsChart.attr("height", (statsChartWidth / 16) * 9);
     var statsChartContext = $("#stats-chart").get(0).getContext("2d");
     var statsChart = new Chart(statsChartContext).Line(data);
+    $statsChart.css({"height": ""});
 
 
     /*= Gender chart =*/

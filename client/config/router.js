@@ -31,6 +31,10 @@ var stylesheets = {
             href: cdn + "/css/common.css",
             rel: "stylesheet"
         },
+        adminMobile:  {
+            href: cdn + "/css/admin.mobile.css",
+            rel: "stylesheet"
+        },
         admin:  {
             href: cdn + "/css/admin.css",
             rel: "stylesheet"
