@@ -14,7 +14,7 @@
 Template.home.rendered = function () {
     /*= COUNTDOWN =*/
     /*======================================================*/
-    var end = new Date("2015/11/29 10:00:00");
+    var end = new Date("2015/12/02 19:00:00");
 
     // Values in ms
     var second = 1000,
