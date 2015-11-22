@@ -2,8 +2,15 @@
     <section class="contact page">
         <div class="container">
             <h3 class="contact-title">Nous contacter</h3>
+            
+            {{#if contactSuccess }}
+                <div class="alert alert-dismissible alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Parfait !</strong> Votre email a bien été envoyé. Nous vous recevrez une réponse d'ici 24h à 48h.
+                </div>
+            {{/if}}
 
-            <form action="#">
+            <form action="#" id="contact-form">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="panel">

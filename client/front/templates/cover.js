@@ -15,7 +15,7 @@ Template.cover.helpers({
 Template.cover.events({
     "click #goToEvent": function(e){
         e.preventDefault();
-
+        console.log("clicked");
         /**
          * Hide the cover
          */
@@ -31,6 +31,12 @@ Template.cover.events({
             easing: "easeInQuart"
         }).addClass("cover-hidden");
 
-        $(window).scrollTo("#event");
+        $(window).scrollTo("#event", 800);
     }
-})
+});
+
+Template.cover.rendered = function () {
+    $('#goToEvent').bind( "touchstart",function(e){
+        $(window).scrollTo("#event", 800);
+    });
+};

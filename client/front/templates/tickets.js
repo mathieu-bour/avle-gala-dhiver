@@ -1,5 +1,7 @@
 Template.tickets.helpers({
-    //add you helpers here
+    "notifySuccess": function(){
+        return Session.get("notifySuccess");
+    }
 });
 
 Template.tickets.events({
@@ -13,6 +15,9 @@ Template.tickets.events({
             };
 
             newsletter._id = Newsletter.insert(newsletter);
+            $('#notify-form')[0].reset();
+
+            Session.set("notifySuccess", true);
         }
     }
 });

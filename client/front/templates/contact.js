@@ -1,5 +1,7 @@
 Template.contact.helpers({
-    //add you helpers here
+    "contactSuccess": function(){
+        return Session.get("contactSuccess");
+    }
 });
 
 Template.contact.events({
@@ -13,12 +15,16 @@ Template.contact.events({
             message: $(e.target).find('[name=contact-message]').val()
         };
 
+        $('#contact-form')[0].reset();
+
         Meteor.call('sendEmail',{
             to:       'contact@avle.fr',
             from:     'contact@avle.fr',
             subject:  data.name + ' - ' + data.email + ' - ' + data.subject,
             html:     Blaze.toHTMLWithData(Template.contactEmail, data)
         });
+
+        Session.set('contactSuccess', true);
     }
 });
 
