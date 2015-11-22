@@ -1,0 +1,22 @@
+<template name="newsletter">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)" class="active">Newsletter</a></li>
+            </ul>
+
+            <h2 class="page-title">Newsletter</h2>
+            <h3 class="page-subtitle">Liste des emails enregistrées</h3>
+
+            <div class="panel">
+                <div class="panel-title">
+                    <h4 class="">Newsletter</h4>
+                </div>
+                <div class="panel-body">
+                    {{> tabular table=TabularTables.Newsletter class="table"}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

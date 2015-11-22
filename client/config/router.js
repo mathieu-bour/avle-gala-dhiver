@@ -135,6 +135,10 @@ Router.route("/admin/ticketsList", {
     name: "adminTicketsList",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
+});Router.route("/admin/newsletter", {
+    name: "newsletter",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
 });
 
 /*= Checkpoint =*/
