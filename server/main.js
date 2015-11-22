@@ -43,8 +43,9 @@ PrettyEmail.options = {
 /*= Initial admin generation =*/
 /*======================================================*/
 /*var users = [
-    {lastname:"DELLINGER", firstname: "Ladislas", school: "Fabert", phone: '0634548226', email:"ladislas14@gmail.com",roles:['superAdmin', 'admin', 'referent']},
-    {lastname:"BOUR", firstname: "Mathieu", school: "Fabert", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['superAdmin', 'admin', 'referent']}
+    {lastname:"DELLINGER", firstname: "Ladislas", school: "CPGE Fabert - PCSI", phone: '0634548226', email:"ladislas14@gmail.com",roles:['superAdmin', 'admin', 'referent']},
+    {lastname:"BOUR", firstname: "Mathieu", school: "CPGE Fabert - PCSI", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['superAdmin', 'admin', 'referent']},
+    {lastname:"LINDEN", firstname: "Samuel", school: "DUT Techniques de Communication", phone: '+33644275720', email:"szeyerlinden@gmail.com",roles:['admin', 'referent']}
 ];
 
 _.each(users, function (user) {
