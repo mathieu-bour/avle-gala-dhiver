@@ -15,7 +15,7 @@ Template.cover.helpers({
 Template.cover.events({
     "click #goToEvent": function(e){
         e.preventDefault();
-        console.log("clicked");
+
         /**
          * Hide the cover
          */

@@ -298,6 +298,7 @@ label {
     transition-property: background-color;
     transition-duration: 0.5s;
     transition-timing-function: ease-in;
+    cursor: s-resize;
 }
 
 .btn-ghost:hover{
