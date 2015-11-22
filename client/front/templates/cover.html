@@ -19,39 +19,47 @@
 
             <p class="main-desc hidden-xs">Un évènement exclusif réservé pour seulement <strong>700</strong> lycéens.</p>
 
-            <div class="countdown">
-                <div class="row">
-                    <div class="col-xs-3">
-                        <div class="countdown-square">
-                            <span class="countdown-value" id="countdown-days"></span>
-                            <span class="countdown-label" id="countdown-days-label"></span>
+            {{#if isOpened }}
+                <div class="countdown">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="countdown-square">
+                                <span class="countdown-value" id="countdown-days"></span>
+                                <span class="countdown-label" id="countdown-days-label"></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-3">
-                        <div class="countdown-square">
-                            <span class="countdown-value" id="countdown-hours"></span>
-                            <span class="countdown-label" id="countdown-hours-label"></span>
+                        <div class="col-xs-3">
+                            <div class="countdown-square">
+                                <span class="countdown-value" id="countdown-hours"></span>
+                                <span class="countdown-label" id="countdown-hours-label"></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-3">
-                        <div class="countdown-square">
-                            <span class="countdown-value" id="countdown-minutes"></span>
-                            <span class="countdown-label" id="countdown-minutes-label"></span>
+                        <div class="col-xs-3">
+                            <div class="countdown-square">
+                                <span class="countdown-value" id="countdown-minutes"></span>
+                                <span class="countdown-label" id="countdown-minutes-label"></span>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-3">
-                        <div class="countdown-square">
-                            <span class="countdown-value" id="countdown-seconds"></span>
-                            <span class="countdown-label" id="countdown-seconds-label"></span>
+                        <div class="col-xs-3">
+                            <div class="countdown-square">
+                                <span class="countdown-value" id="countdown-seconds"></span>
+                                <span class="countdown-label" id="countdown-seconds-label"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <p class="countdown-title">Avant l'ouverture de la vente des billets</p>
+                <p class="countdown-title">Avant l'ouverture de la vente des billets</p>
+
+                <a class="btn-ghost" id="goToEvent">Entrer</a>
+
+            {{else}}
+                <a class="btn-ghost" href="{{pathFor route="buy"}}">Réserver ma place</a>
+            {{/if}}
+
         </div>
     </div>
 </template>

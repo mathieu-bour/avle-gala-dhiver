@@ -14,6 +14,10 @@
 Template.buy.helpers({
     'schools': function(){
         return schools;
+    },
+    'availableTickets': function(){
+        ticketsNb = Tickets.find().count();
+        return Math.round(((750 - ticketsNb) * 700) / 750);
     }
 });
 
@@ -90,15 +94,4 @@ Template.buy.rendered = function() {
             $("#ticket-gender").attr("src", "/img/queen.png");
         }
     });
-
-    // Animate tickets left counter
-    var $counter = $("#counter");
-
-    setInterval(function() {
-        var count = parseInt($counter.text());
-
-        if(count > 10) {
-            $counter.text(count - Math.floor((Math.random() * 10) + 1));
-        }
-    }, 10000);
 };
