@@ -65,7 +65,8 @@ Template.validate.onRendered(function () {
                                 'getPdf': false,
                                 'email': ticket.email,
                                 'id': ticket.uuid,
-                                'isForbach': false
+                                'isForbach': false,
+                                '_id': ticket._id
                             }
                         }, function(error, result){
                             console.log(result);
