@@ -4,7 +4,7 @@ Router.configure({
     layoutTemplate: "noLayout",
     loadingTemplate: 'loading',
     notFoundTemplate: "notFound",
-    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers') && Meteor.subscribe("codes") && Meteor.subscribe('given') && Meteor.subscribe("newsletter");  }
+    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers'); }
 });
 
 var cdn = Meteor.settings.public.local ? "" : "//cdn.avle.fr";
@@ -105,16 +105,8 @@ if(delta <= 0) {
         data: function () {
             var query = this.params.query;
 
-            console.log(query);
-
             if(query.code){
-                var code = Codes.findOne({code: query.code});
-                if(code.validations < 10){
-                    return {code: query.code};
-                }else{
-                    Session.set("error", "Ce code a déjà été utilisé trop de fois. Rendez-vous mercredi prochain à 19h !");
-                    Router.go('/');
-                }
+                return query.code;
             }else{
                 Router.go('/');
             }
