@@ -44,8 +44,6 @@ PrettyEmail.options = {
 /*======================================================*/
 /*var users = [
     {lastname:"DELLINGER", firstname: "Ladislas", school: "CPGE Fabert - PCSI", phone: '0634548226', email:"ladislas14@gmail.com",roles:['superAdmin', 'admin', 'referent']},
-    {lastname:"BOUR", firstname: "Mathieu", school: "CPGE Fabert - PCSI", phone: '0672039618', email:"mathieu.tin.bour@gmail.com",roles:['superAdmin', 'admin', 'referent']},
-    {lastname:"LINDEN", firstname: "Samuel", school: "DUT Techniques de Communication", phone: '+33644275720', email:"szeyerlinden@gmail.com",roles:['admin', 'referent']}
 ];
 
 _.each(users, function (user) {
@@ -65,7 +63,6 @@ _.each(users, function (user) {
     Accounts.sendEnrollmentEmail(id);
 
 });*/
-
 
 /*= Meteor server methods =*/
 /*======================================================*/
@@ -97,20 +94,44 @@ Meteor.methods({
      * @param {string} mail
      * @param {string} phone
      * @param {string} school
+     * @param {boolean} createAdmin
      */
-    createReferent: function(fistname,lastname,mail,phone,school){
-        id = Accounts.createUser({
-            email: mail,
-            profile: {
-                lastname: lastname,
-                firstname: fistname,
-                school: school,
-                phone: phone,
-                roles: ['referent']
-            }
-        });
+    createReferent: function(firstname,lastname,mail,phone,school, createAdmin){
+        if(createAdmin == true){
+            id = Accounts.createUser({
+                email: mail,
+                profile: {
+                    lastname: lastname,
+                    firstname: firstname,
+                    school: school,
+                    phone: phone,
+                    roles: ['admin', 'referent']
+                }
+            });
+        }else{
+            id = Accounts.createUser({
+                email: mail,
+                profile: {
+                    lastname: lastname,
+                    firstname: firstname,
+                    school: school,
+                    phone: phone,
+                    roles: ['referent']
+                }
+            });
+        }
 
         Accounts.sendEnrollmentEmail(id);
+    },
+
+    /**
+     * Add private code to referent
+     * @param {string} privateCode
+     */
+    'addPrivateCode': function(userId, privateCode){
+        var user = Meteor.users.findOne(userId);
+
+        Meteor.users.update({_id: user._id}, {$set: {"profile.code": privateCode}});
     },
 
     /**
@@ -127,7 +148,7 @@ Meteor.methods({
             var token = content.split("&")[0];
             token = token.split("=")[1];
 
-            var url = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
+            var url = "https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
         } catch (_error) {
             throw new Meteor.Error("No Result", "Failed to fetch...");
         }
@@ -218,7 +239,7 @@ Meteor.methods({
 
     },
 
-    /*= The following function are obsolete. All is made in php script =*/
+    /*= The following functions are obsolete. Everything is done in php scripts =*/
     /*======================================================*/
 
     /**
