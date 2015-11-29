@@ -61,10 +61,10 @@ Template.validate.onRendered(function () {
                                 'firstname': ticket.firstname,
                                 'phone': ticket.phone,
                                 'school': ticket.school,
-                                'isPaypal': ticket.isPaypal,
+                                'isPaypal': true,
                                 'sexe': ticket.sexe,
                                 'getPdf': false,
-                                'email': true,
+                                'email': ticket.email,
                                 'id': ticket.uuid,
                                 'isForbach': false
                             }
