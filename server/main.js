@@ -171,7 +171,7 @@ Meteor.methods({
     'getExpressCheckoutDetails': function(token){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
+            var result = HTTP.get('http://cdn.avle.fr/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -194,7 +194,7 @@ Meteor.methods({
     'doExpressCheckoutPayment': function(token, payerID){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://php.dev/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
+            var result = HTTP.get('http://cdn.avle.fr/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
