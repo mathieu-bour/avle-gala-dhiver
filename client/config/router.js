@@ -105,6 +105,8 @@ if(delta <= 0) {
         data: function () {
             var query = this.params.query;
 
+            console.log(query);
+
             if(query.code){
                 var code = Codes.findOne({code: query.code});
                 if(code.validations < 10){
