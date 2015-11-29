@@ -72,8 +72,12 @@ Template.validate.onRendered(function () {
                             console.log(result);
                         });
                     }
+                }else{
+                    Meteor.go('/buy/payment/canceled')
                 }
             });
+        }else{
+            Meteor.go('/buy/payment/canceled')
         }
     });
 
