@@ -46,7 +46,7 @@ Template.validate.onRendered(function () {
                                 'phone': ticket.phone,
                                 'school': ticket.school,
                                 'getPdf': false,
-                                'isPaypal': ticket.isPaypal,
+                                'isPaypal': true,
                                 'email': ticket.email,
                                 'id': ticket._id,
                                 'isForbach': false
@@ -64,7 +64,7 @@ Template.validate.onRendered(function () {
                                 'isPaypal': ticket.isPaypal,
                                 'sexe': ticket.sexe,
                                 'getPdf': false,
-                                'email': ticket.email,
+                                'email': true,
                                 'id': ticket.uuid,
                                 'isForbach': false
                             }

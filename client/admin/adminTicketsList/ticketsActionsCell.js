@@ -2,12 +2,40 @@ Template.ticketsActionsCell.events({
     'click #sendTicket': function(e){
         e.preventDefault();
 
-        Meteor.call('sendTicket',{
-            to:       this.email,
-            from:     'noreply@point-blank.fr',
-            subject:  'Votre invitation pour le Gala d\'hiver',
-            html:     Blaze.toHTMLWithData(Template.ticketEmail, this)
-        },this._id);
+        var ticket = this;
+
+        HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
+            params: {
+                'lastname': ticket.lastname,
+                'firstname': ticket.firstname,
+                'phone': ticket.phone,
+                'school': ticket.school,
+                'getPdf': false,
+                'isPaypal': ticket.isPaypal,
+                'email': ticket.email,
+                'id': ticket._id,
+                'isForbach': false
+            }
+        }, function(error, result){
+            console.log(result);
+        });
+
+        HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
+            params: {
+                'lastname': ticket.lastname,
+                'firstname': ticket.firstname,
+                'phone': ticket.phone,
+                'school': ticket.school,
+                'isPaypal': ticket.isPaypal,
+                'sexe': ticket.sexe,
+                'getPdf': false,
+                'email': ticket.email,
+                'id': ticket.uuid,
+                'isForbach': false
+            }
+        }, function(error, result){
+            console.log(result);
+        });
     },'click #checkTicket ': function(e){
         e.preventDefault();
 
