@@ -73,11 +73,23 @@ Template.validate.onRendered(function () {
                         });
                     }
                 }else{
-                    Meteor.go('/buy/payment/canceled')
+                    var host = "http://"+window.location.hostname;
+
+                    if(host == 'http://localhost'){
+                        window.location.replace("http://localhost:3000/buy/payment/canceled");
+                    }else{
+                        window.location.replace(host + "/buy/payment/canceled");
+                    }
                 }
             });
         }else{
-            Meteor.go('/buy/payment/canceled')
+            var host = "http://"+window.location.hostname;
+
+            if(host == 'http://localhost'){
+                window.location.replace("http://localhost:3000/buy/payment/canceled");
+            }else{
+                window.location.replace(host + "/buy/payment/canceled");
+            }
         }
     });
 
