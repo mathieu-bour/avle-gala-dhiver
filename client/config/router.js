@@ -4,7 +4,7 @@ Router.configure({
     layoutTemplate: "noLayout",
     loadingTemplate: 'loading',
     notFoundTemplate: "notFound",
-    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers') && Meteor.subscribe("codes") && Meteor.subscribe('given');  }
+    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers') && Meteor.subscribe("codes") && Meteor.subscribe('given') && Meteor.subscribe("newsletter");  }
 });
 
 var cdn = Meteor.settings.public.local ? "" : "//cdn.avle.fr";
