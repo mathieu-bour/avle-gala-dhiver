@@ -13,7 +13,7 @@ Template.securePage.events({
        if(host == 'http://localhost'){
            window.location.replace("http://localhost:3000/buy?code=" + code);
        }else{
-           window.location.replace(path + "/buy?code=" + code);
+           window.location.replace(host + "/buy?code=" + code);
        }
 
     }
