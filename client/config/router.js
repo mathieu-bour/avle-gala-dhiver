@@ -106,7 +106,7 @@ if(delta <= 0) {
             var query = this.params.query;
 
             if(query.code){
-                return query.code;
+                return query;
             }else{
                 Router.go('/');
             }

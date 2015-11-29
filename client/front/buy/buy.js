@@ -60,21 +60,27 @@ Template.buy.events({
             uuid: uuid,
             accessCode: code
         };
-
-        // Insert ticket
-        var alreadyExist = Tickets.findOne({firstname: ticket.firstname, lastname: ticket.lastname, email: ticket.email, birthday: ticket.birthday});
-        if(alreadyExist){
-            Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");
-            Router.go('/');
-        }else{
-            ticket._id = Tickets.insert(ticket);
-
-            if(code){
-                Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
+        code = Codes.findOne({code: code});
+        if(code.validations < 10){
+            var alreadyExist = Tickets.findOne({firstname: ticket.firstname, lastname: ticket.lastname, email: ticket.email, birthday: ticket.birthday});
+            if(alreadyExist){
+                Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");
+                Router.go('/');
             }else{
-                Router.go('/buy/payment?id=' + ticket._id);
+                ticket._id = Tickets.insert(ticket);
+
+                if(code){
+                    Router.go('/buy/payment?id=' + ticket._id + "&code=" + code.code);
+                }else{
+                    Router.go('/buy/payment?id=' + ticket._id);
+                }
             }
+        }else{
+            Session.set("error", "Ce code a déjà été utilisé trop de fois. Rendez-vous mercredi prochain à 19h !");
+            Router.go('/');
         }
+        // Insert ticket
+
     }
 });
 
