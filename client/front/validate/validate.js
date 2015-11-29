@@ -45,7 +45,7 @@ Template.validate.onRendered(function () {
                                 'phone': ticket.phone,
                                 'school': ticket.school,
                                 'getPdf': false,
-                                'isPaypal': ticket.isPaypal,
+                                'isPaypal': true,
                                 'email': ticket.email,
                                 'id': ticket._id,
                                 'isForbach': false
@@ -60,7 +60,7 @@ Template.validate.onRendered(function () {
                                 'firstname': ticket.firstname,
                                 'phone': ticket.phone,
                                 'school': ticket.school,
-                                'isPaypal': ticket.isPaypal,
+                                'isPaypal': true,
                                 'sexe': ticket.sexe,
                                 'getPdf': false,
                                 'email': ticket.email,
@@ -72,26 +72,24 @@ Template.validate.onRendered(function () {
                         });
                     }
                 }else{
-                    console.log(error);
 
-                    /*var host = "http://"+window.location.hostname;
+                    var host = "http://"+window.location.hostname;
 
                     if(host == 'http://localhost'){
                         window.location.replace("http://localhost:3000/buy/payment/canceled");
                     }else{
                         window.location.replace(host + "/buy/payment/canceled");
-                    }*/
+                    }
                 }
             });
         }else{
-            console.log(error);
-            /*var host = "http://"+window.location.hostname;
+            var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
                 window.location.replace("http://localhost:3000/buy/payment/canceled");
             }else{
                 window.location.replace(host + "/buy/payment/canceled");
-            }*/
+            }
         }
     });
 
