@@ -1,5 +1,5 @@
 Router.route('/ticket/:_id', function () {
-    var wkhtmltopdf = Meteor.npmRequire('wkhtmltopdf');
+    var wkhtmltopdf = Npm.require('wkhtmltopdf');
     var res = this.response;
 
     var id = this.params._id;
@@ -27,10 +27,6 @@ Router.route('/invoice/:_id', function () {
 
     var id = this.params._id;
     var ticket = Tickets.findOne(id);
-
-    var fs = Npm.require('fs');
-    var path = process.env["PWD"] + "/public/";
-    console.log(ticket.isPaypal);
 
     var result = HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/', {params: {id: ticket._id, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone, getPdf: true}});
 
