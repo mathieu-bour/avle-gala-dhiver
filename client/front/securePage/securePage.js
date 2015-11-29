@@ -3,7 +3,20 @@ Template.securePage.helpers({
 });
 
 Template.securePage.events({
-    //add your events here
+    'submit form': function(e){
+        e.preventDefault();
+
+        var code = $(e.target).find('[id=code-input]').val();
+
+        var host = "http://"+window.location.hostname;
+
+       if(host == 'http://localhost'){
+           window.location.replace("http://localhost:3000/buy?code=" + code);
+       }else{
+           window.location.replace(path + "/buy?code=" + code);
+       }
+
+    }
 });
 
 Template.securePage.onCreated(function () {

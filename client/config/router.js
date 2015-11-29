@@ -75,7 +75,7 @@ if(delta <= 0) {
         name: "buy",
         link: stylesheets.front
     });
-    Router.route("buy/payment", {
+    Router.route("/buy/payment", {
         name: "payment",
         link: stylesheets.front,
         data: function () {
@@ -89,7 +89,7 @@ if(delta <= 0) {
 
         }
     });
-    Router.route("buy/payment/validate", {
+    Router.route("/buy/payment/validate", {
         name: "validate",
         link: stylesheets.front,
         data: function () {
@@ -98,7 +98,74 @@ if(delta <= 0) {
             return query;
         }
     });
+}else{
+    Router.route("/buy", {
+        name: "buy",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+
+            if(query.code){
+                var code = Codes.findOne({code: query.code});
+                if(code.validations < 10){
+                    return {code: query.code};
+                }else{
+                    Session.set("error", "Ce code a déjà été utilisé trop de fois. Rendez-vous mercredi prochain à 19h !");
+                    Router.go('/');
+                }
+            }else{
+                Router.go('/');
+            }
+
+        }
+    });
+    Router.route("/buy/payment", {
+        name: "payment",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+
+            if(query.id && query.code){
+                return Tickets.findOne(query.id);
+            }else{
+                Router.go('/');
+            }
+
+        }
+    });
+    Router.route("/buy/payment/validate", {
+        name: "validate",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+            if(query.token){
+                return query;
+            }else{
+                Router.go('/');
+            }
+        }
+    });
+    Router.route("/buy/payment/canceled", {
+        name: "canceled",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+            if(query.token){
+                return query;
+            }else{
+                Router.go('/');
+            }
+        }
+    });
 }
+
+/*= Secure access page =*/
+/*======================================================*/
+Router.route("/secureAccess", {
+    name: "securePage",
+    layoutTemplate: "centered",
+    link: stylesheets.front
+});
 
 /*= Login page =*/
 /*======================================================*/
@@ -135,8 +202,14 @@ Router.route("/admin/ticketsList", {
     name: "adminTicketsList",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
-});Router.route("/admin/newsletter", {
+});
+Router.route("/admin/newsletter", {
     name: "newsletter",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
+Router.route("/admin/codesList", {
+    name: "generateCode",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });
@@ -147,4 +220,12 @@ Router.route("/admin/checkpoint", {
     name: "checkpoint",
     layoutTemplate: "noLayout",
     link: stylesheets.checkpoint
+});
+
+/*= Superadmin =*/
+/*======================================================*/
+Router.route("/superAdmin/createAdmin", {
+    name: "createAdmin",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
 });

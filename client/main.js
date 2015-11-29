@@ -2,38 +2,38 @@
 onlinePrice = 10;
 offlinePrice = 12;
 
-schools = [
-    // Lycées généraux
-    "Lycée Fabert",
-    "Lycée Georges de la Tour",
-    "Lycée Louis Vincent",
-    "Ensemble scolaire Jean XXIII",
-    "Lycée Cormontaigne",
-    "Lycée de la Miséricorde",
-    "Lycée Robert Schuman",
-    "Institution De La Salle",
-    "Lycée de la Communication",
-
-    // Lycées technologiques
-    "Lycée Anne de Méjanès",
-
-    // CPGE
-    "CPGE Fabert - PCSI",
-    "CPGE Fabert - MPSI",
-    "CPGE Fabert - ECS",
-    "CPGE Georges de la Tour - BCPST",
-
-    "Autre"
-];
-
-Accounts.createUser({
-    username: "Mathieu",
-    email : "mathieu.tin.bour@gmail.com",
-    password : "salome3004",
-    profile  : {
-        roles: ["admin", "referent"]
-    }
-});
+schools= {
+    'lycees': [
+        "Lycée Fabert",
+        "Lycée Georges de la Tour",
+        "Lycée Louis Vincent",
+        "Ensemble scolaire Jean XXIII",
+        "Lycée Cormontaigne",
+        "Lycée de la Miséricorde",
+        "Lycée Robert Schuman",
+        "Institution De La Salle",
+        "Lycée de la Communication",
+        "Lycée Anne de Méjanès",
+        "Lycée Raymond Mondon",
+        "Lycée Notre Dame"
+    ],
+    "cpge": [
+        "CPGE Fabert",
+        "CPGE Georges de la Tour",
+        "CPGE Jean XXIII",
+        "CPGE Cormontaigne",
+        "Autre CPGE"
+    ],
+    'universite': [
+        "Faculté",
+        "DUT"
+    ],
+    "autre": [
+        "CAP",
+        "BTS",
+        "Autre"
+    ]
+};
 
 moment.locale('fr', {
     months: "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
@@ -112,6 +112,20 @@ Template.registerHelper('isReferent', function () {
         var roles = Meteor.user().profile.roles;
 
         if (roles.indexOf('referent') >= 0) {
+            return true;
+        } else {
+            return false
+        }
+    } else {
+        return false
+    }
+});
+
+Template.registerHelper('isSuperAdmin', function () {
+    if (Meteor.user() !== null) {
+        var roles = Meteor.user().profile.roles;
+
+        if (roles.indexOf('superAdmin') >= 0) {
             return true;
         } else {
             return false

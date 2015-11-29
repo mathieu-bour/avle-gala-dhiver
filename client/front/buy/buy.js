@@ -42,6 +42,7 @@ Template.buy.events({
             d = Math.floor(d/16);
             return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
         });
+        var code = Session.get("code");
 
         var ticket = {
             sexe: $(e.target).find('[id=sexe]').val(),
@@ -51,18 +52,29 @@ Template.buy.events({
             email: $(e.target).find('[id=email]').val(),
             phone: $(e.target).find('[id=phone]').val(),
             school: $(e.target).find('[id=school]').val(),
+            level: $(e.target).find('[id=level]').val(),
             isPaid: false,
             isPaypal: false,
             isChecked: false,
             created: new Date(),
-            uuid: uuid
+            uuid: uuid,
+            accessCode: code
         };
 
         // Insert ticket
-        ticket._id = Tickets.insert(ticket);
+        var alreadyExist = Tickets.findOne({firstname: ticket.firstname, lastname: ticket.lastname, email: ticket.email, birthday: ticket.birthday});
+        if(alreadyExist){
+            Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");
+            Router.go('/');
+        }else{
+            ticket._id = Tickets.insert(ticket);
 
-        // Redirect to payment page
-        Router.go('/buy/payment?id=' + ticket._id);
+            if(code){
+                Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
+            }else{
+                Router.go('/buy/payment?id=' + ticket._id);
+            }
+        }
     }
 });
 
@@ -70,6 +82,8 @@ Template.buy.events({
  * On rendered
  */
 Template.buy.rendered = function() {
+    Session.set("code", this.data.code);
+
     $.material.init(); // Init Bootstrap Material
 
     $("#ticket-barcode").barcode("specimen", "code128"); // Render page
@@ -89,9 +103,9 @@ Template.buy.rendered = function() {
     // Update picture (male/female)
     $("input[type=radio][name=sexe]").change(function() {
         if($(this).val() == "Homme") {
-            $("#ticket-gender").attr("src", "/img/king.png");
+            $("#ticket-gender").attr("src", "//cdn.avle.fr/img/king.png");
         } else {
-            $("#ticket-gender").attr("src", "/img/queen.png");
+            $("#ticket-gender").attr("src", "//cdn.avle.fr/img/queen.png");
         }
     });
 };

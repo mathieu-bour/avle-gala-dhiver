@@ -27,7 +27,8 @@ Template.dashboard.events({
             $(e.target).find('[id=referent-last-name]').val(),
             $(e.target).find('[id=referent-email]').val(),
             $(e.target).find('[id=referent-phone]').val(),
-            $(e.target).find('[id=referent-school]').val()
+            $(e.target).find('[id=referent-school]').val(),
+            false
         );
 
         $('#create-referent')[0].reset();

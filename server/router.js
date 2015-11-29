@@ -46,5 +46,3 @@ Router.route('/invoice/:_id', function () {
     })
         .pipe(res);
 }, {where: 'server'});
-
-

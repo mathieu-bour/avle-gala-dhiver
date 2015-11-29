@@ -19,7 +19,7 @@ Template.ticketsActionsCell.events({
 
             /*= Save and save invoice =*/
             /*======================================================*/
-            HTTP.get('http://php.dev/invoice_pdf/',{
+            HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
@@ -28,22 +28,25 @@ Template.ticketsActionsCell.events({
                     'getPdf': false,
                     'isPaypal': ticket.isPaypal,
                     'email': ticket.email,
-                    'id': ticket._id
+                    'id': ticket._id,
+                    'isForbach': false
                 }
             }, function(error, result){
                 console.log(result);
             });
 
-            HTTP.get('http://php.dev/ticket_pdf/',{
+            HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
                     'phone': ticket.phone,
                     'school': ticket.school,
+                    'isPaypal': ticket.isPaypal,
                     'sexe': ticket.sexe,
                     'getPdf': false,
                     'email': ticket.email,
-                    'id': ticket._id
+                    'id': ticket.uuid,
+                    'isForbach': false
                 }
             }, function(error, result){
                 console.log(result);

@@ -135,6 +135,14 @@ Meteor.methods({
     },
 
     /**
+     * Update ticket with paypal infos
+     *
+     */
+    'updateTicket': function(id, correlationId){
+        Tickets.update(id, {$set: {isPaid: new Date(), isPaypal: new Date(), correlationId: correlationId}});
+    },
+
+    /**
      * SetExpressCheckout method from PaypalEC API: init checkout
      * @param {string} id from the ticket (used as invoice number)
      * @returns {string|Meteor.Error()} throw new error if error is true, else return url of PaypalEC page
@@ -144,7 +152,6 @@ Meteor.methods({
             // fill in the blanks here with params, timeout, etc.
             var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
             content = result.content;
-            console.log(content);
             var token = content.split("&")[0];
             token = token.split("=")[1];
 
@@ -224,7 +231,7 @@ Meteor.methods({
     * @param {int} length of UUID
     * @return {string} uuid
     */
-    generateUUID: function(length){
+    'generateUUID': function(length){
         var str = "";
         for(i=0;i<length;i++){
             str = "x" + str;
@@ -237,6 +244,17 @@ Meteor.methods({
         });
         return uuid;
 
+    },
+
+    /**
+     * Update number of validations for a code
+     * @param {string} id
+     */
+    'updateValidations': function(id){
+        var code = Codes.findOne(id);
+        var validations = code.validations + 1;
+
+        Codes.update(code._id, {$set: {validations: validations}});
     },
 
     /*= The following functions are obsolete. Everything is done in php scripts =*/

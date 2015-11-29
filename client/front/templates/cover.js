@@ -2,6 +2,9 @@ Template.cover.helpers({
     'success': function(){
         return Session.get('success');
     },
+    'error': function(){
+        return Session.get('error');
+    },
     "isOpened": function(){
         var isOpenened =  Session.get('isOpened');
         var open = moment("02/12/2015 19:00", "DD/MM/YYYY HH:mm");

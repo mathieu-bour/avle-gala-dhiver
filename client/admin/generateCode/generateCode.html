@@ -1,3 +1,33 @@
 <template name="generateCode">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <h2 class="page-title">Liste des codes <a href="#" id="generate-code">+</a></h2>
+            <h3 class="page-subtitle">Page de génération et de la liste des codes</h3>
 
+            <div class="panel">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Liste des codes</h4>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Nombre de validation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each codes}}
+                                <tr>
+                                    <td>{{ code }}</td>
+                                    <td>{{ validations }}</td>
+                                </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </template>

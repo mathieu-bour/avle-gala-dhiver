@@ -16,3 +16,7 @@ Meteor.publish('newsletter', function() {
 Meteor.publish('given', function() {
     return Given.find();
 });
+
+Meteor.publish('codes', function() {
+    return Codes.find();
+});

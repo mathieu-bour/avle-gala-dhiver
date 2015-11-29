@@ -16,7 +16,6 @@ Template.payment.helpers({
        Meteor.call('setExpressCheckout', this._id, function(error, result){
            Session.set('paypalUrl', result);
        });
-
        return Session.get('paypalUrl');
    }
 });
@@ -29,6 +28,10 @@ Template.payment.events({
         e.preventDefault();
 
         if($("#accept-conditions").prop("checked")){
+            var code = Session.get("code");
+            var code = Codes.findOne({code: code});
+
+            Meteor.call("updateValidations", code._id);
             window.location.replace(Session.get('paypalUrl'));
         }
     },
@@ -42,6 +45,11 @@ Template.payment.events({
     "click #validate-btn": function(e){
         e.preventDefault();
 
+        var code = Session.get("code");
+        var code = Codes.findOne({code: code});
+
+        Meteor.call("updateValidations", code._id);
+
         Session.set("success", "Votre invitation à bien été reservée. Nous vous attendons lors de l'une de nos permanences pour finaliser l'achat de votre place");
 
         Router.go("/");
@@ -54,6 +62,20 @@ Template.payment.events({
  */
 Template.payment.rendered = function() {
     $.material.init();
+
+    var query = location.search;
+
+    query = query.split('?');
+    query = query[1];
+    query= query.split('&');
+
+    query_json = {};
+    for (var i = query.length - 1; i >= 0; i--) {
+        item = query[i].split("=");
+        query_json[item[0]] = decodeURIComponent(item[1]);
+    };
+
+    Session.set("code", query_json.code)
 
     $("#ticket-barcode").barcode("specimen", "code128"); // Generate barcode
     $("#age-warning-dialog").modal("show"); // Force age-warning modal to appear

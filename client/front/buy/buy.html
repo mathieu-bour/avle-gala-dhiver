@@ -41,12 +41,36 @@
                         <div class="panel">
                             <div class="panel-body">
                                 <select class="form-control" id="school" required>
-                                    {{#each schools}}
-                                        <option value="{{ this }}">{{ this }}</option>
-                                    {{/each}}
+                                    <optgroup label="Lycées">
+                                        {{#each schools.lycees}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="CPGE">
+                                        {{#each schools.cpge}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="Univesité de Lorraine">
+                                        {{#each schools.universite}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="Autre">
+                                        {{#each schools.autre}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="panel">
+                            <div class="panel-body">
+                                <input type="text" id="level" class="form-control" placeholder="Votre niveau ou votre fillère" required>
+                            </div>
+                        </div>
+
 
 
                         <div class="panel">

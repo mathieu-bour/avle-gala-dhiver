@@ -15,6 +15,13 @@
                 </div>
             {{/if}}
 
+            {{#if error }}
+                <div class="alert alert-dismissable alert-danger" style="z-index: 999;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ error }}
+                </div>
+            {{/if}}
+
             <h1 class="main-title">Gala d 'hiver</h1>
 
             <p class="main-desc hidden-xs">Un évènement exclusif réservé pour seulement <strong>700</strong> lycéens et étudiants.</p>

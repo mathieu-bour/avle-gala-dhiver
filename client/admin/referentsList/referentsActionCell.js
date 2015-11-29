@@ -6,7 +6,7 @@ Template.referentsActionCell.events({
 
         if(!givenDb){
             $("#update-given-input").val("0");
-        }else{
+        }else {
             $("#update-given-input").val(givenDb.given);
         }
 
