@@ -144,11 +144,8 @@ if(delta <= 0) {
         link: stylesheets.front,
         data: function () {
             var query = this.params.query;
-            if(query.token){
-                return query;
-            }else{
-                Router.go('/');
-            }
+
+            return query;
         }
     });
 }

@@ -29,7 +29,6 @@ Template.validate.onRendered(function () {
                 if(!error){
                     Session.set('expressCheckoutDetails', result);
                     var expressCheckoutDetails = result;
-                    console.log(result);
 
                     var id = expressCheckoutDetails.INVNUM;
                     if(expressCheckoutDetails['CHECKOUTSTATUS'] == 'PaymentActionCompleted'){
@@ -46,7 +45,7 @@ Template.validate.onRendered(function () {
                                 'phone': ticket.phone,
                                 'school': ticket.school,
                                 'getPdf': false,
-                                'isPaypal': true,
+                                'isPaypal': ticket.isPaypal,
                                 'email': ticket.email,
                                 'id': ticket._id,
                                 'isForbach': false
@@ -61,7 +60,7 @@ Template.validate.onRendered(function () {
                                 'firstname': ticket.firstname,
                                 'phone': ticket.phone,
                                 'school': ticket.school,
-                                'isPaypal': true,
+                                'isPaypal': ticket.isPaypal,
                                 'sexe': ticket.sexe,
                                 'getPdf': false,
                                 'email': ticket.email,
@@ -73,26 +72,23 @@ Template.validate.onRendered(function () {
                         });
                     }
                 }else{
-                    console.log(error);
-
-                    /*var host = "http://"+window.location.hostname;
+                    var host = "http://"+window.location.hostname;
 
                     if(host == 'http://localhost'){
                         window.location.replace("http://localhost:3000/buy/payment/canceled");
                     }else{
                         window.location.replace(host + "/buy/payment/canceled");
-                    }*/
+                    }
                 }
             });
         }else{
-            console.log(error);
-            /*var host = "http://"+window.location.hostname;
+            var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
                 window.location.replace("http://localhost:3000/buy/payment/canceled");
             }else{
                 window.location.replace(host + "/buy/payment/canceled");
-            }*/
+            }
         }
     });
 
