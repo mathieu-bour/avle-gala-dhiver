@@ -73,23 +73,26 @@ Template.validate.onRendered(function () {
                         });
                     }
                 }else{
-                    var host = "http://"+window.location.hostname;
+                    console.log(error);
+
+                    /*var host = "http://"+window.location.hostname;
 
                     if(host == 'http://localhost'){
                         window.location.replace("http://localhost:3000/buy/payment/canceled");
                     }else{
                         window.location.replace(host + "/buy/payment/canceled");
-                    }
+                    }*/
                 }
             });
         }else{
-            var host = "http://"+window.location.hostname;
+            console.log(error);
+            /*var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
                 window.location.replace("http://localhost:3000/buy/payment/canceled");
             }else{
                 window.location.replace(host + "/buy/payment/canceled");
-            }
+            }*/
         }
     });
 
