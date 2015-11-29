@@ -65,6 +65,7 @@ Template.ticketsActionsCell.events({
 
             HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
                 params: {
+                    '._id': ticket._id,
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
                     'phone': ticket.phone,
