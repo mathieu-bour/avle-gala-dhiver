@@ -1,17 +1,23 @@
 /*= Open Sans =*/
 /*======================================================*/
-
-
+@font-face{
+    font-family : "Open Sans";
+    src: url(//cdn.avle.fr/fonts/open-sans-reular.eot);
+    src: url(//cdn.avle.fr/fonts/open-sans-reular.woff) format("woff"),
+         url(//cdn.avle.fr/fonts/open-sans-reular.woff2) format("woff2"),
+         url(//cdn.avle.fr/fonts/open-sans-reular.svg#opensansregular) format("svg"),
+         url(//cdn.avle.fr/fonts/open-sans-reular.ttf) format("truetype");
+}
 
 /*= Great Vibes =*/
 /*======================================================*/
 @font-face{
     font-family : "Great Vibes";
     src: url(//cdn.avle.fr/fonts/great-vibes-regular.eot);
-    src: url(//cdn.avle.fr/fonts/great-vibes-regular.woff) format('woff'),
-         url(//cdn.avle.fr/fonts/great-vibes-regular.woff2) format('woff2'),
-         url(//cdn.avle.fr/fonts/great-vibes-regular.svg#GreatVibesRegular) format('svg'),
-         url(//cdn.avle.fr/fonts/great-vibes-regular.ttf) format('truetype');
+    src: url(//cdn.avle.fr/fonts/great-vibes-regular.woff) format("woff"),
+         url(//cdn.avle.fr/fonts/great-vibes-regular.woff2) format("woff2"),
+         url(//cdn.avle.fr/fonts/great-vibes-regular.svg#GreatVibesRegular) format("svg"),
+         url(//cdn.avle.fr/fonts/great-vibes-regular.ttf) format("truetype");
 }
 
 body, h1, h2, h3, h4, h5, h6 {
