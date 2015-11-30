@@ -3,10 +3,11 @@
  * ==============
  *
  * @author Mathieu Bour
- * @version 1.0
+ *
+ * Design for checkpoint panel
  */
 .centered-wrapper {
-    background: url(///cdn.avle.fr/img/bg-checkpoint.jpg) no-repeat center center fixed;
+    background: url(//cdn.avle.fr/img/bg-checkpoint.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
