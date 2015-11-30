@@ -99,7 +99,7 @@ if(delta <= 0) {
         }
     });
 }else{
-    Router.route("/buy", {
+    /*Router.route("/buy", {
         name: "buy",
         link: stylesheets.front,
         data: function () {
@@ -147,6 +147,11 @@ if(delta <= 0) {
 
             return query;
         }
+    });*/
+
+    Router.route("/buy", {
+        name: "maintenance",
+        link: stylesheets.front
     });
 }
 
