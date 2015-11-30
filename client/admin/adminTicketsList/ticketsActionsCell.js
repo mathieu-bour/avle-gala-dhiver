@@ -82,5 +82,25 @@ Template.ticketsActionsCell.events({
                 console.log(result);
             });
         }
+    },
+    'click #confirmation': function(e){
+        e.preventDefault();
+
+        Meteor.call('sendEmail',{
+            to:       this.email,
+            from:     'contact@avle.fr',
+            subject:  "Confirmation de réservation pour le Gala d'hiver",
+            html:     Blaze.toHTMLWithData(Template.confirmedEmail, this)
+        });
+    },
+    'click #delete': function(e){
+        e.preventDefault();
+
+        if(confirm("Etes-vous sûr de vouloir supprimer ce tickets ?")){
+            Tickets.remove({_id: this._id});
+
+            Meteor.go('/admin/ticketsList');
+        }
+
     }
 });

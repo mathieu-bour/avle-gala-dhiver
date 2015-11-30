@@ -66,6 +66,7 @@ Template.buy.events({
             phone: $(e.target).find('[id=phone]').val(),
             school: $(e.target).find('[id=school]').val(),
             level: $(e.target).find('[id=level]').val(),
+            sexe: $(e.target).find('[name=sexe]').val(),
             isPaid: false,
             isPaypal: false,
             isChecked: false,
