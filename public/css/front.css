@@ -187,6 +187,11 @@ label {
     color: #666666;
 }
 
+/*> Forms */
+.has-error .form-control {
+    background-image: linear-gradient(#f44336, #f44336), linear-gradient(#f44336, #f44336) !important;
+}
+
 /*> Tables */
 .table td {
     vertical-align: middle !important;

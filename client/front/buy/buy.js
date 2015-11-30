@@ -25,7 +25,7 @@ Template.buy.helpers({
  * Events
  */
 Template.buy.events({
-    "#birthday change": function(e){
+    "change #birthday": function(e){
         console.log("Test");
 
         var datePattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
