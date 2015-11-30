@@ -25,7 +25,7 @@ Template.validate.onRendered(function () {
                 query_json[item[0]] = decodeURIComponent(item[1]);
             };
 
-            Meteor.call('getExpressCheckoutDetails', query_json.token, function(error, result){
+            /*Meteor.call('getExpressCheckoutDetails', query_json.token, function(error, result){
                 if(!error){
                     Session.set('expressCheckoutDetails', result);
                     var expressCheckoutDetails = result;
@@ -38,7 +38,7 @@ Template.validate.onRendered(function () {
 
                         /*= Save and save invoice =*/
                         /*======================================================*/
-                        HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
+                        /*HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
                             params: {
                                 'lastname': ticket.lastname,
                                 'firstname': ticket.firstname,
@@ -82,7 +82,7 @@ Template.validate.onRendered(function () {
                         window.location.replace(host + "/buy/payment/canceled");
                     }
                 }
-            });
+            });*/
         }else{
             var host = "http://"+window.location.hostname;
 
