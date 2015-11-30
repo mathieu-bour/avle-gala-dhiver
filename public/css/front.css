@@ -187,11 +187,62 @@ label {
     color: #666666;
 }
 
+<<<<<<< Updated upstream
 /*> Forms */
-.has-error .form-control {
-    background-image: linear-gradient(#f44336, #f44336), linear-gradient(#f44336, #f44336) !important;
+.panel-body.success, .panel-body.error {
+    position: relative;
+}
+.panel-body.success:after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    display: block;
+    color: #4caf50;
+    font-family: "Segoe UI Symbol", sans-serif;
+    transform: translateY(-50%);
+}
+.panel-body.error:after {
+    content: "✘";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    display: block;
+    color: #f44336;
+    font-family: "Segoe UI Symbol", sans-serif;
+    transform: translateY(-50%);
 }
 
+=======
+<<<<<<< Updated upstream
+=======
+/*> Forms */
+.panel-body.success, .panel-body.error {
+    position: relative;
+}
+.panel-body.success:after {
+    content: "✔";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    display: block;
+    color: #4caf50;
+    font-family: "Segoe UI Symbol", sans-serif;
+    transform: translateY(-50%);
+}
+.panel-body.error:after {
+    content: "✘";
+    position: absolute;
+    top: 50%;
+    right: 25px;
+    display: block;
+    color: #f44336;
+    font-family: "Segoe UI Symbol", sans-serif;
+    transform: translateY(-50%);
+}
+
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 /*> Tables */
 .table td {
     vertical-align: middle !important;
