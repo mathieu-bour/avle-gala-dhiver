@@ -53,6 +53,7 @@ Template.buy.events({
             phone: $(e.target).find('[id=phone]').val(),
             school: $(e.target).find('[id=school]').val(),
             level: $(e.target).find('[id=level]').val(),
+            sexe: $(e.target).find('[name=sexe]').val(),
             isPaid: false,
             isPaypal: false,
             isChecked: false,
@@ -62,7 +63,7 @@ Template.buy.events({
         };
         code = Codes.findOne({code: code});
         if(code.validations < 10){
-            var alreadyExist = Tickets.findOne({firstname: ticket.firstname, lastname: ticket.lastname, email: ticket.email, birthday: ticket.birthday});
+            var alreadyExist = Tickets.findOne({email: ticket.email});
             if(alreadyExist){
                 Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");
                 Router.go('/');
@@ -114,4 +115,6 @@ Template.buy.rendered = function() {
             $("#ticket-gender").attr("src", "//cdn.avle.fr/img/queen.png");
         }
     });
+
+    $("*[data-validator]").validator();
 };

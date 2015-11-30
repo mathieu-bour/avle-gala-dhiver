@@ -16,11 +16,11 @@
 /*======================================================*/
 @font-face{
     font-family : "Open Sans";
-    src: url(//cdn.avle.fr/fonts/open-sans-reular.eot);
-    src: url(//cdn.avle.fr/fonts/open-sans-reular.woff) format("woff"),
-         url(//cdn.avle.fr/fonts/open-sans-reular.woff2) format("woff2"),
-         url(//cdn.avle.fr/fonts/open-sans-reular.svg#opensansregular) format("svg"),
-         url(//cdn.avle.fr/fonts/open-sans-reular.ttf) format("truetype");
+    src: url(//cdn.avle.fr/fonts/open-sans-regular.eot);
+    src: url(//cdn.avle.fr/fonts/open-sans-regular.woff) format("woff"),
+         url(//cdn.avle.fr/fonts/open-sans-regular.woff2) format("woff2"),
+         url(//cdn.avle.fr/fonts/open-sans-regular.svg#opensansregular) format("svg"),
+         url(//cdn.avle.fr/fonts/open-sans-regular.ttf) format("truetype");
 }
 
 
