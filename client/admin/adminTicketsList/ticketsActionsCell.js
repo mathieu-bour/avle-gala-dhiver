@@ -98,8 +98,6 @@ Template.ticketsActionsCell.events({
 
         if(confirm("Etes-vous sûr de vouloir supprimer ce tickets ?")){
             Tickets.remove({_id: this._id});
-
-            Meteor.go('/admin/ticketsList');
         }
 
     }
