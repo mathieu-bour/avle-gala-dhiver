@@ -1,4 +1,16 @@
-/**
+/**!
+ * Materialist Theme v1.0
+ * Designed by Mathieu Bour
+ *
+ * Colors based on Google Material Design Color: http://www.google.com/design/spec/style/color.html#color-color-palette
+ */
+
+/**!
+ * admin.mobile.css
+ * ================
+ * @author Mathieu Bour
+ *
+ * Mobile design for admin panel
  */
 @media (max-width: 768px) {
     body {

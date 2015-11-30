@@ -1,13 +1,29 @@
-/**
+/**!
  * Materialist Theme v1.0
  * Designed by Mathieu Bour
  *
- * Color based on Google Material Design Color: http://www.google.com/design/spec/style/color.html#color-color-palette
- * Darker: 600
+ * Colors based on Google Material Design Color: http://www.google.com/design/spec/style/color.html#color-color-palette
  */
 
+/**!
+ * admin.css
+ * =========
+ * @author Mathieu Bour
+ *
+ * Desktop design for admin panel
+ *
+ * SUMMARY
+ * =======
+ * - Bootstrap theme
+ *   - Panels (used for widgets)
+ * - Wrapper
+ * - Header
+ * - Sidebar
+ * - Widgets
+ * - Chart.js
+ */
 
-/* BOOTSTRAP THEME
+/* Bootstrap theme
  * =======================================*/
 body {
     padding: 60px 0 0 300px;
@@ -45,7 +61,7 @@ a:hover, a:focus {
     background-color: #f44336 !important;
 }
 
-/*= PANELS (used for widgets) =*/
+/*= Panels (used for widgets) =*/
 .panel {
     border: 0;
     border-radius: 0;
@@ -60,7 +76,8 @@ a:hover, a:focus {
         .panel-actions {
         }
 
-/* WRAPPER
+
+/* Wrapper
  * =======================================*/
 .wrapper {
     padding-top: 20px;
@@ -81,7 +98,7 @@ a:hover, a:focus {
     }
 
 
-/* HEADER
+/* Header
  * =======================================*/
 .header {
     position: fixed;
@@ -152,7 +169,7 @@ a:hover, a:focus {
                 }
 
 
-/* SIDEBAR
+/* Sidebar
  * =======================================*/
 .sidebar {
     position: fixed;
@@ -236,7 +253,7 @@ a:hover, a:focus {
                     }
 
 
-/*= WIDGETS =*/
+/*= Widgets =*/
 /*======================================================*/
 .widget {
     position: relative;

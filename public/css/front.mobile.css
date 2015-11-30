@@ -1,3 +1,11 @@
+/**!
+ * front.mobile.css
+ * ================
+ * @author Mathieu Bour
+ *
+ * Mobile design for public website
+ */
+
 @media (max-width: 768px) {
     body {
         font-size: 12px;

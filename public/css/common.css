@@ -1,3 +1,17 @@
+/**
+ * common.css
+ * ==========
+ *
+ * @author Mathieu Bour
+ *
+ * Common ressources for admin panel and public site
+ *
+ * SUMMARY
+ * - Open Sans
+ * - Great Vibes
+ * - CENTERED WRAPPER
+ */
+
 /*= Open Sans =*/
 /*======================================================*/
 @font-face{
@@ -8,6 +22,7 @@
          url(//cdn.avle.fr/fonts/open-sans-reular.svg#opensansregular) format("svg"),
          url(//cdn.avle.fr/fonts/open-sans-reular.ttf) format("truetype");
 }
+
 
 /*= Great Vibes =*/
 /*======================================================*/
@@ -24,6 +39,9 @@ body, h1, h2, h3, h4, h5, h6 {
     font-family: "Open Sans", Helvetica, sans-serif !important;
 }
 
+
+/*= CENTERED WRAPPER =*/
+/*======================================================*/
 .centered-wrapper {
     position: absolute;
     top: 0;
