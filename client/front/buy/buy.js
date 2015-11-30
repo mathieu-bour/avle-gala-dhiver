@@ -25,6 +25,19 @@ Template.buy.helpers({
  * Events
  */
 Template.buy.events({
+    "#birthday change": function(e){
+        console.log("Test");
+
+        var datePattern = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+
+        var $birthday = $("#birthday");
+
+        if(!$birthday.val().match(datePattern)) {
+            $birthday.parent().addClass("has-error");
+        } else {
+            $birthday.parent().removeClass("has-error");
+        }
+    },
     "submit form": function(e){
         e.preventDefault();
 
