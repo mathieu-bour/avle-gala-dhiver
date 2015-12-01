@@ -63,16 +63,16 @@ Template.payment.events({
     }
 });
 
-
+Template.payment.onCreated(function () {
+    Meteor.call('setExpressCheckout', this.data._id, function(error, result){
+        Session.set('paypalUrl', result);
+    });
+});
 /**
  * On render
  */
 Template.payment.rendered = function() {
     $.material.init();
-
-    Meteor.call('setExpressCheckout', this.data._id, function(error, result){
-        Session.set('paypalUrl', result);
-    });
 
     var query = location.search;
 
