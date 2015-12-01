@@ -62,7 +62,7 @@ Template.buy.events({
             accessCode: code
         };
         code = Codes.findOne({code: code});
-        if(code.validations < 10){
+        if(code.validations < 100){
             var alreadyExist = Tickets.findOne({email: ticket.email});
             if(alreadyExist){
                 Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");

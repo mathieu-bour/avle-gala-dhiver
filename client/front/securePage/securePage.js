@@ -9,7 +9,7 @@ Template.securePage.events({
         var code = $(e.target).find('[id=code-input]').val();
 
         code = Codes.findOne({code: code});
-        if(code.validations < 10){
+        if(code.validations < 100){
             var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
