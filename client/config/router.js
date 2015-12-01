@@ -80,8 +80,8 @@ if(delta <= 0) {
         link: stylesheets.front,
         data: function () {
             var query = this.params.query;
-
-            if(query.id){
+            var ticketsNb = Tickets.find().count();
+            if(query.id && ticketsNb < 700){
                 return Tickets.findOne(query.id);
             }else{
                 Router.go('/');

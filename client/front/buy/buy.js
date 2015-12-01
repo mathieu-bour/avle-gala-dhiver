@@ -16,8 +16,8 @@ Template.buy.helpers({
         return schools;
     },
     'availableTickets': function(){
-        ticketsNb = Tickets.find().count();
-        return Math.round(((750 - ticketsNb) * 700) / 750);
+        var ticketsNb = Tickets.find().count();
+        return 700 - ticketsNb;
     }
 });
 
@@ -65,7 +65,7 @@ Template.buy.events({
         if(code.validations < 100){
             var alreadyExist = Tickets.findOne({email: ticket.email});
             if(alreadyExist){
-                Session.set("error", "Désolé mais un ticket existe déjà à ce nom.");
+                Session.set("error", "Désolé mais un ticket existe déjà à ce nom. Si vous avez tenté de payer votre ticket par Paypal et que vous avez quitté la page avant la fin de la procédure, cela signifie que votre payement n'a pas été fait. Votre place est en revanche bien enregistrée et il faudra venir la payer lors d'une permanence.");
                 Router.go('/');
             }else{
                 ticket._id = Tickets.insert(ticket);
