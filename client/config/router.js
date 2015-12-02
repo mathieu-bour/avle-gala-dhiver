@@ -73,7 +73,18 @@ var delta = open.diff(now);
 if(delta <= 0) {
     Router.route("/buy", {
         name: "buy",
-        link: stylesheets.front
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+            var ticketsNb = Tickets.find().count();
+            if(query.id && ticketsNb <= 700){
+                return true
+            }else{
+                Session.set("error", "Nous sommes désolés mais il n'y a plus de places disponibles pour le Gala d'hiver.")
+                Router.go('/');
+            }
+
+        }
     });
     Router.route("/buy/payment", {
         name: "payment",
@@ -81,7 +92,7 @@ if(delta <= 0) {
         data: function () {
             var query = this.params.query;
             var ticketsNb = Tickets.find().count();
-            if(query.id && ticketsNb < 700){
+            if(query.id && ticketsNb <= 700){
                 return Tickets.findOne(query.id);
             }else{
                 Router.go('/');

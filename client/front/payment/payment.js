@@ -25,10 +25,6 @@ Template.payment.events({
         e.preventDefault();
 
         if($("#accept-conditions").prop("checked")){
-            var code = Session.get("code");
-            var code = Codes.findOne({code: code});
-
-            Meteor.call("updateValidations", code._id);
             window.location.replace(Session.get('paypalUrl'));
         }
     },
@@ -41,11 +37,6 @@ Template.payment.events({
     },
     "click #validate-btn": function(e){
         e.preventDefault();
-
-        var code = Session.get("code");
-        var code = Codes.findOne({code: code});
-
-        Meteor.call("updateValidations", code._id);
 
         var id = Session.get("_id");
         var ticket = Tickets.findOne(id);
