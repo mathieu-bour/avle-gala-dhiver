@@ -157,7 +157,7 @@ Template.dashboard.onRendered(function () {
         if(age >= 18){
             major ++
         }else{
-            major --
+            minor ++
         }
     };
     var ageChart = new Chart(ageChartContext).Pie([
