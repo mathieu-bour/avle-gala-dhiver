@@ -17,17 +17,17 @@
         <div class="sidebar-nav">
             <ul>
                 {{#if isAdmin }}
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'dashboard' }}"><i class="mdi-action-settings-overscan"></i> Tableau de bord</a></li>
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentsList' }}"><i class="mdi-social-group"></i> Gestion des référents</a></li>
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'adminTicketsList' }}"><i class="mdi-action-assignment"></i> Gestion des tickets</a></li>
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'newsletter' }}"><i class="mdi-content-send"></i> Newsletter</a></li>
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'generateCode' }}"><i class="mdi-action-assignment-turned-in"></i> Liste des codes</a></li>
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'checkpoint' }}"><i class="mdi-action-assignment-turned-in"></i> Poste de contrôle</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'dashboard' }}"><i class="zmdi zmdi-view-dashboard"></i> Tableau de bord</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentsList' }}"><i class="zmdi zmdi-accounts"></i> Gestion des référents</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'adminTicketsList' }}"><i class="zmdi zmdi-ticket-star"></i> Gestion des tickets</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'newsletter' }}"><i class="zmdi zmdi-mail-send"></i> Newsletter</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'generateCode' }}"><i class="zmdi zmdi-lock"></i> Liste des codes</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'checkpoint' }}"><i class="zmdi zmdi-badge-check"></i> Poste de contrôle</a></li>
                 {{ else }}
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentTicketsList' }}"><i class="mdi-action-assignment"></i> Gestion des tickets</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'referentTicketsList' }}"><i class="zmdi zmdi-ticket-star"></i> Gestion des tickets</a></li>
                 {{/if}}
                 {{#if isSuperAdmin }}
-                    <li class="sidebar-nav-item"><a href="{{ pathFor 'createAdmin' }}"><i class="mdi-content-add"></i> Ajouter un admin</a></li>
+                    <li class="sidebar-nav-item"><a href="{{ pathFor 'createAdmin' }}"><i class="zmdi zmdi-account-add"></i> Ajouter un admin</a></li>
                 {{/if}}
             </ul>
         </div>

@@ -65,7 +65,15 @@ Template.buy.events({
         if(code.validations < 100){
             var alreadyExist = Tickets.findOne({email: ticket.email});
             if(alreadyExist){
-                Session.set("error", "Désolé mais un ticket existe déjà à ce nom. Si vous avez tenté de payer votre ticket par Paypal et que vous avez quitté la page avant la fin de la procédure, cela signifie que votre payement n'a pas été fait. Votre place est en revanche bien enregistrée et il faudra venir la payer lors d'une permanence.");
+                if(alreadyExist.isPaid){
+                    Session.set("error", "Désolé mais un ticket payé existe déjà à ce nom. N'hésitez pas à nous contacter par email à contact@avle.fr si vous n'avez pas reçu votre place.");
+                }else if(alreadyExist.accessCode){
+                    Session.set("error", "Désolé mais un ticket existe déjà à ce nom. Si vous avez tenté de payer votre ticket par Paypal et que vous avez quitté la page avant la fin de la procédure, cela signifie que votre payement n'a pas été fait.");
+                    Session.set("errorLink", "/buy/payment?id=" + alreadyExist._id + "&code=" + alreadyExist.accessCode)
+                }else{
+                    Session.set("error", "Désolé mais un ticket existe déjà à ce nom. Si vous avez tenté de payer votre ticket par Paypal et que vous avez quitté la page avant la fin de la procédure, cela signifie que votre payement n'a pas été fait.");
+                    Session.set("errorLink", "/buy/payment?id=" + alreadyExist._id);
+                }
                 Router.go('/');
             }else{
                 ticket._id = Tickets.insert(ticket);

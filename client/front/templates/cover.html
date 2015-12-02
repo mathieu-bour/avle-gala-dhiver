@@ -19,6 +19,9 @@
                 <div class="alert alert-dismissable alert-danger" style="z-index: 999;">
                     <button type="button" class="close" data-dismiss="alert">×</button>
                     {{ error }}
+                    {{#if errorLink }}
+                        Cliquez <a href="{{ errorLink }}">ici</a> pour accéder de nouveau à la page de payement.
+                    {{/if}}
                 </div>
             {{/if}}
 

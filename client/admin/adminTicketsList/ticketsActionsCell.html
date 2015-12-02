@@ -1,9 +1,14 @@
 <template name="ticketsActionsCell">
-    {{#if isPaid }}
-        <button class="btn btn-info mdi-content-send btn-sm" id="sendTicket"></button>
-    {{ else }}
-        <button class="btn btn-success mdi-action-done btn-sm" id="checkTicket"></button>
-    {{/ if }}
-    <button class="btn btn-success btn-sm" id="confirmation">Confirmation</button>
-    <button class="btn btn-success btn-sm" id="delete">Supprimer</button>
+    <div class="btn-group btn-group-xs">
+        <a href="" data-target="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Actions <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            {{#if isPaid }}
+                <li><a id="sendTicket"><i class="zmdi zmdi-mail-send"></i> Envoyer le ticket</a></li>
+                <li><a href="/ticket/{{_id}}"><i class="zmdi zmdi-ticket-star"></i> Voir le ticket</a></li>
+            {{ else }}
+                <li><a id="confirmation"><i class="zmdi zmdi-mail-send"></i> Envoyer la confirmation</a></li>
+                <li><a id="delete"><i class="zmdi zmdi-delete"></i> Supprimer le ticket</a></li>
+            {{/if}}
+        </ul>
+    </div>
 </template>

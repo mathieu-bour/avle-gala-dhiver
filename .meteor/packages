@@ -11,8 +11,8 @@ email
 momentjs:moment
 aldeed:tabular
 ostrio:iron-router-meta
-fezvrasta:bootstrap-material-design
 ian:accounts-ui-bootstrap-3
+fezvrasta:bootstrap-material-design-noicons
 standard-minifiers
 meteor-base
 mobile-experience

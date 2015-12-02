@@ -5,6 +5,9 @@ Template.cover.helpers({
     'error': function(){
         return Session.get('error');
     },
+    'errorLink': function(){
+        return Session.get("errorLink");
+    },
     "isOpened": function(){
         var isOpenened =  Session.get('isOpened');
         var open = moment("02/12/2015 19:00", "DD/MM/YYYY HH:mm");

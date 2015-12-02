@@ -126,7 +126,7 @@ Template.dashboard.onRendered(function () {
 
     /*= Gender chart =*/
     /*======================================================*/
-    var genderChartContext = $("#gender-chart").get(0).getContext("2d");
+    /*var genderChartContext = $("#gender-chart").get(0).getContext("2d");
     var genderChart = new Chart(genderChartContext).Pie([
         {
             value: Tickets.find({sexe: "Homme"}).fetch().length,
@@ -140,26 +140,40 @@ Template.dashboard.onRendered(function () {
             label: "Femmes"
 
         }
-    ]);
+    ]);*/
 
     /*= Age chart =*/
     /*======================================================*/
     var ageChartContext = $("#age-chart").get(0).getContext("2d");
+    var tickets = Tickets.find().fetch();
+    var major = 0;
+    var minor = 0;
+
+    var now = moment();
+
+    for (var i = tickets.length - 1; i >= 0; i--) {
+        var birthday = moment(tickets[i].birthday);
+        var age = now.diff(birthday, 'years');
+        if(age >= 18){
+            major ++
+        }else{
+            major --
+        }
+    };
     var ageChart = new Chart(ageChartContext).Pie([
         {
-            value: Tickets.find({birthday: {$lte: new Date(1997, 11, 20)}}).fetch().length,
+            value: major,
             color: "#03a9f4",
             //highlight: "#",
             label: "Majeurs"
         }, {
-            value: Tickets.find({birthday: {$gt: new Date(1997, 11, 20)}}).fetch().length,
+            value: minor,
             color: "#f44336",
             //highlight: "#",
             label: "Mineurs"
 
         }
     ]);
-
 
     /*= School chart =*/
     /*======================================================*/
@@ -223,7 +237,6 @@ Template.dashboard.onRendered(function () {
     // Earnings
     var earnings = turnovers - ((paypalPaidTicketsCount + nonPaypalPaidTicketsCount) * 5);
     var earningsPercentage = Math.round(earnings / 3750 * 100 * 10) / 10;
-    console.log(earningsPercentage);
     $("#earnings-data").data("anumb", earnings);
     $("#earnings-progress")
         .data("anumb", earningsPercentage)
