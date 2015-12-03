@@ -1,0 +1,87 @@
+<template name="check">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">Vérifier l'état de votre place</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="text-center">
+
+                            <div class="text-center">
+                                <img src="//cdn.point-blank.fr/gala-dhiver/img/logo_2.png" alt=""/>
+                            </div>
+
+                            <div id="search">
+
+                                <h3>Entrez ci-dessous l'adresse e-mail utilisée pour la réservation.</h3>
+
+                                <hr/>
+
+                                <form action="#" id="login-form">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control floating-label" id="email" placeholder="Adresse e-mail">
+                                    </div>
+
+                                    <input type="submit" class="btn btn-success" value="Vérifier">
+                                </form>
+                            </div>
+
+                            <div id="paid" style="display: none;">
+                                <div class="alert alert-dismissible alert-success">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Parfait !</strong> Votre place a bien été payée.
+                                    <br/>
+                                    Si vous n'avez pas reçu le votre place, <strong><a href="" id="send-ticket">cliquez ici</a></strong>.
+                                </div>
+                            </div>
+
+                            <div id="reserved" style="display: none;">
+                                <div class="alert alert-dismissible alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Super !</strong> Votre place a bien été réservée.
+                                    <br/>
+                                    Ci-vous n'avez pas reçu le mail de confirmation, <strong><a href="" id="send-confirm">cliquez ici</a></strong>.
+                                </div>
+                                <p><small><strong>Cependant</strong>, cette place est seulement resérvée mais elle n'est pas encore payée. Nous vous invitons donc à venir à l'une des deux permanences suivantes:</small></p>
+                                <small>
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Lieu</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Samedi 5 décembre de 14h à 19h</td>
+                                            <td>Brasserie Rep' - Place de la République - 6 rue Winston Churchill - 57000 Metz</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mercredi 9 décembre de 14h à 19h</td>
+                                            <td>Brasserie Rep' - Place de la République - 6 rue Winston Churchill - 57000 Metz</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <p>Si votre place n'est pas payée après la seconde permanence, elle sera automatiquement supprimée et remise en vente.</p>
+                                </small>
+                            </div>
+
+                            <div id="not-found" style="display: none">
+                                <div class="alert alert-dismissible alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                    <strong>Dommage !</strong> Aucune place n'a été trouvée pour cette adresse e-mail.
+                                    <br/>
+                                </div>
+                                <p><small>Si aucune place n'est trouvée, cela peut signifier que vous avez entré une adresse e-mail éronnée lors de l'enregistrement. Nous vous prions alors de bien vouloir nous contacter sur <strong>contact@avle.fr</strong> afin que nous puissions vous donner plus d'informations.</small></p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>

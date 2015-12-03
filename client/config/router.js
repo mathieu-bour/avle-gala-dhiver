@@ -108,6 +108,11 @@ if(delta <= 0) {
             return query;
         }
     });
+
+    Router.route("/check", {
+        name: "check",
+        link: stylesheets.front
+    });
 }else{
     Router.route("/buy", {
         name: "buy",
