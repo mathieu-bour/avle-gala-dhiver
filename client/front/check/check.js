@@ -24,6 +24,8 @@ Template.check.events({
     'click #send-confirm': function(e){
         e.preventDefault();
 
+        $("#confirm-sent").show();
+
         var ticket = Session.get("ticket");
 
         Meteor.call('sendEmail',{
@@ -35,6 +37,8 @@ Template.check.events({
     },
     'click #send-ticket': function(e){
         e.preventDefault();
+
+        $("#ticket-sent").show();
 
         var ticket = Session.get("ticket");
 
