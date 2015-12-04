@@ -1,0 +1,25 @@
+<template name="exportTicketsList">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Super admin</a></li>
+                <li><a href="javascript:void(0)" class="active">Exportation de la liste des tickets</a></li>
+            </ul>
+
+            <h2 class="page-title">Exportation de la liste des tickets</h2>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Liste des tickets (format LaTex)</h3>
+                </div>
+                <div class="panel-body">
+                    <textarea name="tickets-list" id="tickets-list"  cols="100" rows="40">
+{{ ticketsList }}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>

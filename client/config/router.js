@@ -76,9 +76,16 @@ if(delta <= 0) {
         link: stylesheets.front,
         data: function () {
             var ticketsNb = Tickets.find().count();
-            if(ticketsNb < 700){
+            var query = this.params.query;
+
+            if(query.code){
+                return query;
+            }
+            else if(ticketsNb < 700){
                 return true
-            }else{
+            }
+            else
+            {
                 Session.set("error", "Nous sommes désolés mais il n'y a plus de places disponibles pour le Gala d'hiver.")
                 Router.go('/');
             }
@@ -89,11 +96,18 @@ if(delta <= 0) {
         name: "payment",
         link: stylesheets.front,
         data: function () {
-            var query = this.params.query;
             var ticketsNb = Tickets.find().count();
-            if(query.id && ticketsNb <= 700){
-                return Tickets.findOne(query.id);
-            }else{
+            var query = this.params.query;
+
+            if(query.code){
+                return query;
+            }
+            else if(ticketsNb < 700){
+                return true
+            }
+            else
+            {
+                Session.set("error", "Nous sommes désolés mais il n'y a plus de places disponibles pour le Gala d'hiver.")
                 Router.go('/');
             }
 
@@ -190,12 +204,11 @@ Router.route("/login", {
 /*= Referent =*/
 /*======================================================*/
 
-Router.route("/referent/ticketsList", {
+Router.route("/referent", {
     name: "referentTicketsList",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });
-
 
 /*= Admin =*/
 /*======================================================*/
@@ -237,6 +250,11 @@ Router.route("/admin/checkpoint", {
 /*======================================================*/
 Router.route("/superAdmin/createAdmin", {
     name: "createAdmin",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
+Router.route("/superAdmin/exportTicketsList", {
+    name: "exportTicketsList",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });

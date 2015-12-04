@@ -1,5 +1,7 @@
 Template.check.helpers({
-    //add you helpers here
+    "paypalUrl": function(){
+	return Session.get("paypalUrl");
+    }
 });
 
 Template.check.events({
@@ -13,6 +15,10 @@ Template.check.events({
             $("#search").hide();
             $("#paid").show();
         }else if(ticket){
+	    Meteor.call("setExpressCheckout", ticket._id, function(error, result){
+		Session.set("paypalUrl", result);
+	    });
+
             $("#search").hide();
             $("#reserved").show();
         }else{

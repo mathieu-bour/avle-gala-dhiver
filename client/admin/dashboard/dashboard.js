@@ -254,7 +254,7 @@ Template.dashboard.onCreated(function () {
         if (roles.indexOf('admin') >= 0) {
             return true;
         } else if(roles.indexOf('referent') >= 0){
-            Router.go('/referent/ticketsList');
+            Router.go('/referent');
         }
     }else{
         Router.go('/login');

@@ -29,7 +29,7 @@ Template.createAdmin.onCreated(function () {
         } else if(roles.indexOf('admin') >= 0){
             Router.go('/admin');
         } else if(roles.indexOf('referent') >= 0){
-            Router.go('/referent/ticketsList');
+            Router.go('/referent');
         }
     }else{
         Router.go('/login');

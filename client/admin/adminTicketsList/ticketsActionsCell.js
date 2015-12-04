@@ -100,5 +100,15 @@ Template.ticketsActionsCell.events({
             Tickets.remove({_id: this._id});
         }
 
+    },
+    'click #edit-email': function(e){
+        e.preventDefault();
+
+        var id = $(this).attr("_id");
+        var email = Tickets.findOne(id).email;
+        var newEmail = prompt("Entrez le nouvel email : ", email);
+        if(newEmail != null){
+            Tickets.update(id, {$set: {email: newEmail}});
+        }
     }
 });

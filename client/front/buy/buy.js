@@ -43,24 +43,46 @@ Template.buy.events({
             return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
         });
         var code = Session.get("code");
+        var validations = Codes.findOne({code: code}).validations;
 
-        var ticket = {
-            sexe: $(e.target).find('[id=sexe]').val(),
-            firstname: $(e.target).find('[id=firstname]').val(),
-            lastname: $(e.target).find('[id=lastname]').val(),
-            birthday: $(e.target).find('[id=birthday]').val(),
-            email: $(e.target).find('[id=email]').val(),
-            phone: $(e.target).find('[id=phone]').val(),
-            school: $(e.target).find('[id=school]').val(),
-            level: $(e.target).find('[id=level]').val(),
-            sexe: $(e.target).find('[name=sexe]').val(),
-            isPaid: false,
-            isPaypal: false,
-            isChecked: false,
-            created: new Date(),
-            uuid: uuid,
-            accessCode: code
-        };
+
+        if(code){
+            var ticket = {
+                sexe: $(e.target).find('[id=sexe]').val(),
+                firstname: $(e.target).find('[id=firstname]').val(),
+                lastname: $(e.target).find('[id=lastname]').val(),
+                birthday: $(e.target).find('[id=birthday]').val(),
+                email: $(e.target).find('[id=email]').val(),
+                phone: $(e.target).find('[id=phone]').val(),
+                school: $(e.target).find('[id=school]').val(),
+                level: $(e.target).find('[id=level]').val(),
+                sexe: $(e.target).find('[name=sexe]').val(),
+                isPaid: false,
+                isPaypal: false,
+                isChecked: false,
+                created: new Date(),
+                uuid: uuid,
+                accessCode: code
+            };
+        }else{
+            var ticket = {
+                sexe: $(e.target).find('[id=sexe]').val(),
+                firstname: $(e.target).find('[id=firstname]').val(),
+                lastname: $(e.target).find('[id=lastname]').val(),
+                birthday: $(e.target).find('[id=birthday]').val(),
+                email: $(e.target).find('[id=email]').val(),
+                phone: $(e.target).find('[id=phone]').val(),
+                school: $(e.target).find('[id=school]').val(),
+                level: $(e.target).find('[id=level]').val(),
+                sexe: $(e.target).find('[name=sexe]').val(),
+                isPaid: false,
+                isPaypal: false,
+                isChecked: false,
+                created: new Date(),
+                uuid: uuid,
+            };
+        }
+
         var alreadyExist = Tickets.findOne({email: ticket.email});
         if(alreadyExist){
             if(alreadyExist.isPaid){
@@ -76,9 +98,14 @@ Template.buy.events({
         }else{
             ticket._id = Tickets.insert(ticket);
 
-            if(code){
-                Router.go('/buy/payment?id=' + ticket._id + "&code=" + code.code);
-            }else{
+            if(code && validations <= 50){
+                Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
+            }
+            else if(code && validations >50){
+                Session.set("error", "Désolé mais ce code a déjà été utilisé trop de fois.");
+                Rputer.go('/');
+            }
+            else{
                 Router.go('/buy/payment?id=' + ticket._id);
             }
         }
@@ -94,6 +121,9 @@ Template.buy.rendered = function() {
 
     $.material.init(); // Init Bootstrap Material
 
+    if(this.data.code){
+        Session.set("code", this.data.code)
+    }
     $("#ticket-barcode").barcode("specimen", "code128"); // Render page
 
     // Update ticket name

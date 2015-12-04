@@ -2,9 +2,30 @@
     <div class="wrapper">
         <div class="container-fluid">
             <ul class="breadcrumb">
-                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)">Referent</a></li>
                 <li><a href="javascript:void(0)" class="active">Gestion des tickets</a></li>
             </ul>
+
+            <div class="col-md-6">
+                <div class="widget bg-primary">
+                    <h5 class="widget-title">Somme due</h5>
+                    <h4 class="widget-data" id="due-sum-data" data-anumb="" data-anumb-type="number"></h4>
+
+                    <div class="widget-progress">
+                        <span id="due-sum-progress" data-anumb="" data-anumb-type="width">85% de 1000</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="widget bg-warning">
+                    <h5 class="widget-title">Somme donnée</h5>
+                    <h4 class="widget-data" id="given-sum-data" data-anumb="" data-anumb-type="number"></h4>
+
+                    <div class="widget-progress">
+                        <span id="given-sum-progress" data-anumb="" data-anumb-type="width">62,3% de 1000</span>
+                    </div>
+                </div>
+            </div>
 
             <h2 class="page-title">Gestion des tickets</h2>
             <div class="panel">
@@ -12,7 +33,7 @@
                     <h4>Liste des tickets</h4>
                 </div>
                 <div class="panel-body">
-                    {{> tabular table=TabularTables.ReferentTickets selector=selector class="table table-striped table-bordered table-condensed"}}
+                    {{> tabular table=TabularTables.Tickets class="table table-striped table-bordered table-condensed"}}
                 </div>
             </div>
         </div>
