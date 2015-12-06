@@ -25,7 +25,7 @@ Template.payment.events({
         e.preventDefault();
 
         if($("#accept-conditions").prop("checked")){
-            Session.get("code");
+            var code = Session.get("code");
             if(code){
                 var code_id = Codes.findOne({code: code})._id;
                 Meteor.call('updateValidatons', code_id);
