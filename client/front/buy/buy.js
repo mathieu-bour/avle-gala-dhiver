@@ -17,7 +17,7 @@ Template.buy.helpers({
     },
     'availableTickets': function(){
         var ticketsNb = Tickets.find().count();
-        return 700 - ticketsNb;
+        return 750 - ticketsNb;
     }
 });
 
