@@ -95,11 +95,11 @@ Template.buy.events({
             }
             Router.go('/');
         }else{
-            if(code && validations < 50){
+            if(code && validations < 100){
                 ticket._id = Tickets.insert(ticket);
                 Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
             }
-            else if(code && validations >= 50){
+            else if(code && validations >= 100){
                 Session.set("error", "Désolé mais ce code a déjà été utilisé trop de fois.");
                 Router.go('/');
             }
