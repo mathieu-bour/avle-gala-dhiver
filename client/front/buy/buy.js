@@ -56,7 +56,7 @@ Template.buy.events({
                 phone: $(e.target).find('[id=phone]').val(),
                 school: $(e.target).find('[id=school]').val(),
                 level: $(e.target).find('[id=level]').val(),
-                sexe: $(e.target).find('[name=sexe]').val(),
+                sexe: $(e.target).find('input[name=sexe]:checked').val(),
                 isPaid: false,
                 isPaypal: false,
                 isChecked: false,
@@ -74,7 +74,7 @@ Template.buy.events({
                 phone: $(e.target).find('[id=phone]').val(),
                 school: $(e.target).find('[id=school]').val(),
                 level: $(e.target).find('[id=level]').val(),
-                sexe: $(e.target).find('[name=sexe]').val(),
+                sexe: $(e.target).find('input[name=sexe]:checked').val(),
                 isPaid: false,
                 isPaypal: false,
                 isChecked: false,
@@ -96,14 +96,13 @@ Template.buy.events({
             }
             Router.go('/');
         }else{
-            ticket._id = Tickets.insert(ticket);
-
-            if(code && validations <= 50){
+            if(code && validations < 50){
+                ticket._id = Tickets.insert(ticket);
                 Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
             }
-            else if(code && validations >50){
+            else if(code && validations >= 50){
                 Session.set("error", "Désolé mais ce code a déjà été utilisé trop de fois.");
-                Rputer.go('/');
+                Router.go('/');
             }
             else{
                 Router.go('/buy/payment?id=' + ticket._id);
@@ -120,7 +119,6 @@ Template.buy.events({
 Template.buy.rendered = function() {
 
     $.material.init(); // Init Bootstrap Material
-
     if(this.data.code){
         Session.set("code", this.data.code)
     }

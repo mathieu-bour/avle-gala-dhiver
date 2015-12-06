@@ -25,6 +25,11 @@ Template.payment.events({
         e.preventDefault();
 
         if($("#accept-conditions").prop("checked")){
+            Session.get("code");
+            if(code){
+                var code_id = Codes.findOne({code: code})._id;
+                Meteor.call('updateValidatons', code_id);
+            }
             window.location.replace(Session.get('paypalUrl'));
         }
     },
@@ -37,6 +42,12 @@ Template.payment.events({
     },
     "click #validate-btn": function(e){
         e.preventDefault();
+
+        var code = Session.get("code");
+        if(code){
+            var code_id = Codes.findOne({code: code})._id;
+            Meteor.call('updateValidations', code_id);
+        }
 
         var id = Session.get("_id");
         var ticket = Tickets.findOne(id);
@@ -77,8 +88,8 @@ Template.payment.rendered = function() {
         query_json[item[0]] = decodeURIComponent(item[1]);
     };
 
-    Session.set("code", query_json.code)
-    Session.set("_id", this.data._id);
+    Session.set("code", query_json.code);
+    Session.set("_id", this.data.id);
 
     $("#ticket-barcode").barcode("specimen", "code128"); // Generate barcode
     $("#age-warning-dialog").modal("show"); // Force age-warning modal to appear
