@@ -16,7 +16,8 @@ Template.buy.helpers({
         return schools;
     },
     'availableTickets': function(){
-        return 8;
+        var count = Tickets.find().count();
+        return 850 - count;
     }
 });
 
@@ -42,12 +43,13 @@ Template.buy.events({
             return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
         });
         var code = Session.get("code");
-        var validations = Codes.findOne({code: code}).validations;
+        if(code){
+            var validations = Codes.findOne({code: code}).validations;
+        }
 
 
         if(code){
             var ticket = {
-                sexe: $(e.target).find('[id=sexe]').val(),
                 firstname: $(e.target).find('[id=firstname]').val(),
                 lastname: $(e.target).find('[id=lastname]').val(),
                 birthday: $(e.target).find('[id=birthday]').val(),
@@ -65,7 +67,6 @@ Template.buy.events({
             };
         }else{
             var ticket = {
-                sexe: $(e.target).find('[id=sexe]').val(),
                 firstname: $(e.target).find('[id=firstname]').val(),
                 lastname: $(e.target).find('[id=lastname]').val(),
                 birthday: $(e.target).find('[id=birthday]').val(),
@@ -104,6 +105,7 @@ Template.buy.events({
                 Router.go('/');
             }
             else{
+                ticket._id = Tickets.insert(ticket);
                 Router.go('/buy/payment?id=' + ticket._id);
             }
         }

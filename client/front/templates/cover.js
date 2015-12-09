@@ -10,11 +10,11 @@ Template.cover.helpers({
     },
     "isOpened": function(){
         var isOpenened =  Session.get('isOpened');
-        var open = moment("02/12/2015 19:00", "DD/MM/YYYY HH:mm");
+        var open = moment("10/12/2015 20:00", "DD/MM/YYYY HH:mm");
         var now = moment();
         var delta = open.diff(now);
 
-        return (delta <= 0) ? false : true;
+        return (delta > 0);
     }
 });
 

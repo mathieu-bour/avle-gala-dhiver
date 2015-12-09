@@ -66,7 +66,7 @@ Router.route("/", {
 
 
 // Countdown before opening
-var open = moment("02/12/2015 19:00", "DD/MM/YYYY HH:mm");
+var open = moment("10/12/2015 20:00", "DD/MM/YYYY HH:mm");
 var now = moment();
 var delta = open.diff(now);
 
@@ -81,7 +81,7 @@ if(delta <= 0) {
             if(query.code){
                 return query;
             }
-            else if(ticketsNb < 700){
+            else if(ticketsNb < 850){
                 return true
             }
             else
@@ -102,8 +102,8 @@ if(delta <= 0) {
             if(query.code){
                 return query;
             }
-            else if(ticketsNb < 700){
-                return true
+            else if(ticketsNb < 850){
+                return query
             }
             else
             {
