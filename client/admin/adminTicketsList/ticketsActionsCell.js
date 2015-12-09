@@ -97,7 +97,16 @@ Template.ticketsActionsCell.events({
         e.preventDefault();
 
         if(confirm("Etes-vous sûr de vouloir supprimer ce tickets ?")){
+            var ticket = Tickets.findOne(this._id);
             Tickets.remove({_id: this._id});
+
+            console.log(ticket);
+            Meteor.call('sendEmail',{
+                to:       ticket.email,
+                from:     'contact@avle.fr',
+                subject:  "Suppression de votre ticket pour le Gala d'hiver",
+                html:     Blaze.toHTMLWithData(Template.deleteEmail, ticket)
+            });
         }
 
     },

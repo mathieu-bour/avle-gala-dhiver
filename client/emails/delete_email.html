@@ -1,0 +1,65 @@
+<template name="deleteEmail">
+    <style>
+
+        .head{
+            background-color: #F34235;
+            width: 100%;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px 0;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+
+        .logo img{
+            width: 60px;
+        }
+
+        .head-title{
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .body{
+            background-color: #fff;
+            padding: 20px 50px;
+            color: #212121;
+        }
+
+        .body h1{
+            font-size: 20px;
+        }
+
+        .center{
+            margin-top: 20px;
+            display: block;
+            margin: 0 auto;
+            background-color: #00838F;
+            border: 1px solid #00838F;
+            border-radius: 3px;
+            width: 40%;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+    </style>
+
+    <div class="head" style="background-color: #F34235;width: 100%;text-align: center;vertical-align: middle;padding: 10px 0;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+        <div class="logo">
+        </div>
+        <div class="head-title" style="color: #fff;font-size: 18px;">
+            Votre ticket a été supprimé
+        </div>
+    </div>
+    <div class="body" style="background-color: #fff;padding: 20px 50px;color: #212121;">
+        <h1 style="font-size: 20px;">Bonjour {{ firstname }} {{ lastname }} ,</h1>
+
+        <p>Nous t'envoyons ce mail pour t'informer que suite à ton absence lors des deux permanences de paiement qui se sont achevées, ta place a été automatiquement supprimée. Elle est désormais remise en vente.
+        <br/>
+        Merci de ta compréhension,<br/>
+        L'équipe de l'AVLE</p>
+    </div>
+</template>
