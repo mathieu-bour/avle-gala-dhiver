@@ -123,10 +123,6 @@ if(delta <= 0) {
         }
     });
 
-    Router.route("/check", {
-        name: "check",
-        link: stylesheets.front
-    });
 }else{
     Router.route("/buy", {
         name: "buy",
@@ -183,6 +179,11 @@ if(delta <= 0) {
         link: stylesheets.front
     });*/
 }
+
+Router.route("/check", {
+    name: "check",
+    link: stylesheets.front
+});
 
 /*= Secure access page =*/
 /*======================================================*/
