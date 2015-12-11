@@ -67,10 +67,24 @@ Router.route("/", {
 
 // Countdown before opening
 var open = moment("10/12/2015 20:00", "DD/MM/YYYY HH:mm");
+var close = moment("11/12/2015 22:00", "DD/MM/YYYY HH:mm");
 var now = moment();
+
+var deltaClose = close.diff(now);
 var delta = open.diff(now);
 
-if(delta <= 0) {
+if(deltaClose <= 0){
+    Router.route("/buy", {
+        name: "buy",
+        link: stylesheets.front,
+        data: function () {
+            Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.")
+            Router.go('/');
+
+        }
+    });
+}
+else if(delta <= 0) {
     Router.route("/buy", {
         name: "buy",
         link: stylesheets.front,
