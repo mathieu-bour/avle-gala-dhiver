@@ -78,8 +78,35 @@ if(deltaClose <= 0){
         name: "buy",
         link: stylesheets.front,
         data: function () {
-            Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
-            Router.go('/');
+            var query = this.params.query;
+
+            if(query.code){
+                return query;
+            }
+            else
+            {
+                Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
+                Router.go('/');
+            }
+
+
+        }
+    });
+
+    Router.route("/buy/payment", {
+        name: "payment",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+
+            if(query.code){
+                return query;
+            }
+            else
+            {
+                Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
+                Router.go('/');
+            }
 
         }
     });
