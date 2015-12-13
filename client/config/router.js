@@ -78,15 +78,31 @@ if(deltaClose <= 0){
         name: "buy",
         link: stylesheets.front,
         data: function () {
-            var query = this.params.query;
+            Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
+            Router.go('/');
 
-            if(query.code){
-                return true;
+        }
+    });
+
+    Router.route("/buy/payment/validate", {
+        name: "validate",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
+            if(query.token){
+                return query;
             }else{
-                Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.")
                 Router.go('/');
             }
+        }
+    });
+    Router.route("/buy/payment/canceled", {
+        name: "canceled",
+        link: stylesheets.front,
+        data: function () {
+            var query = this.params.query;
 
+            return query;
         }
     });
 }
@@ -255,6 +271,11 @@ Router.route("/admin/newsletter", {
 });
 Router.route("/admin/codesList", {
     name: "generateCode",
+    link: stylesheets.admin,
+    layoutTemplate: "adminLayout"
+});
+Router.route("/admin/addTicket", {
+    name: "addTicket",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });

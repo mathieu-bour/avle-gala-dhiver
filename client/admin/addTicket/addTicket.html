@@ -1,0 +1,123 @@
+<template name="addTicket">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <ul class="breadcrumb">
+                <li><a href="javascript:void(0)">Admin</a></li>
+                <li><a href="javascript:void(0)" class="active">Ajout d'un ticket</a></li>
+            </ul>
+
+            <h2 class="page-title">Ajout d'un tickets</h2>
+
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Ajout d'un ticket</h3>
+                </div>
+                <div class="panel-body">
+                    <form id="buyingForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label for="lastname" class="col-md-2 control-label">Nom</label>
+
+                            <div class="col-md-10">
+                                <input type="text" id="lastname" class="form-control" placeholder="Nom" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="firstname" class="col-md-2 control-label">Prénom</label>
+
+                            <div class="col-md-10">
+                                <input type="text" id="firstname" class="form-control" placeholder="Prénom" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="birthday" class="col-md-2 control-label">Date de naissance</label>
+
+                            <div class="col-md-10">
+                                <input type="date" id="birthday" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="col-md-2 control-label">Email</label>
+
+                            <div class="col-md-10">
+                                <input type="email" id="email" class="form-control" placeholder="Adresse e-mail" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="col-md-2 control-label">Téléphone</label>
+
+                            <div class="col-md-10">
+                                <input type="tel" id="phone" class="form-control" placeholder="Téléphone" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="school" class="col-md-2 control-label">Lycée</label>
+
+                            <div class="col-md-10">
+                                <select class="form-control" id="referent-school" required>
+                                    <optgroup label="Lycées">
+                                        {{#each schools.lycees}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="CPGE">
+                                        {{#each schools.cpge}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="Univesité de Lorraine">
+                                        {{#each schools.universite}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                    <optgroup label="Autre">
+                                        {{#each schools.autre}}
+                                            <option value="{{ this }}">{{ this }}</option>
+                                        {{/each}}
+                                    </optgroup>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="level" class="col-md-2 control-label">Niveau</label>
+
+                            <div class="col-md-10">
+                                <input type="text" id="level" class="form-control" placeholder="Niveau" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">Sexe</label>
+
+                            <div class="col-md-10">
+                                <div class="radio radio-primary">
+                                    <label>
+                                        <input type="radio" name="sexe" id="sexe" value="Homme">
+                                        Homme
+                                    </label>
+                                </div>
+                                <div class="radio radio-primary">
+                                    <label>
+                                        <input type="radio" name="sexe" id="sexe" value="Femme">
+                                        Femme
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
+                                <button type="submit" class="btn btn-primary">Ajouter</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</template>
