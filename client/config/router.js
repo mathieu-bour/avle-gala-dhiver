@@ -80,14 +80,16 @@ if(deltaClose <= 0){
         data: function () {
             var query = this.params.query;
 
-            if(query.code){
-                return query;
+            /*if(query.code){
+                //return query;
             }
             else
             {
                 Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
                 Router.go('/');
-            }
+            }*/
+            Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
+            Router.go('/');
 
 
         }
