@@ -10,7 +10,7 @@ Template.cover.helpers({
     },
     "isOpened": function(){
         var isOpenened =  Session.get('isOpened');
-        var open = moment("10/12/2015 20:00", "DD/MM/YYYY HH:mm");
+        var open = moment("27/01/2016 18:00", "DD/MM/YYYY HH:mm");
         var now = moment();
         var delta = open.diff(now);
 

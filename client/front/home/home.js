@@ -13,7 +13,7 @@
 Template.home.rendered = function () {
     /*= COUNTDOWN =*/
     /*======================================================*/
-    var end = new Date("2015/12/10 20:00");
+    var end = new Date("2016/01/27 18:00");
 
     // Values in ms
     var second = 1000,

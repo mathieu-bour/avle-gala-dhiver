@@ -25,11 +25,6 @@ Template.payment.events({
         e.preventDefault();
 
         if($("#accept-conditions").prop("checked")){
-            var code = Session.get("code");
-            if(code){
-                var code_id = Codes.findOne({code: code})._id;
-                Meteor.call('updateValidatons', code_id);
-            }
             window.location.replace(Session.get('paypalUrl'));
         }
     },
@@ -42,12 +37,6 @@ Template.payment.events({
     },
     "click #validate-btn": function(e){
         e.preventDefault();
-
-        var code = Session.get("code");
-        if(code){
-            var code_id = Codes.findOne({code: code})._id;
-            Meteor.call('updateValidations', code_id);
-        }
 
         var id = Session.get("_id");
         var ticket = Tickets.findOne(id);
@@ -76,19 +65,9 @@ Template.payment.onCreated(function () {
 Template.payment.rendered = function() {
     $.material.init();
 
-    var query = location.search;
-
-    query = query.split('?');
-    query = query[1];
-    query= query.split('&');
-
-    query_json = {};
-    for (var i = query.length - 1; i >= 0; i--) {
-        item = query[i].split("=");
-        query_json[item[0]] = decodeURIComponent(item[1]);
-    };
-
-    Session.set("code", query_json.code);
+    if(this.data.code){
+        Session.set("code", this.data.code);
+    }
     Session.set("_id", this.data.id);
 
     $("#ticket-barcode").barcode("specimen", "code128"); // Generate barcode

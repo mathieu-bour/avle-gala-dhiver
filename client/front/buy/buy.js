@@ -17,7 +17,8 @@ Template.buy.helpers({
     },
     'availableTickets': function(){
         var count = Tickets.find().count();
-        return 15;
+        var event = Events.findOne();
+        return event.ticketNumber - count;
     }
 });
 
@@ -43,10 +44,6 @@ Template.buy.events({
             return ( c == "x" ? r : (r&0x3|0x8)).toString(16);
         });
         var code = Session.get("code");
-        if(code){
-            var validations = Codes.findOne({code: code}).validations;
-        }
-
 
         if(code){
             var ticket = {
@@ -96,15 +93,11 @@ Template.buy.events({
             }
             Router.go('/');
         }else{
-            if(code && validations < 100){
+            if(code){
                 ticket._id = Tickets.insert(ticket);
+                Meteor.call("updateValidations", code._id);
                 Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
-            }
-            else if(code && validations >= 100){
-                Session.set("error", "Désolé mais ce code a déjà été utilisé trop de fois.");
-                Router.go('/');
-            }
-            else{
+            }else{
                 ticket._id = Tickets.insert(ticket);
                 Router.go('/buy/payment?id=' + ticket._id);
             }
@@ -120,6 +113,7 @@ Template.buy.events({
 Template.buy.rendered = function() {
 
     $.material.init(); // Init Bootstrap Material
+    $("#birthdayPicker").birthdayPicker({"dateFormat": "littleEndian"});
     if(this.data.code){
         Session.set("code", this.data.code)
     }
@@ -140,11 +134,56 @@ Template.buy.rendered = function() {
     // Update picture (male/female)
     $("input[type=radio][name=sexe]").change(function() {
         if($(this).val() == "Homme") {
-            $("#ticket-gender").attr("src", "//cdn.avle.fr/img/king.png");
+            $("#ticket-gender").attr("src", "/img/king.png");
         } else {
-            $("#ticket-gender").attr("src", "//cdn.avle.fr/img/queen.png");
+            $("#ticket-gender").attr("src", "/img/queen.png");
         }
     });
 
     $("*[data-validator]").validator();
 };
+
+Template.buy.onCreated(function () {
+    var event = Events.findOne();
+    query = this.data;
+    var open = moment(event.openDate, "DD/MM/YYYY HH:mm");
+    var close = moment(event.closeDate, "DD/MM/YYYY HH:mm");
+    var now = moment();
+
+    var deltaClose = close.diff(now);
+    var deltaOpen = open.diff(now);
+
+    if(query.code){
+        var code = Codes.findOne({code: query.code});
+        if(code){
+            var start = moment(code.startDate, "DD/MM/YYYY HH:mm");
+            var end = moment(code.endDate, "DD/MM/YYYY HH:mm");
+            var now = moment();
+
+            var deltaStart = start.diff(now);
+            var deltaEnd = end.diff(now);
+
+            if(code.validations <= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+                Session.set("code", this.data.code);
+            }else if(code.validations > code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+                Session.set("error", "Ce code a déjà été utilisé trop de fois.");
+                Router.go('/');
+            }else{
+                Session.set("error", "Désolé mais ce code n'est pas valable.");
+                Router.go('/');
+            }
+        }else{
+            Session.set("error", "Désolé mais ce code n'est pas valable.");
+            Router.go('/');
+        }
+    }else if(deltaOpen <= 0 && deltaClose >= 0){
+        return true;
+    }else if(deltaOpen >= 0){
+        Session.set("error", "Nous sommes désolés mais la billeterie n'est pas encore ouverte.");
+        Router.go('/');
+    }else if(deltaClose <= 0){
+        Session.set("error", "Nous sommes désolés mais la vente des places est terminée.");
+        Router.go('/');
+    }
+
+});

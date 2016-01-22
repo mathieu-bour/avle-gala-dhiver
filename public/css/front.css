@@ -221,7 +221,7 @@ label {
 }
 
 .cover {
-    background: url(//cdn.avle.fr/img/bg_2.jpg) no-repeat fixed;
+    background: url(/img/bg-3.jpg) no-repeat fixed;
     -webkit-background-size: cover;
     background-size: cover;
     position: fixed;
@@ -360,7 +360,7 @@ label {
         position: relative;
         width: 385px;
         height: 130px;
-        background: url(//cdn.avle.fr/img/bg_1.jpg) fixed;
+        background: url(/img/bg-1.jpg) fixed;
         margin-top: 190px;
     }
         .main-photo {
@@ -392,7 +392,7 @@ label {
 /*======================================================*/
 .tickets {
     color: #ffffff;
-    background: url(//cdn.avle.fr/img/divider-bg.png) no-repeat center center fixed;
+    background: url(/img/divider-bg.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -455,7 +455,7 @@ label {
 /*= Contact =*/
 /*======================================================*/
 .contact {
-    background: url(//cdn.avle.fr/img/bg-club-1.jpg) no-repeat center center fixed;
+    background: url(/img/bg-club-1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

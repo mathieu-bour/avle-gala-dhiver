@@ -1,0 +1,151 @@
+<template name="ticketing">
+    <div class="wrapper">
+        <div class="container-fluid">
+            <h2 class="page-title">Gestion de la billeterie</h2>
+            <h3 class="page-subtitle">Gérez l'ouverture et la fermeture de la billeterie et générez des codes pour permettre un accès privé à la billeterie</h3>
+
+            {{#if success }}
+                <div class="alert alert-dismissable alert-success" style="z-index: 999;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    <strong>Parfait !</strong> {{ success }}
+                </div>
+            {{/if}}
+
+            {{#if error }}
+                <div class="alert alert-dismissable alert-danger" style="z-index: 999;">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                    {{ error }}
+                    {{#if errorLink }}
+                        Cliquez <a href="{{ errorLink }}">ici</a> pour accéder de nouveau à la page de payement.
+                    {{/if}}
+                </div>
+            {{/if}}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Gestion de l'ouverture et de la fermeture</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form action="#" id="update-event">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="open-date" class="control-label">Commence</label>
+                                            <div class="input-group datetimepicker">
+                                                <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                                <input class="set-due-date form-control" id="open-date" type="text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="close-date" class="control-label">Se termine</label>
+                                            <div class="input-group datetimepicker">
+                                                <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                                <input class="set-due-date form-control" id="close-date" type="text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="ticket-number" class="col-md-2 control-label">Nombre de places</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="ticket-number" placeholder="Nombre de places disponibles" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Gestion des codes d'accès</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>Créer un nouveau code</h4>
+                            <form action="#" id="create-code" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="code" class="col-md-2 control-label">Code</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="code" placeholder="Code" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="start-date" class="control-label col-md-2">Commence</label>
+                                    <div class="input-group datetimepicker col-md-10">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                        <input class="set-due-date form-control" id="start-date" type="text"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="end-date" class="control-label col-md-2">Se termine</label>
+                                    <div class="input-group datetimepicker col-md-10">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                        <input class="set-due-date form-control" id="end-date" type="text"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="max-validations" class="col-md-2 control-label">Nombre de validations autorisées</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="max-validations" placeholder="Nombre de validations autorisées" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <h4>Liste des codes</h4>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Code</th>
+                                    <th>Commence</th>
+                                    <th>Se termine</th>
+                                    <th>Nombre de validations max</th>
+                                    <th>Nombre de validations</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each codes}}
+                                    <tr>
+                                        <td>{{ code }}</td>
+                                        <td>{{ startDate }}</td>
+                                        <td>{{ endDate }}</td>
+                                        <td>{{ maxValidations }}</td>
+                                        <td>{{ validations }}</td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</template>

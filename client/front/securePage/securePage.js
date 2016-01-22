@@ -9,16 +9,32 @@ Template.securePage.events({
         var code = $(e.target).find('[id=code-input]').val();
 
         code = Codes.findOne({code: code});
-        if(code.validations < 100){
-            var host = "http://"+window.location.hostname;
 
-            if(host == 'http://localhost'){
-                window.location.replace("http://localhost:3000/buy?code=" + code.code);
+        if(code){
+            var start = moment(code.startDate, "DD/MM/YYYY HH:mm");
+            var end = moment(code.endDate, "DD/MM/YYYY HH:mm");
+            var now = moment();
+
+            var deltaStart = start.diff(now);
+            var deltaEnd = end.diff(now);
+
+            if(code.validations <= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+                var host = "http://"+window.location.hostname;
+
+                if(host == 'http://localhost'){
+                    window.location.replace("http://localhost:3000/buy?code=" + code.code);
+                }else{
+                    window.location.replace(host + "/buy?code=" + code.code);
+                }
+            }else if(code.validations > code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+                Session.set("error", "Ce code a déjà été utilisé trop de fois.");
+                Router.go('/');
             }else{
-                window.location.replace(host + "/buy?code=" + code.code);
+                Session.set("error", "Désolé mais ce code n'est pas valable.");
+                Router.go('/');
             }
         }else{
-            Session.set("error", "Ce code a déjà été utilisé trop de fois. Rendez-vous mercredi prochain à 19h !");
+            Session.set("error", "Désolé mais ce code n'est pas valable.");
             Router.go('/');
         }
 

@@ -4,7 +4,7 @@ Template.ticketsActionsCell.events({
 
         var ticket = this;
 
-        HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
+        HTTP.get('http:/scripts/invoice_pdf/',{
             params: {
                 'lastname': ticket.lastname,
                 'firstname': ticket.firstname,
@@ -20,7 +20,7 @@ Template.ticketsActionsCell.events({
             console.log(result);
         });
 
-        HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
+        HTTP.get('http:/scripts/ticket_pdf/',{
             params: {
                 'lastname': ticket.lastname,
                 'firstname': ticket.firstname,
@@ -48,7 +48,7 @@ Template.ticketsActionsCell.events({
 
             /*= Save and save invoice =*/
             /*======================================================*/
-            HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
+            HTTP.get('http:/scripts/invoice_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
@@ -64,7 +64,7 @@ Template.ticketsActionsCell.events({
                 console.log(result);
             });
 
-            HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
+            HTTP.get('http:/scripts/ticket_pdf/',{
                 params: {
                     '._id': ticket._id,
                     'lastname': ticket.lastname,

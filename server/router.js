@@ -6,7 +6,7 @@ Router.route('/ticket/:_id', function () {
     var ticket = Tickets.findOne(id);
 
 
-    var result = HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe, getPdf: true}});
+    var result = HTTP.get('http:/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe, getPdf: true}});
 
     wkhtmltopdf(result.content, {
         'no-outline': true,         // Make Chrome not complain
@@ -28,7 +28,7 @@ Router.route('/invoice/:_id', function () {
     var id = this.params._id;
     var ticket = Tickets.findOne(id);
 
-    var result = HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/', {params: {id: ticket._id, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone, getPdf: true}});
+    var result = HTTP.get('http:/scripts/invoice_pdf/', {params: {id: ticket._id, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone, getPdf: true}});
 
     wkhtmltopdf(result.content, {
         'no-outline': true,         // Make Chrome not complain

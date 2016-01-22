@@ -28,7 +28,7 @@ var schools = [
  str = "x" + str;
  }
 
-for(var i = 0; i < 642; i++) {
+for(var i = 0; i < 699; i++) {
 
      // str = "xxxxx...xx" length time
      var d = new Date().getTime();

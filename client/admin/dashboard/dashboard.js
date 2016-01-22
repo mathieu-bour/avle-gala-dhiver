@@ -6,8 +6,8 @@ Template.dashboard.helpers({
         return Tickets.find({isPaid: true}).count();
     },
     amount: function () {
-        var onlineTickets = Tickets.find({isOnline: true, isPaid: true}).count()
-        var offlineTickets = Tickets.find({isOnline: false, isPaid: true}).count()
+        var onlineTickets = Tickets.find({isOnline: true, isPaid: true}).count();
+        var offlineTickets = Tickets.find({isOnline: false, isPaid: true}).count();
         var amount = onlineTickets * onlinePrice + offlineTickets * offlinePrice;
 
         return amount;

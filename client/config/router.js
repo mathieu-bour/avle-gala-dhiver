@@ -4,10 +4,10 @@ Router.configure({
     layoutTemplate: "noLayout",
     loadingTemplate: 'loading',
     notFoundTemplate: "notFound",
-    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers'); }
+    waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers') && Meteor.subscribe('events'); }
 });
 
-var cdn = Meteor.settings.public.local ? "" : "//cdn.avle.fr";
+var cdn = Meteor.settings.public.local ? "" : "";
 
 /*= CSS configuration =*/
 /*======================================================*/
@@ -66,184 +66,49 @@ Router.route("/", {
 
 
 // Countdown before opening
-var open = moment("10/12/2015 20:00", "DD/MM/YYYY HH:mm");
-var close = moment("11/12/2015 22:00", "DD/MM/YYYY HH:mm");
-var now = moment();
 
-var deltaClose = close.diff(now);
-var delta = open.diff(now);
+Router.route("/buy", {
+    name: "buy",
+    link: stylesheets.front,
+    data: function () {
+        var query = this.params.query;
 
-if(deltaClose <= 0){
-    Router.route("/buy", {
-        name: "buy",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
+        return query;
+    }
 
-            /*if(query.code){
-                //return query;
-            }
-            else
-            {
-                Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
-                Router.go('/');
-            }*/
-            Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
+});
+
+Router.route("/buy/payment", {
+    name: "payment",
+    link: stylesheets.front,
+    data: function () {
+        var query = this.params.query;
+
+        return query;
+    }
+});
+
+Router.route("/buy/payment/validate", {
+    name: "validate",
+    link: stylesheets.front,
+    data: function () {
+        var query = this.params.query;
+        if(query.token){
+            return query;
+        }else{
             Router.go('/');
-
-
         }
-    });
+    }
+});
+Router.route("/buy/payment/canceled", {
+    name: "canceled",
+    link: stylesheets.front,
+    data: function () {
+        var query = this.params.query;
 
-    Router.route("/buy/payment", {
-        name: "payment",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            if(query.code){
-                return query;
-            }
-            else
-            {
-                Session.set("error", "Nous sommes désolés mais la billeterie est actuellement fermée.");
-                Router.go('/');
-            }
-
-        }
-    });
-
-    Router.route("/buy/payment/validate", {
-        name: "validate",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-            if(query.token){
-                return query;
-            }else{
-                Router.go('/');
-            }
-        }
-    });
-    Router.route("/buy/payment/canceled", {
-        name: "canceled",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            return query;
-        }
-    });
-}
-else if(delta <= 0) {
-    Router.route("/buy", {
-        name: "buy",
-        link: stylesheets.front,
-        data: function () {
-            var ticketsNb = Tickets.find().count();
-            var query = this.params.query;
-
-            if(query.code){
-                return query;
-            }
-            else if(ticketsNb < 850){
-                return true
-            }
-            else
-            {
-                Session.set("error", "Nous sommes désolés mais il n'y a plus de places disponibles pour le Gala d'hiver.")
-                Router.go('/');
-            }
-
-        }
-    });
-    Router.route("/buy/payment", {
-        name: "payment",
-        link: stylesheets.front,
-        data: function () {
-            var ticketsNb = Tickets.find().count();
-            var query = this.params.query;
-
-            if(query.code){
-                return query;
-            }
-            else if(ticketsNb < 850){
-                return query
-            }
-            else
-            {
-                Session.set("error", "Nous sommes désolés mais il n'y a plus de places disponibles pour le Gala d'hiver.")
-                Router.go('/');
-            }
-
-        }
-    });
-    Router.route("/buy/payment/validate", {
-        name: "validate",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            return query;
-        }
-    });
-
-}else{
-    Router.route("/buy", {
-        name: "buy",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            if(query.code){
-                return query;
-            }else{
-                Router.go('/');
-            }
-
-        }
-    });
-    Router.route("/buy/payment", {
-        name: "payment",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            if(query.id && query.code){
-                return Tickets.findOne(query.id);
-            }else{
-                Router.go('/');
-            }
-
-        }
-    });
-    Router.route("/buy/payment/validate", {
-        name: "validate",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-            if(query.token){
-                return query;
-            }else{
-                Router.go('/');
-            }
-        }
-    });
-    Router.route("/buy/payment/canceled", {
-        name: "canceled",
-        link: stylesheets.front,
-        data: function () {
-            var query = this.params.query;
-
-            return query;
-        }
-    });
-
-    /*Router.route("/buy", {
-        name: "maintenance",
-        link: stylesheets.front
-    });*/
-}
+        return query;
+    }
+});
 
 Router.route("/check", {
     name: "check",
@@ -298,8 +163,8 @@ Router.route("/admin/newsletter", {
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });
-Router.route("/admin/codesList", {
-    name: "generateCode",
+Router.route("/admin/ticketing", {
+    name: "ticketing",
     link: stylesheets.admin,
     layoutTemplate: "adminLayout"
 });

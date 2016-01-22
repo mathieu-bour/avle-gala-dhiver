@@ -31,7 +31,7 @@ PrettyEmail.defaults.enrollAccount = {
 
 PrettyEmail.options = {
     from: 'A.V.L.E <noreply@avle.fr>',
-    logoUrl: 'http://cdn.avle.fr/img/logo_2.png',
+    logoUrl: 'http:/img/logo_2.png',
     companyName: 'A.V.L.E',
     companyUrl: 'http://avle.fr',
     companyEmail: 'contact@avle.fr',
@@ -62,7 +62,7 @@ _.each(users, function (user) {
 
     Accounts.sendEnrollmentEmail(id);
 
-});*/
+});
 
 /*= Meteor server methods =*/
 /*======================================================*/
@@ -148,14 +148,16 @@ Meteor.methods({
      * @returns {string|Meteor.Error()} throw new error if error is true, else return url of PaypalEC page
      */
     'setExpressCheckout': function(id){
+        console.log("called");
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
+            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
             content = result.content;
             var token = content.split("&")[0];
             token = token.split("=")[1];
+            console.log(result.content);
 
-            var url = "https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
+            var url = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
         } catch (_error) {
             throw new Meteor.Error("No Result", "Failed to fetch...");
         }
@@ -171,7 +173,7 @@ Meteor.methods({
     'getExpressCheckoutDetails': function(token){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
+            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -194,7 +196,7 @@ Meteor.methods({
     'doExpressCheckoutPayment': function(token, payerID){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
+            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -272,7 +274,7 @@ Meteor.methods({
         var fs = Npm.require('fs');
         var path = process.env["PWD"];
 
-        var result = HTTP.get('//cdn.avle.fr/scripts/invoice_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone}});
+        var result = HTTP.get('/scripts/invoice_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, isPaypal: ticket.isPaypal, email: ticket.email, school: ticket.school, phone: ticket.phone}});
 
         try {
             // Query the entry
@@ -311,7 +313,7 @@ Meteor.methods({
         var fs = Npm.require('fs');
         var path = process.env["PWD"];
 
-        var result = HTTP.get('//cdn.avle.fr/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe}});
+        var result = HTTP.get('/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe}});
 
         try {
             // Query the entry

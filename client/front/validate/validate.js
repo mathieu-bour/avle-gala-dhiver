@@ -5,10 +5,6 @@ Template.validate.helpers({
     }
 });
 
-Template.validate.onCreated(function () {
-    //add your statement here
-});
-
 Template.validate.onRendered(function () {
     Meteor.call('doExpressCheckoutPayment', this.data.token,this.data.PayerID, function(error, result){
         if(!error){
@@ -24,7 +20,7 @@ Template.validate.onRendered(function () {
                 item = query[i].split("=");
                 query_json[item[0]] = decodeURIComponent(item[1]);
             };
-
+            console.log(result);
             if(result['CHECKOUTSTATUS'] == 'PaymentActionCompleted'){
                 var id = result.INVNUM;
                 Session.set("expressCheckoutDetails", result);
@@ -34,7 +30,7 @@ Template.validate.onRendered(function () {
 
                 /*= Save and save invoice =*/
                 /*======================================================*/
-                HTTP.get('http://cdn.avle.fr/scripts/invoice_pdf/',{
+                HTTP.get('http://lab.dev/invoice_pdf/',{
                     params: {
                         'lastname': ticket.lastname,
                         'firstname': ticket.firstname,
@@ -50,7 +46,7 @@ Template.validate.onRendered(function () {
                     console.log(result);
                 });
 
-                HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
+                HTTP.get('http://lab.dev/ticket_pdf/',{
                     params: {
                         'lastname': ticket.lastname,
                         'firstname': ticket.firstname,
@@ -68,21 +64,23 @@ Template.validate.onRendered(function () {
                     console.log(result);
                 });
             }else{
+                console.log("error2");
                 var host = "http://"+window.location.hostname;
 
                 if(host == 'http://localhost'){
-                    window.location.replace("http://localhost:3000/buy/payment/canceled");
+                    //window.location.replace("http://localhost:3000/buy/payment/canceled");
                 }else{
-                    window.location.replace(host + "/buy/payment/canceled");
+                    //window.location.replace(host + "/buy/payment/canceled");
                 }
             }
         }else{
+            console.log("error1");
             var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
-                window.location.replace("http://localhost:3000/buy/payment/canceled");
+                //window.location.replace("http://localhost:3000/buy/payment/canceled");
             }else{
-                window.location.replace(host + "/buy/payment/canceled");
+                //window.location.replace(host + "/buy/payment/canceled");
             }
         }
     });

@@ -20,3 +20,7 @@ Meteor.publish('given', function() {
 Meteor.publish('codes', function() {
     return Codes.find();
 });
+
+Meteor.publish('events', function() {
+    return Events.find();
+});
