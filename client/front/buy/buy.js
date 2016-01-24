@@ -95,7 +95,8 @@ Template.buy.events({
         }else{
             if(code){
                 ticket._id = Tickets.insert(ticket);
-                Meteor.call("updateValidations", code._id);
+                var codeId = Codes.findOne({code: code});
+                Meteor.call("updateValidations", codeId._id);
                 Router.go('/buy/payment?id=' + ticket._id + "&code=" + code);
             }else{
                 ticket._id = Tickets.insert(ticket);
@@ -163,9 +164,9 @@ Template.buy.onCreated(function () {
             var deltaStart = start.diff(now);
             var deltaEnd = end.diff(now);
 
-            if(code.validations <= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+            if(code.validations < code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
                 Session.set("code", this.data.code);
-            }else if(code.validations > code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+            }else if(code.validations >= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
                 Session.set("error", "Ce code a déjà été utilisé trop de fois.");
                 Router.go('/');
             }else{

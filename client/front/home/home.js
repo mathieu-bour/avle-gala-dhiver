@@ -13,7 +13,9 @@
 Template.home.rendered = function () {
     /*= COUNTDOWN =*/
     /*======================================================*/
-    var end = new Date("2016/01/27 18:00");
+    var event = Events.findOne();
+    var openDate = moment(event.openDate, "DD/MM/YYYY HH:mm");
+    var end = new Date(openDate);
 
     // Values in ms
     var second = 1000,

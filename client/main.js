@@ -4,24 +4,25 @@ offlinePrice = 12;
 
 schools= {
     'lycees': [
-        "Lycée Fabert",
+        "Lycée Henri Poincaré",
+        "Lycée Jeanne d'Arc",
+        "Lycée Frédéric Chopin",
+        "Lycée Henri Loritz",
+        "Lycée Stanislas",
+        "Lycée Arthur Varoquaux",
         "Lycée Georges de la Tour",
-        "Lycée Louis Vincent",
-        "Ensemble scolaire Jean XXIII",
-        "Lycée Cormontaigne",
-        "Lycée de la Miséricorde",
-        "Lycée Robert Schuman",
-        "Institution De La Salle",
-        "Lycée de la Communication",
-        "Lycée Anne de Méjanès",
-        "Lycée Raymond Mondon",
-        "Lycée Notre Dame"
+        "Lycée Saint-Sigisbert",
+        "Lycée Jacques Callot",
+        "Lycée Saint-Dominique",
+        "Lycée Charles de Foucauld",
+        "Lycée Marie Marvingt",
+        "Lycée Ernest Bichat"
     ],
     "cpge": [
-        "CPGE Fabert",
-        "CPGE Georges de la Tour",
-        "CPGE Jean XXIII",
-        "CPGE Cormontaigne",
+        "CPGE Lycée Henri Poincaré",
+        "CPGE Lycée Frédéric Chopin",
+        "CPGE Lycée Saint-Sigisbert",
+        "CPGE Lycée Henri Loritz",
         "Autre CPGE"
     ],
     'universite': [

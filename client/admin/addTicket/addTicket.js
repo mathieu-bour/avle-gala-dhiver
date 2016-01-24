@@ -113,10 +113,8 @@ Template.addTicket.rendered = function() {
 Template.addTicket.onCreated(function () {
     if(Meteor.user() !== null) {
         var roles = Meteor.user().profile.roles;
-        if (roles.indexOf('admin') >= 0) {
+        if (roles.indexOf('referent') >= 0) {
             return true;
-        } else if(roles.indexOf('referent') >= 0){
-            Router.go('/referent');
         }
     }else{
         Router.go('/login');

@@ -18,7 +18,7 @@ Template.securePage.events({
             var deltaStart = start.diff(now);
             var deltaEnd = end.diff(now);
 
-            if(code.validations <= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+            if(code.validations < code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
                 var host = "http://"+window.location.hostname;
 
                 if(host == 'http://localhost'){
@@ -26,7 +26,7 @@ Template.securePage.events({
                 }else{
                     window.location.replace(host + "/buy?code=" + code.code);
                 }
-            }else if(code.validations > code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
+            }else if(code.validations >= code.maxValidations && deltaStart <= 0 && deltaEnd >= 0){
                 Session.set("error", "Ce code a déjà été utilisé trop de fois.");
                 Router.go('/');
             }else{

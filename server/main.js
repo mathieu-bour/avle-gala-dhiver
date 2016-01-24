@@ -31,7 +31,7 @@ PrettyEmail.defaults.enrollAccount = {
 
 PrettyEmail.options = {
     from: 'A.V.L.E <noreply@avle.fr>',
-    logoUrl: 'http:/img/logo_2.png',
+    logoUrl: 'http://cdn.avle.fr/img/logo_2.png',
     companyName: 'A.V.L.E',
     companyUrl: 'http://avle.fr',
     companyEmail: 'contact@avle.fr',
@@ -254,6 +254,7 @@ Meteor.methods({
      */
     'updateValidations': function(id){
         var code = Codes.findOne(id);
+        console.log(code);
         var validations = code.validations + 1;
 
         Codes.update(code._id, {$set: {validations: validations}});
