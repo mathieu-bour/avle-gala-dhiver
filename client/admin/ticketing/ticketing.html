@@ -60,11 +60,78 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-2">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
                                     </div>
                                 </div>
 
                             </form>
+                        </div>
+                    </div>
+
+
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Gestion des permanences</h4>
+                        </div>
+                        <div class="panel-body">
+                            <h4>Créer un nouveau code</h4>
+                            <form action="#" id="add-permanence" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="code" class="col-md-2 control-label">Lieu</label>
+
+                                    <div class="col-md-10">
+                                        <input type="text" class="form-control" id="place" placeholder="Lieu" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="start-date" class="control-label col-md-2">Commence</label>
+                                    <div class="input-group datetimepicker col-md-10">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                        <input class="set-due-date form-control" id="start-date" type="text"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="end-date" class="control-label col-md-2">Se termine</label>
+                                    <div class="input-group datetimepicker col-md-10">
+                                        <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
+                                        <input class="set-due-date form-control" id="end-date" type="text"/>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10 col-md-offset-2">
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                            <h4>Liste des codes</h4>
+
+                            <table class="table table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Lieu</th>
+                                    <th>Commence</th>
+                                    <th>Se termine</th>
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each permanences}}
+                                    <tr>
+                                        <td>{{ place }}</td>
+                                        <td>{{ startDate }}</td>
+                                        <td>{{ endDate }}</td>
+                                        <td>
+                                            <a href="" class="btn btn-danger btn-fab btn-fab-mini delete-permanence" id="{{ _id }}"><i class="zmdi zmdi-delete"></i></a>
+                                        </td>
+                                    </tr>
+                                {{/each}}
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -110,7 +177,7 @@
 
                                 <div class="form-group">
                                     <div class="col-md-10 col-md-offset-2">
-                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                        <button type="submit" class="btn btn-primary">Ajouter</button>
                                     </div>
                                 </div>
 
@@ -144,6 +211,10 @@
                     </div>
                 </div>
             </div>
+
+
+
+
 
         </div>
 

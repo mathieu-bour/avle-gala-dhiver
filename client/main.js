@@ -22,7 +22,7 @@ schools= {
         "CPGE Lycée Henri Poincaré",
         "CPGE Lycée Frédéric Chopin",
         "CPGE Lycée Saint-Sigisbert",
-        "CPGE Lycée Henri Loritz",
+        "CPGE Lycée Henri Lorz",
         "Autre CPGE"
     ],
     'universite': [
@@ -39,7 +39,7 @@ schools= {
 moment.locale('fr', {
     months: "janvier_février_mars_avril_mai_juin_juillet_août_septembre_octobre_novembre_décembre".split("_"),
     monthsShort: "janv._févr._mars_avr._mai_juin_juil._août_sept._oct._nov._déc.".split("_"),
-    weekdays: "dimanche_lundi_mardi_mercredi_jeudi_vendredi_samedi".split("_"),
+    weekdays: "Dimanche_Lundi_Mardi_Mercredi_Jeudi_Vendredi_Samedi".split("_"),
     weekdaysShort: "dim._lun._mar._mer._jeu._ven._sam.".split("_"),
     weekdaysMin: "Di_Lu_Ma_Me_Je_Ve_Sa".split("_"),
     longDateFormat: {
@@ -73,9 +73,9 @@ moment.locale('fr', {
         y: "une ann�e",
         yy: "%d ann�es"
     },
-    ordinalParse: /\d{1,2}(er|�me)/,
+    ordinalParse: /\d{1,2}(er|ème)/,
     ordinal: function (number) {
-        return number + (number === 1 ? 'er' : '�me');
+        return number + (number === 1 ? 'er' : '');
     },
     meridiemParse: /PD|MD/,
     isPM: function (input) {

@@ -24,3 +24,7 @@ Meteor.publish('codes', function() {
 Meteor.publish('events', function() {
     return Events.find();
 });
+
+Meteor.publish('permanences', function() {
+    return Permanences.find();
+});

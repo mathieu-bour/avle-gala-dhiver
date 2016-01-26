@@ -14,7 +14,21 @@
 Template.payment.helpers({
    "paypalUrl": function(){
        return Session.get('paypalUrl');
-   }
+   },
+    "permanences": function(){
+        var permanences = Permanences.find().fetch();
+
+        for (var i = permanences.length - 1; i >= 0; i--) {
+            var day = moment(permanences[i].startDate, "DD/MM/YYYY hh:mm").format("dddd Do MMMM");
+            var startHour = moment(permanences[i].startDate, "DD/MM/YYYY hh:mm").format("HH[h]mm");
+            var endHour = moment(permanences[i].endDate, "DD/MM/YYYY hh:mm").format("HH[h]mm");
+            var date = day + " de " + startHour + " à " + endHour;
+
+            permanences[i].date = date;
+        };
+
+        return permanences;
+    }
 });
 
 /**

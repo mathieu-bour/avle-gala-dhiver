@@ -45,11 +45,15 @@ Template.buy.events({
         });
         var code = Session.get("code");
 
+        var day = $(e.target).find('[name="birthdayPicker_birth[day]"]').val();
+        var month = $(e.target).find('[name="birthdayPicker_birth[month]"]').val();
+        var year = $(e.target).find('[name="birthdayPicker_birth[year]"]').val();
+        var birthday = new Date(year, month, day);
         if(code){
             var ticket = {
                 firstname: $(e.target).find('[id=firstname]').val(),
                 lastname: $(e.target).find('[id=lastname]').val(),
-                birthday: $(e.target).find('[id=birthday]').val(),
+                birthday: birthday,
                 email: $(e.target).find('[id=email]').val(),
                 phone: $(e.target).find('[id=phone]').val(),
                 school: $(e.target).find('[id=school]').val(),
@@ -66,7 +70,7 @@ Template.buy.events({
             var ticket = {
                 firstname: $(e.target).find('[id=firstname]').val(),
                 lastname: $(e.target).find('[id=lastname]').val(),
-                birthday: $(e.target).find('[id=birthday]').val(),
+                birthday: birthday,
                 email: $(e.target).find('[id=email]').val(),
                 phone: $(e.target).find('[id=phone]').val(),
                 school: $(e.target).find('[id=school]').val(),

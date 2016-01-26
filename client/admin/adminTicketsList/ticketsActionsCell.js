@@ -4,24 +4,25 @@ Template.ticketsActionsCell.events({
 
         var ticket = this;
 
-        HTTP.get('http:/scripts/invoice_pdf/',{
-            params: {
-                'lastname': ticket.lastname,
-                'firstname': ticket.firstname,
-                'phone': ticket.phone,
-                'school': ticket.school,
-                'getPdf': false,
-                'isPaypal': ticket.isPaypal,
-                'email': ticket.email,
-                'id': ticket._id,
-                'isForbach': false
-            }
-        }, function(error, result){
-            console.log(result);
-        });
+        /*HTTP.get('http:/scripts/invoice_pdf/',{
+         params: {
+         'lastname': ticket.lastname,
+         'firstname': ticket.firstname,
+         'phone': ticket.phone,
+         'school': ticket.school,
+         'getPdf': false,
+         'isPaypal': ticket.isPaypal,
+         'email': ticket.email,
+         'id': ticket._id,
+         'isForbach': false
+         }
+         }, function(error, result){
+         console.log(result);
+         });*/
 
-        HTTP.get('http:/scripts/ticket_pdf/',{
+        HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
             params: {
+                '_id': ticket._id,
                 'lastname': ticket.lastname,
                 'firstname': ticket.firstname,
                 'phone': ticket.phone,
@@ -32,7 +33,8 @@ Template.ticketsActionsCell.events({
                 'email': ticket.email,
                 'id': ticket.uuid,
                 'isForbach': false,
-                '_id': ticket._id
+                'creationDate': moment(ticket.isPaid).format("DD/MM/YYYY"),
+                'paymentDate': moment(ticket.isPaid).format("DD/MM/YYYY")
             }
         }, function(error, result){
             console.log(result);
@@ -48,7 +50,7 @@ Template.ticketsActionsCell.events({
 
             /*= Save and save invoice =*/
             /*======================================================*/
-            HTTP.get('http:/scripts/invoice_pdf/',{
+            /*HTTP.get('http:/scripts/invoice_pdf/',{
                 params: {
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
@@ -62,11 +64,11 @@ Template.ticketsActionsCell.events({
                 }
             }, function(error, result){
                 console.log(result);
-            });
+            });*/
 
-            HTTP.get('http:/scripts/ticket_pdf/',{
+            HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/',{
                 params: {
-                    '._id': ticket._id,
+                    '_id': ticket._id,
                     'lastname': ticket.lastname,
                     'firstname': ticket.firstname,
                     'phone': ticket.phone,
@@ -76,7 +78,9 @@ Template.ticketsActionsCell.events({
                     'getPdf': false,
                     'email': ticket.email,
                     'id': ticket.uuid,
-                    'isForbach': false
+                    'isForbach': false,
+                    'creationDate': moment(ticket.isPaid).format("DD/MM/YYYY"),
+                    'paymentDate': moment(ticket.isPaid).format("DD/MM/YYYY")
                 }
             }, function(error, result){
                 console.log(result);

@@ -2,6 +2,9 @@ Template.ticketing.helpers({
     "codes": function(){
         return Codes.find();
     },
+    "permanences": function(){
+        return Permanences.find();
+    },
     'success': function(){
         return Session.get('success');
     },
@@ -42,6 +45,26 @@ Template.ticketing.events({
         Session.set("success", "Le code a bien été ajouté.");
 
         $('#create-code')[0].reset();
+    },
+    "submit #add-permanence": function(e){
+        e.preventDefault();
+
+        var permanence = {
+            place: $(e.target).find('[id=place]').val(),
+            startDate: $(e.target).find('[id=start-date]').val(),
+            endDate: $(e.target).find('[id=end-date]').val(),
+        };
+
+        Permanences.insert(permanence);
+        Session.set("success", "La permanence a bien été ajoutée.");
+    },
+    "click .delete-permanence": function(e){
+        e.preventDefault();
+
+        var id = $(e.target).attr("id");
+
+        Permanences.remove(id);
+        Session.set("error", "La permanence a bien été supprimée.");
     }
 });
 
@@ -63,7 +86,6 @@ Template.ticketing.onRendered(function () {
     });
     if(Events.findOne()){
         var event = Events.findOne();
-        console.log(event.openDate);
         $("input[id=open-date]").val(event.openDate);
         $("input[id=close-date]").val(event.closeDate);
         $("input[id=ticket-number]").val(event.ticketNumber);

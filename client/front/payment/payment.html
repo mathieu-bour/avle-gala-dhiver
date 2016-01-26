@@ -4,7 +4,7 @@
             <h1 class="page-title">Payement de votre billet</h1>
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="alert alert-info">
                         <p>
                             Super !<br/>
@@ -24,7 +24,7 @@
                             <div class="col-lg-2">
                                 <input type="checkbox" id="accept-conditions" class="form-control" placeholder="Nom" required>
                             </div>
-                            <p class="col-lg-10">Afin de continuer, vous devez certfiez être étudiant en classe de terminale ou en étude supérieure. Nous rappelons qu'en cas contraire, l'accès à la soirée vous serez formellement interdit.</p>
+                            <p class="col-lg-10">Je certifie être né avant ou en 1999 et donc avoir l'âge requis pour participer à l'évènement. Nous rappelons qu'en cas contraire, l'accès à la soirée vous serez formellement interdit.</p>
                         </div>
 
                     </div>
@@ -37,9 +37,6 @@
                             <button class="btn btn-primary btn-block" id="permanence-btn">Payer lors d'une permanence</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    {{> ticket}}
                 </div>
             </div>
         </div>
@@ -54,7 +51,7 @@
                     <h4 class="modal-title">Attention</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Le gala d'hiver est reservé aux étudiants en classe de terminale ou en études supérieures. L'accès sera strictement refusé à toute personne de classe inférieure à la terminale. Aucun remboursement ne sera possible.</p>
+                    <p>Le gala d'hiver est reservé aux personnes nées avant ou en 1999. L'accès sera strictement refusé à toutes personne née après 1999. Aucun remboursement ne sera possible.</p>
                 </div>
                 <div class="modal-footer">
                     <a href="{{pathFor route="home"}}" class="btn btn-danger" data-dismiss="modal">Retour</a>
@@ -81,14 +78,12 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {{#each permanences}}
                             <tr>
-                                <td>Samedi 5 décembre de 14h à 19h</td>
-                                <td>Brasserie Rep' - Place de la République - 6 rue Winston Churchill - 57000 Metz</td>
+                                <td>{{ place }}</td>
+                                <td>{{ date }}</td>
                             </tr>
-                            <tr>
-                                <td>Mercredi 9 décembre de 14h à 19h</td>
-                                <td>Brasserie Rep' - Place de la République - 6 rue Winston Churchill - 57000 Metz</td>
-                            </tr>
+                        {{/each}}
                         </tbody>
                         <tfoot>
                             <tr>

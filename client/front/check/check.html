@@ -47,7 +47,7 @@
                                 </div>
                                 <p class="text-info" id="confirm-sent" style="display: none"><small>Un e-mail de confirmation vient de vous être envoyé.</small></p>
                                 <p><small><strong>Cependant</strong>, cette place est seulement resérvée mais elle n'est pas encore payée.</small></p>
-                                <p><small>Vous pouvez soit la payer directement par Paypal en <strong><a href="{{ paypalUrl }}">cliquant ici</a></strong> ou venir la payer à l'une des deux permanences suivantes: </small></p>
+                                <p><small>Vous pouvez soit la payer directement par Paypal en <strong><a href="{{ paypalUrl }}">cliquant ici</a></strong> ou venir la payer à l'une des permanences suivantes: </small></p>
 				<small>
                                     <table class="table table-striped">
                                         <thead>
@@ -57,10 +57,12 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>Samedi 12 décembre de 14h à 19h</td>
-                                            <td>Café Le Métisse - Place de la République - Metz</td>
-                                        </tr>
+                                        {{#each permanences}}
+                                            <tr>
+                                                <td>{{ place }}</td>
+                                                <td>{{ date }}</td>
+                                            </tr>
+                                        {{/each}}
                                         </tbody>
                                     </table>
                                     <p>Si votre place n'est pas payée après la seconde permanence, elle sera automatiquement supprimée et remise en vente.</p>

@@ -151,13 +151,13 @@ Meteor.methods({
         console.log("called");
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
             content = result.content;
             var token = content.split("&")[0];
             token = token.split("=")[1];
             console.log(result.content);
 
-            var url = "https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
+            var url = "https://www.paypal.com/cgi-bin/webscr?cmd=_express-checkout&useraction=commit&token=" + token;
         } catch (_error) {
             throw new Meteor.Error("No Result", "Failed to fetch...");
         }
@@ -173,7 +173,7 @@ Meteor.methods({
     'getExpressCheckoutDetails': function(token){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, action: 'GetExpressCheckoutDetails'}});
             content = result.content;
             content = content.split('&');
             content_json = {};
@@ -196,7 +196,7 @@ Meteor.methods({
     'doExpressCheckoutPayment': function(token, payerID){
         try {
             // fill in the blanks here with params, timeout, etc.
-            var result = HTTP.get('http://lab.dev/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
+            var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {token: token, PayerID: payerID, action: 'DoExpressCheckoutPayment'}});
             content = result.content;
             content = content.split('&');
             content_json = {};

@@ -6,22 +6,28 @@ Router.route('/ticket/:_id', function () {
     var ticket = Tickets.findOne(id);
 
 
-    var result = HTTP.get('http:/scripts/ticket_pdf/', {params: {id: ticket.uuid, lastname: ticket.lastname, firstname: ticket.firstname, sexe: ticket.sexe, getPdf: true}});
+    var result = HTTP.get('http://cdn.avle.fr/scripts/ticket_pdf/', {params: {
+        '_id': ticket._id,
+        'lastname': ticket.lastname,
+        'firstname': ticket.firstname,
+        'phone': ticket.phone,
+        'school': ticket.school,
+        'isPaypal': ticket.isPaypal,
+        'sexe': ticket.sexe,
+        'getPdf': false,
+        'email': ticket.email,
+        'id': ticket.uuid,
+        'isForbach': false,
+        'creationDate': moment(ticket.isPaid).format("DD/MM/YYYY"),
+        'paymentDate': moment(ticket.isPaid).format("DD/MM/YYYY"),
+        getPdf: true
+    }});
 
-    wkhtmltopdf(result.content, {
-        'no-outline': true,         // Make Chrome not complain
-        'margin-top': 0,
-        'margin-right':0,
-        'margin-bottom': 0,
-        'margin-left':0,
-
-        // Default page options
-        'disable-smart-shrinking': true,
-    })
+    wkhtmltopdf(result.content)
         .pipe(res);
 }, {where: 'server'});
 
-Router.route('/invoice/:_id', function () {
+/*Router.route('/invoice/:_id', function () {
     var wkhtmltopdf = Npm.require('wkhtmltopdf');
     var res = this.response;
 
@@ -41,4 +47,4 @@ Router.route('/invoice/:_id', function () {
         'disable-smart-shrinking': true
     })
         .pipe(res);
-}, {where: 'server'});
+}, {where: 'server'});*/

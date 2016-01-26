@@ -28,37 +28,21 @@ Template.validate.onRendered(function () {
                 var ticket = Tickets.findOne(id);
                 Tickets.update(ticket._id, {$set: {isPaid: new Date(), isPaypal: new Date(), correlationId: result['CORRELATIONID']}});
 
-                /*= Save and save invoice =*/
-                /*======================================================*/
-                HTTP.get('http://lab.dev/invoice_pdf/',{
+                HTTP.get('http:/cdn.avle.fr/scripts/ticket_pdf/',{
                     params: {
+                        '_id': ticket._id,
                         'lastname': ticket.lastname,
                         'firstname': ticket.firstname,
                         'phone': ticket.phone,
                         'school': ticket.school,
-                        'getPdf': false,
-                        'isPaypal': true,
-                        'email': ticket.email,
-                        'id': ticket._id,
-                        'isForbach': false
-                    }
-                }, function(error, result){
-                    console.log(result);
-                });
-
-                HTTP.get('http://lab.dev/ticket_pdf/',{
-                    params: {
-                        'lastname': ticket.lastname,
-                        'firstname': ticket.firstname,
-                        'phone': ticket.phone,
-                        'school': ticket.school,
-                        'isPaypal': true,
+                        'isPaypal': ticket.isPaypal,
                         'sexe': ticket.sexe,
                         'getPdf': false,
                         'email': ticket.email,
                         'id': ticket.uuid,
                         'isForbach': false,
-                        '_id': ticket._id
+                        'createDate': moment(ticket.isPaid).format("DD/MM/YYYY"),
+                        'paymentDate': moment(ticket.isPaid).format("DD/MM/YYYY")
                     }
                 }, function(error, result){
                     console.log(result);
@@ -68,9 +52,9 @@ Template.validate.onRendered(function () {
                 var host = "http://"+window.location.hostname;
 
                 if(host == 'http://localhost'){
-                    //window.location.replace("http://localhost:3000/buy/payment/canceled");
+                    window.location.replace("http://localhost:3000/buy/payment/canceled");
                 }else{
-                    //window.location.replace(host + "/buy/payment/canceled");
+                    window.location.replace(host + "/buy/payment/canceled");
                 }
             }
         }else{
@@ -78,9 +62,9 @@ Template.validate.onRendered(function () {
             var host = "http://"+window.location.hostname;
 
             if(host == 'http://localhost'){
-                //window.location.replace("http://localhost:3000/buy/payment/canceled");
+                window.location.replace("http://localhost:3000/buy/payment/canceled");
             }else{
-                //window.location.replace(host + "/buy/payment/canceled");
+                window.location.replace(host + "/buy/payment/canceled");
             }
         }
     });
