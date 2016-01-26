@@ -70,6 +70,7 @@ Template.payment.events({
 
 Template.payment.onCreated(function () {
     Meteor.call('setExpressCheckout', this.data.id, function(error, result){
+        console.log(result)
         Session.set('paypalUrl', result);
     });
 });

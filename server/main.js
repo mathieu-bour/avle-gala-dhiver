@@ -149,6 +149,7 @@ Meteor.methods({
      */
     'setExpressCheckout': function(id){
         console.log("called");
+        console.log(id);
         try {
             // fill in the blanks here with params, timeout, etc.
             var result = HTTP.get('http://cdn.avle.fr/scripts/paypal-ec-php/',{params: {id: id, action: 'SetExpressCheckout'}});
