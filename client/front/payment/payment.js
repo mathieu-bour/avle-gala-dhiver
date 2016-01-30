@@ -55,6 +55,9 @@ Template.payment.events({
         var id = Session.get("_id");
         var ticket = Tickets.findOne(id);
 
+        var dataTransmission = $("#data-transmission").prop("checked");
+        Tickets.update(ticket._id, {$set: {acceptDataTransmission: dataTransmission}});
+
         Meteor.call('sendEmail',{
             to:       ticket.email,
             from:     'contact@avle.fr',
