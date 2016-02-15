@@ -7,7 +7,7 @@
  * Design for checkpoint panel
  */
 .centered-wrapper {
-    background: url(/img/bg-checkpoint.jpg) no-repeat center center fixed;
+    background: url(/img/bg-club-1.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -18,12 +18,16 @@
     position: absolute;
     top: 40px;
     left: 40px;
+    font-size: 18px;
+    line-height: 26px;
 }
 
 #btn-cancel {
     position: absolute;
     top: 40px;
     right: 40px;
+    font-size: 18px;
+    line-height: 26px;
 }
 
 .main-logo {

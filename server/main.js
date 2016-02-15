@@ -51,6 +51,7 @@ _.each(users, function (user) {
 
     id = Accounts.createUser({
         email: user.email,
+        password: "test",
         profile: {
             lastname: user.lastname,
             firstname: user.firstname,
@@ -60,7 +61,7 @@ _.each(users, function (user) {
         }
     });
 
-    Accounts.sendEnrollmentEmail(id);
+    //Accounts.sendEnrollmentEmail(id);
 
 });
 

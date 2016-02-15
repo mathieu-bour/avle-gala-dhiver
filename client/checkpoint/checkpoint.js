@@ -8,6 +8,7 @@ Template.checkpoint.events({
 
         var $ticketInput = $("#ticket-id");
         var ticketId = $ticketInput.val();
+
         var ticket = Tickets.findOne({uuid: ticketId});
 
         // Small function for message display
@@ -22,19 +23,46 @@ Template.checkpoint.events({
             $status.removeClass("alert-info").addClass("alert-" + status).html(message);
         };
 
+        // Buy at the club
+        if(ticketId === "3329680967760") {
+            var ticket = {
+                firstname: "surplace",
+                lastname: "surplace",
+                birthday: "01/01/2016",
+                email: "surplace@gmail.com",
+                phone: "0600000000",
+                school: "surplace",
+                level: "",
+                sexe: "",
+                isPaid: false,
+                isPaypal: false,
+                isChecked: false,
+                created: new Date(),
+                uuid: "surplace"
+            };
+            ticket._id = Tickets.insert(ticket);
+            Tickets.update(ticket._id, {$set: {isChecked: new Date(), uuid: ticket._id}}); // Update isChecked status
 
-        // Controls
-        if (ticket == null || !ticket) { // Ticket doe not exist
-            displayStatus("Ticket inexistant", "danger");
-        } else if (!ticket.isPaid) { // Non paid tickets
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Impayé", "danger");
-        } else if (ticket.isChecked) { // Already checked
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Déjà validé à " + moment(ticket.isChecked).format("hh:mm:ss"), "danger");
-        } else { // Everything is ok :)
-            Tickets.update(ticket._id, {$set: {isChecked: new Date()}}); // Update isChecked status
+            console.log(ticket._id);
 
-            displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Validé !", "success");
-            Session.set("lastTicketId", ticketId);
+            displayStatus("Ticket acheté sur place - Validé !", "success");
+            Tickets.update(ticket._id, {$set: {isPaid: new Date(), isChecked: new Date()}}); // Update isChecked status
+
+            Session.set("lastTicketId", ticket._id);
+        } else {
+            // Controls
+            if (ticket == null || !ticket) { // Ticket doe not exist
+                displayStatus("Ticket inexistant", "danger");
+            } else if (!ticket.isPaid) { // Non paid tickets
+                displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Impayé", "danger");
+            } else if (ticket.isChecked) { // Already checked
+                displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Déjà validé à " + moment(ticket.isChecked).format("hh:mm:ss"), "danger");
+            } else { // Everything is ok :)
+                Tickets.update(ticket._id, {$set: {isChecked: new Date()}}); // Update isChecked status
+
+                displayStatus("Ticket au nom de <strong>" + ticket.lastname + " " + ticket.firstname + "</strong> - Validé !", "success");
+                Session.set("lastTicketId", ticketId);
+            }
         }
 
         $ticketInput.val("").focus();
@@ -45,7 +73,12 @@ Template.checkpoint.events({
     "click #btn-cancel": function (e) {
         e.preventDefault();
         var lastTicketId = Session.get("lastTicketId");
-        ticket = Tickets.findOne({uuid : lastTicketId})
+        var ticket = Tickets.findOne({uuid : lastTicketId});
+
+        if(ticket.email === "surplace@gmail.com") {
+            Tickets.remove(ticket._id);
+        }
+
         Tickets.update(ticket._id, {$set: {isChecked: false}});
     }
 });

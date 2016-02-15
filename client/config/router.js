@@ -7,7 +7,7 @@ Router.configure({
     waitOn: function() { return Meteor.subscribe("tickets") && Meteor.subscribe('allUsers') && Meteor.subscribe('events'); }
 });
 
-var cdn = Meteor.settings.public.local ? "" : "";
+var cdn = "";
 
 /*= CSS configuration =*/
 /*======================================================*/
@@ -47,6 +47,10 @@ var stylesheets = {
         },
         admin:  {
             href: cdn + "/css/checkpoint.css",
+            rel: "stylesheet"
+        },
+        fonts:  {
+            href: cdn + "/css/materialdesignicons.min.css",
             rel: "stylesheet"
         }
     }
